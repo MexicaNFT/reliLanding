@@ -22,6 +22,9 @@ const Hero: React.FC = () => {
             Sign In
           </button>
         </div>
+        <div className="max-w-[1200px] mx-auto">
+          <BrandStrip />
+        </div>
         <div className="relative w-full max-w-[1099px] h-[653px] mx-auto mb-16 border-2 border-[#dcdfe1] rounded-lg">
           <Image
             src={Assistant}
@@ -30,9 +33,6 @@ const Hero: React.FC = () => {
             style={{ objectFit: "cover" }}
             className="rounded-lg"
           />
-        </div>
-        <div className="max-w-[1200px] mx-auto">
-          <BrandStrip />
         </div>
       </div>
     </section>
