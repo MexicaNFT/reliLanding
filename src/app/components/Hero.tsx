@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
     <section className=" py-20">
       <div className="container mx-auto px-4">
         <h1 className="font-poppins font-bold text-5xl md:text-6xl lg:text-[80px] leading-tight md:leading-[110px] text-center mb-6 text-[#36454F]">
-          Consectetur Interdum <br /> by au
+          La plataforma de LegalTech más completa de México
         </h1>
         <p className="font-poppins font-bold text-2xl md:text-[28px] leading-tight md:leading-[42px] text-center mb-10 max-w-3xl mx-auto">
           Transform how you learn, work, and grow with our innovative,
