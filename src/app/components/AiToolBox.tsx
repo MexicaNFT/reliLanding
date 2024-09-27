@@ -74,9 +74,15 @@ export default function AIToolbox() {
 
   return (
     <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight sm:leading-[60px] text-center text-[#36454F] mt-8 sm:mt-16 mb-6 sm:mb-8">
-        Your AI Toolbox includes
-      </h2>
+      <div className="text-center my-16 md:my-24">
+        <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
+          Nuestras Herramientas
+        </h2>
+        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[42px]">
+          En Reli.Ai usamos los mejores Modelos de Lenguaje Masivos entrenados
+          en tareas legislativas y legales complejas y afinados por expertos.
+        </p>
+      </div>
 
       <div className="relative">
         <div className="overflow-hidden">

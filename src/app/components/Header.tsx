@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Menu, X } from "lucide-react"; // Importing icons from lucide-react
 import Logo from "../assets/Reli_logo.png";
 
 const Header: React.FC = () => {
@@ -15,18 +15,18 @@ const Header: React.FC = () => {
       </div>
 
       <div className="md:hidden flex items-center">
+        <button className="mr-2 bg-primary-green text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors">
+          Sign In
+        </button>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-gray-600 focus:outline-none"
         >
           {menuOpen ? (
-            <XMarkIcon className="h-6 w-6" />
+            <X className="h-6 w-6" /> // Close icon
           ) : (
-            <Bars3Icon className="h-6 w-6" />
+            <Menu className="h-6 w-6" /> // Hamburger menu icon
           )}
-        </button>
-        <button className="ml-4 bg-primary-green text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors">
-          Sign In
         </button>
       </div>
 
