@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import AIToolCard from "../components/AIToolCard";
 
-const AIToolbox: React.FC = () => {
+import React, { useState, useEffect } from "react";
+import AIToolCard from "../components/AIToolCard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+export default function AIToolbox() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const cardsPerSlide = 3;
-  const cardWidth = 300 + 24;
+  const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
   const aiTools = [
     {
@@ -45,6 +46,22 @@ const AIToolbox: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setCardsPerSlide(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsPerSlide(2);
+      } else {
+        setCardsPerSlide(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const totalSlides = Math.ceil(aiTools.length / cardsPerSlide);
 
   const nextSlide = () => {
@@ -56,27 +73,30 @@ const AIToolbox: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[1280px] mx-auto">
-      <h2 className="font-poppins text-[40px] font-bold leading-[60px] text-center text-[#36454F] mt-16 mb-8">
+    <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold leading-tight sm:leading-[60px] text-center text-[#36454F] mt-8 sm:mt-16 mb-6 sm:mb-8">
         Your AI Toolbox includes
       </h2>
 
-      <div className="relative overflow-hidden">
-        <div
-          className="flex transition-transform duration-300 ease-in-out"
-          style={{
-            transform: `translateX(-${
-              currentSlide * (cardWidth * cardsPerSlide)
-            }px)`,
-          }}
-        >
-          {aiTools.map((tool, index) => (
-            <AIToolCard
-              key={index}
-              title={tool.title}
-              description={tool.description}
-            />
-          ))}
+      <div className="relative">
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-300 ease-in-out"
+            style={{
+              transform: `translateX(-${
+                currentSlide * (100 / cardsPerSlide)
+              }%)`,
+            }}
+          >
+            {aiTools.map((tool, index) => (
+              <div
+                key={index}
+                className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-3"
+              >
+                <AIToolCard title={tool.title} description={tool.description} />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="flex justify-center mt-4">
           {[...Array(totalSlides)].map((_, index) => (
@@ -90,20 +110,20 @@ const AIToolbox: React.FC = () => {
           ))}
         </div>
         <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          className="absolute top-1/2 -left-4 sm:left-0 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors duration-200"
           onClick={prevSlide}
+          aria-label="Previous slide"
         >
-          &#8592;
+          <ChevronLeft className="w-6 h-6 text-gray-600" />
         </button>
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          className="absolute top-1/2 -right-4 sm:right-0 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors duration-200"
           onClick={nextSlide}
+          aria-label="Next slide"
         >
-          &#8594;
+          <ChevronRight className="w-6 h-6 text-gray-600" />
         </button>
       </div>
     </div>
   );
-};
-
-export default AIToolbox;
+}

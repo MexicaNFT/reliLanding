@@ -5,17 +5,15 @@ interface AIToolCardProps {
   description: string;
 }
 
-const AIToolCard: React.FC<AIToolCardProps> = ({ title, description }) => {
+export default function AIToolCard({ title, description }: AIToolCardProps) {
   return (
-    <div className="min-w-[300px] max-w-[280px] h-[320px] flex flex-col items-center p-6 rounded-[10px] bg-[#F9FAFC] border border-[#DEDEDE] shadow-[0px_4px_10px_0px_#0000001A] mr-6">
-      <h3 className="font-poppins text-[24px] font-semibold leading-[36px] text-center text-primary-green mb-4">
+    <div className="w-full max-w-sm min-h-[280px] flex flex-col items-center p-6 rounded-lg bg-[#F9FAFC] border border-[#DEDEDE] shadow-md transition-shadow duration-300 hover:shadow-lg">
+      <h3 className="font-poppins text-xl sm:text-2xl font-semibold leading-tight text-center text-primary-green mb-6">
         {title}
       </h3>
-      <p className="font-poppins text-[16px] font-semibold leading-[24px] text-center text-[#36454F] overflow-hidden">
+      <p className="font-poppins text-sm sm:text-base font-medium leading-relaxed text-center text-[#36454F] flex-grow overflow-hidden">
         {description}
       </p>
     </div>
   );
-};
-
-export default AIToolCard;
+}
