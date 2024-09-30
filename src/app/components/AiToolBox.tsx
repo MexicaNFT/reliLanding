@@ -10,39 +10,24 @@ export default function AIToolbox() {
 
   const aiTools = [
     {
-      title: "AI-Powered ChatBot",
+      title: "Investigación Legislativa y Jurídica",
       description:
-        "Use our GPT-4 powered chatbot to assist you with day-to-day tasks. Businesses can access their own personalized chatbot.",
+        "A través de nuestros modelos, consulta de manera conversacional toda la legislación mexicana, ya sea por estado o materia.",
     },
     {
-      title: "Image Generation",
+      title: "Creación y cartera de Documentos",
       description:
-        "Create stunning images from text descriptions using advanced AI algorithms.",
+        "A través de un catálogo de documentos legales incluyendo contratos, crea los documentos legales que necesites en segundos.",
     },
     {
-      title: "Voice Assistant",
+      title: "Creación de modelos especializados",
       description:
-        "Interact with our AI using voice commands for a hands-free experience.",
+        "Escoge los compendios, leyes, estatutos, reglamentos, jurisprudencias o tus propios documentos que necesites para hacer tu trabajo.",
     },
     {
-      title: "Text Summarization",
+      title: "Análisis de Documentos",
       description:
-        "Quickly summarize long documents or articles with our AI-powered tool.",
-    },
-    {
-      title: "Language Translation",
-      description:
-        "Translate text between multiple languages with high accuracy.",
-    },
-    {
-      title: "Sentiment Analysis",
-      description:
-        "Analyze the sentiment of text data to gain insights into customer opinions.",
-    },
-    {
-      title: "Code Generation",
-      description:
-        "Generate code snippets or entire functions based on natural language descriptions.",
+        "Analiza tus contratos y documentos con nuestras herramientas para hacer tus flujos de trabajo más eficientes.",
     },
   ];
 
