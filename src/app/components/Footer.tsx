@@ -8,14 +8,17 @@ export default function Footer() {
     <footer className="bg-[#36454F] text-white py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center lg:flex-row lg:justify-between">
-          <div className="mb-8 lg:mb-0 text-center lg:text-left">
-            <Image
-              src={Logo}
-              alt="Reli"
-              width={100}
-              height={40}
-              className="mb-4"
-            />
+          <div className="mb-8 lg:mb-0 text-center lg:text-left w-full lg:w-auto">
+            <div className="flex justify-center lg:justify-start">
+              <Image
+                src={Logo}
+                alt="Reli"
+                width={100}
+                height={40}
+                className="mb-4"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
             <div className="flex justify-center lg:justify-start space-x-4 mt-4 lg:mt-16">
               <SocialIcon
                 url="https://linkedin.com"

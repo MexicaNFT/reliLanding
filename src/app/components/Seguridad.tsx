@@ -10,7 +10,14 @@ interface SecurityItemProps {
 
 const SecurityItem: React.FC<SecurityItemProps> = ({ icon, title }) => (
   <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md">
-    <Image src={icon} alt={title} width={125} height={164} className="mb-2" />
+    <Image
+      src={icon}
+      alt={title}
+      width={125}
+      height={164}
+      className="mb-2"
+      style={{ objectFit: "cover" }}
+    />
     <h3 className="text-center font-semibold">{title}</h3>
   </div>
 );

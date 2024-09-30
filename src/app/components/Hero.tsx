@@ -44,8 +44,7 @@ export default function Hero() {
           <Image
             src={Assistant}
             alt="Hero image"
-            layout="fill"
-            objectFit="contain"
+            style={{ objectFit: "cover" }}
             className="rounded-lg"
           />
         </div>

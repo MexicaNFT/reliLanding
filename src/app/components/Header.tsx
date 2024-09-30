@@ -12,11 +12,17 @@ export default function Component() {
   return (
     <header className="flex items-center justify-between px-4 py-4 bg-white shadow-md">
       <div className="flex-shrink-0">
-        <Image src={Logo} alt="Reli" width={100} height={40} />
+        <Image
+          src={Logo}
+          alt="Reli"
+          width={100}
+          height={40}
+          style={{ objectFit: "cover" }}
+        />
       </div>
 
       <div className="md:hidden flex items-center">
-        <button className="mr-2 bg-primary text-primary-foreground px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors">
+        <button className="mr-2 bg-[#34C1A6] text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors">
           Sign In
         </button>
         <button
@@ -59,7 +65,7 @@ export default function Component() {
       </nav>
 
       <div className="hidden md:block">
-        <button className="bg-primary text-primary-foreground px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors">
+        <button className="bg-[#34C1A6] text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition-colors">
           Sign In
         </button>
       </div>
