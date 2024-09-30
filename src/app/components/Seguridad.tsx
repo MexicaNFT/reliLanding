@@ -1,7 +1,10 @@
 import Image from "next/image";
+import aa from "../assets/aa.png";
+import bb from "../assets/bb.png";
+import cc from "../assets/cc.png";
 
 interface SecurityItemProps {
-  icon: string;
+  icon: any;
   title: string;
 }
 
@@ -23,18 +26,9 @@ export default function Seguridad() {
           Así blindamos tus datos.
         </p>
         <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
-          <SecurityItem
-            icon="/placeholder.svg?height=64&width=64"
-            title="NOM 151"
-          />
-          <SecurityItem
-            icon="/placeholder.svg?height=64&width=64"
-            title="ISO-27000"
-          />
-          <SecurityItem
-            icon="/placeholder.svg?height=64&width=64"
-            title="SCO2"
-          />
+          <SecurityItem icon={aa} title="NOM 151" />
+          <SecurityItem icon={bb} title="ISO-27000" />
+          <SecurityItem icon={cc} title="SCO2" />
         </div>
       </div>
     </section>
