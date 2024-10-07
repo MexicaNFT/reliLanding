@@ -1,90 +1,62 @@
 import React from "react";
-import { FC } from "react";
 import { Check } from "lucide-react";
 
-interface PlanCardProps {
-  isSubscribed: boolean;
-  name: string;
-  price: number;
-  duration: string;
-  onUpgrade?: () => void;
-  onCancel?: () => void;
+interface PlanFeature {
+  text: string;
 }
 
-const PlanCard: FC<PlanCardProps> = ({
-  isSubscribed,
+interface CardProps {
+  name: string;
+  description: string;
+  price: number;
+  features: PlanFeature[];
+  isCurrentPlan: boolean;
+}
+
+const Card: React.FC<CardProps> = ({
   name,
+  description,
   price,
-  duration,
-  onUpgrade,
-  onCancel,
+  features,
+  isCurrentPlan,
 }) => {
   return (
     <div
-      className={`w-[340px] h-[140px] rounded-lg ${
-        isSubscribed ? "border-2 border-[#1ABC9C] bg-white" : "bg-[#269BF7]"
-      } p-4 relative`}
+      className={`bg-white p-6 rounded-lg shadow-md ${
+        isCurrentPlan ? "border-2 border-[#1ABC9C]" : ""
+      }`}
     >
-      {isSubscribed && (
-        <div className="absolute w-[30px] h-[30px] -top-[15px] -right-[15px] rounded-full bg-[#1ABC9C] flex items-center justify-center z-10">
-          <Check className="text-white" size={20} />
-        </div>
-      )}
-      <div className="flex justify-between items-start">
-        <div>
-          <p
-            className={`font-semibold text-base leading-6 ${
-              isSubscribed ? "text-[#36454F]" : "text-white"
-            }`}
-          >
-            {name}
-          </p>
-          <p
-            className={`text-xs leading-[15px] ${
-              isSubscribed ? "text-[#787878]" : "text-white"
-            } mt-1`}
-          >
-            {duration} remaining
-          </p>
-        </div>
-        <div>
-          <p
-            className={`font-bold text-lg leading-[27px] ${
-              isSubscribed ? "text-[#36454F]" : "text-white"
-            }`}
-          >
-            ${price}
-            <span
-              className={`font-medium text-base leading-6 ${
-                isSubscribed ? "text-[#A3A3A3]" : "text-white opacity-80"
-              }`}
-            >
-              /month
-            </span>
-          </p>
-        </div>
+      <h3 className="text-xl font-bold mb-2 text-[#36454F]">{name}</h3>
+      <p className="text-[#787878] mb-4">{description}</p>
+      <div className="text-3xl font-bold mb-4 text-[#36454F]">
+        ${price}
+        <span className="text-sm font-normal text-[#787878]">
+          {price === 0 ? " Free" : "/month"}
+        </span>
       </div>
-
-      {isSubscribed ? (
-        <button onClick={onCancel} className="mt-8">
-          <p className="text-xs leading-[15px] text-[#6977F0]">
-            Cancel Subscription
-          </p>
-        </button>
-      ) : (
-        <div className="flex items-center justify-between mt-8">
-          <button onClick={onUpgrade} className="bg-white rounded-lg py-2 px-4">
-            <p className="font-semibold text-sm text-[#269BF7] text-center">
-              Upgrade
-            </p>
-          </button>
-          <p className="text-xs leading-[15px] text-white">
-            Learn more about this plan
-          </p>
-        </div>
-      )}
+      <div className="mb-6">
+        <p className="font-semibold mb-2 text-[#36454F]">This includes:</p>
+        <ul>
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-center mb-2 text-[#36454F]">
+              <Check className="text-green-500 mr-2" size={16} />
+              <span>{feature.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <button
+        className={`w-full py-2 rounded-md ${
+          isCurrentPlan
+            ? "bg-gray-200 text-gray-800 cursor-not-allowed"
+            : "bg-[#1ABC9C] text-white hover:bg-[#1ABC9C]"
+        }`}
+        disabled={isCurrentPlan}
+      >
+        {isCurrentPlan ? "Current Plan" : "Upgrade"}
+      </button>
     </div>
   );
 };
 
-export default PlanCard;
+export default Card;
