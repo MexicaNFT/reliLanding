@@ -1,9 +1,8 @@
 import React from "react";
-import BrandStrip from "./BrandStrip";
 
 export default function Hero() {
   return (
-    <section className="py-10 md:py-20">
+    <section className="py-10 md:py-20 bg-gradient-to-tr from-[#e6f7f4] via-white via-60% to-[#e6f7f4]">
       <div className="container mx-auto px-4">
         <h1 className="font-poppins font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[70px] leading-tight md:leading-[110px] text-center mb-4 md:mb-6 text-[#36454F] py-4">
           La plataforma de LegalTech más completa de México
@@ -22,10 +21,6 @@ export default function Hero() {
             Sign In
           </button>
         </div>
-
-        {/* <div className="max-w-[1200px] mx-auto">
-          <BrandStrip />
-        </div> */}
       </div>
     </section>
   );
