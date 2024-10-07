@@ -6,8 +6,16 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/Reli_logo.png";
 
-export default function Component() {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleScroll = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setMenuOpen(false);
+    }
+  };
 
   return (
     <header className="flex items-center justify-between px-4 py-4 bg-white shadow-md">
@@ -38,30 +46,30 @@ export default function Component() {
           menuOpen ? "flex" : "hidden"
         } absolute top-16 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-8 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
       >
-        <Link
-          href="/products"
+        <button
+          onClick={() => handleScroll("product")}
           className="block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block"
         >
           Product
-        </Link>
-        <Link
-          href="/security"
+        </button>
+        <button
+          onClick={() => handleScroll("nuestrasHerramientas")}
           className="block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block"
         >
-          Security
-        </Link>
-        <Link
-          href="/company"
+          Nuestras Herramientas
+        </button>
+        <button
+          onClick={() => handleScroll("security")}
           className="block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block"
         >
-          Company
-        </Link>
-        <Link
-          href="/blog"
+          Seguridad
+        </button>
+        <button
+          onClick={() => handleScroll("plan")}
           className="block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block"
         >
-          Blog
-        </Link>
+          Plan
+        </button>
       </nav>
 
       <div className="hidden md:block">

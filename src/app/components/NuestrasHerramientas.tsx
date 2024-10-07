@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import AIToolCard from "../components/AIToolCard";
+import AIToolCard from "./AIToolCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function AIToolbox() {
+export default function NuestrasHerramientas() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
