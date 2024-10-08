@@ -46,7 +46,10 @@ export default function Header() {
   return (
     <div>
       <header className="flex items-center justify-between px-4 py-4 bg-white shadow-md">
-        <div className="flex-shrink-0 px-2">
+        <div
+          className="flex-shrink-0 px-2 cursor-pointer"
+          onClick={() => router.push("/")}
+        >
           <Image
             src={Logo}
             alt="Reli"
@@ -75,7 +78,7 @@ export default function Header() {
         <nav
           className={`${
             menuOpen ? "flex" : "hidden"
-          } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-8 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
+          } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
         >
           <button
             onClick={() => handleNavigation("product")}
@@ -103,7 +106,7 @@ export default function Header() {
           </button>
         </nav>
 
-        <div className="hidden md:flex items-center space-x-4 px-2">
+        <div className="hidden md:flex items-center space-x-2 px-2">
           <button className="bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 shadow-md transition-colors">
             Sign In
           </button>
