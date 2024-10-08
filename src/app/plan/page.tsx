@@ -80,7 +80,7 @@ export default function PlanPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4  p-4 mt-4 w-4/5 mx-auto rounded-lg">
           {plans.map((plan) => (
             <Card
               key={plan.name}
