@@ -32,19 +32,7 @@ export default function Seguridad() {
           construido para apegarse a los estándares de seguridad más completos.
           Así blindamos tus datos.
         </p>
-        <div
-          className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 p-4 mt-4 w-3
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /5 mx-auto border border-gray-300 rounded-lg"
-        >
+        <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 bg-gray-100 p-4 mt-4 w-3/5 mx-auto border border-gray-300 rounded-lg">
           <SecurityItem icon={aa} />
           <SecurityItem icon={bb} />
           <SecurityItem icon={cc} />
