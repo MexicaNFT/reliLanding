@@ -9,7 +9,7 @@ const Product: React.FC = () => {
         <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
           Product
         </h2>
-        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[42px]">
+        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[28px]">
           En Reli.Ai puedes encontrar una cartera de productos desarrollados
           para abogados y equipos legales de todas las áreas y ámbitos
         </p>

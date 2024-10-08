@@ -63,7 +63,7 @@ export default function NuestrasHerramientas() {
         <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
           Nuestras Herramientas
         </h2>
-        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[42px]">
+        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[28px]">
           En Reli.Ai usamos los mejores Modelos de Lenguaje Masivos entrenados
           en tareas legislativas y legales complejas y afinados por expertos.
         </p>

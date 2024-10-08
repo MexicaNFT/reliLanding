@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <div>
-      <header className="flex items-center justify-between px-4 py-4 bg-white shadow-md">
+      <header className="flex items-center justify-between px-4 py-5 bg-white shadow-md">
         <div
           className="flex-shrink-0 px-2 cursor-pointer"
           onClick={() => router.push("/")}
@@ -82,25 +82,25 @@ export default function Header() {
         >
           <button
             onClick={() => handleNavigation("product")}
-            className="block py-2 px-4 text-sm text-gray-600 hover:text-gray-900 md:inline-block"
+            className="block py-2 px-4 text- text-gray-600 hover:text-gray-900 md:inline-block"
           >
             Product
           </button>
           <button
             onClick={() => handleNavigation("nuestrasHerramientas")}
-            className="block py-2 px-4 text-sm text-gray-600 hover:text-gray-900 md:inline-block"
+            className="block py-2 px-4 text text-gray-600 hover:text-gray-900 md:inline-block"
           >
             Nuestras Herramientas
           </button>
           <button
             onClick={() => handleNavigation("security")}
-            className="block py-2 px-4 text-sm text-gray-600 hover:text-gray-900 md:inline-block"
+            className="block py-2 px-4 text text-gray-600 hover:text-gray-900 md:inline-block"
           >
             Seguridad
           </button>
           <button
             onClick={() => handleNavigation("plan")}
-            className="block py-2 px-4 text-sm text-gray-600 hover:text-gray-900 md:inline-block"
+            className="block py-2 px-4 text text-gray-600 hover:text-gray-900 md:inline-block"
           >
             Plan
           </button>
