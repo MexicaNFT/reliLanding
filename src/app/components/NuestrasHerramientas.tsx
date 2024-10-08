@@ -2,11 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import AIToolCard from "./AIToolCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import Investigation from "../assets/Investigation.png";
-import Notes from "../assets/notes.png";
-import Circuit from "../assets/circuit.png";
-import Search from "../assets/search.png";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Scale,
+  BriefcaseBusiness,
+  Component,
+  ChartSplineIcon,
+} from "lucide-react";
 
 export default function NuestrasHerramientas() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -38,6 +41,33 @@ export default function NuestrasHerramientas() {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
+  const tools = [
+    {
+      title: "Investigación Legislativa y Jurídica",
+      description:
+        "A través de nuestros modelos, consulta de manera conversacional toda la legislación mexicana, ya sea por estado o materia.",
+      icon: <Scale className="w-12 h-12 text-gray-600" />,
+    },
+    {
+      title: "Creación y cartera de Documentos",
+      description:
+        "A través de un catálogo de documentos legales incluyendo contratos, crea los documentos legales que necesites en segundos.",
+      icon: <BriefcaseBusiness className="w-12 h-12 text-gray-600" />,
+    },
+    {
+      title: "Creación de modelos especializados",
+      description:
+        "Escoge los compendios, leyes, estatutos, reglamentos, jurisprudencias o tus propios documentos que necesites para hacer tu trabajo.",
+      icon: <Component className="w-12 h-12 text-gray-600" />,
+    },
+    {
+      title: "Análisis de Documentos",
+      description:
+        "Analiza tus contratos y documentos con nuestras herramientas para hacer tus flujos de trabajo más eficientes.",
+      icon: <ChartSplineIcon className="w-12 h-12 text-gray-600" />,
+    },
+  ];
+
   return (
     <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center my-16 md:my-24">
@@ -60,37 +90,16 @@ export default function NuestrasHerramientas() {
               }%)`,
             }}
           >
-            {[
-              {
-                title: "Investigación Legislativa y Jurídica",
-                description:
-                  "A través de nuestros modelos, consulta de manera conversacional toda la legislación mexicana, ya sea por estado o materia.",
-                imageSrc: Investigation,
-              },
-              {
-                title: "Creación y cartera de Documentos",
-                description:
-                  "A través de un catálogo de documentos legales incluyendo contratos, crea los documentos legales que necesites en segundos.",
-                imageSrc: Notes,
-              },
-              {
-                title: "Creación de modelos especializados",
-                description:
-                  "Escoge los compendios, leyes, estatutos, reglamentos, jurisprudencias o tus propios documentos que necesites para hacer tu trabajo.",
-                imageSrc: Circuit,
-              },
-              {
-                title: "Análisis de Documentos",
-                description:
-                  "Analiza tus contratos y documentos con nuestras herramientas para hacer tus flujos de trabajo más eficientes.",
-                imageSrc: Search,
-              },
-            ].map((card, index) => (
+            {tools.map((tool, index) => (
               <div
                 key={index}
                 className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-3 mb-6"
               >
-                <AIToolCard {...card} />
+                <AIToolCard
+                  title={tool.title}
+                  description={tool.description}
+                  icon={tool.icon}
+                />
               </div>
             ))}
           </div>

@@ -6,16 +6,16 @@ import NuestrasHerramientas from "./components/NuestrasHerramientas";
 export default function Home() {
   return (
     <>
-      <section id="hero">
+      <section id="hero" className="mb-36">
         <Hero />
       </section>
-      <section id="product">
+      <section id="product" className="mb-36">
         <Product />
       </section>
-      <section id="nuestrasHerramientas">
+      <section id="nuestrasHerramientas" className="mb-36">
         <NuestrasHerramientas />
       </section>
-      <section id="security">
+      <section id="seguridad" className="mb-36">
         <Seguridad />
       </section>
     </>

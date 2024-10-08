@@ -1,29 +1,28 @@
 import React from "react";
-import Image from "next/image";
 
 interface AIToolCardProps {
   title: string;
   description: string;
-  imageSrc: any;
+  icon: React.ReactElement;
 }
 
 export default function AIToolCard({
   title,
   description,
-  imageSrc,
+  icon,
 }: AIToolCardProps) {
   return (
-    <div className="w-full max-w-sm min-h-[445px] flex flex-col items-center p-6 rounded-lg bg-[#F9FAFC] border border-[#DEDEDE] shadow-md transition-shadow duration-300 hover:shadow-lg">
-      <div className="w-24 h-24 mb-16 flex items-center justify-center">
-        <Image
-          src={imageSrc}
-          alt={title}
-          width={96}
-          height={96}
-          objectFit="contain"
-        />
+    <div className="w-full max-w-sm min-h-[445px] flex flex-col items-center p-6 rounded-lg bg-[#F9FAFC] border border-[#DEDEDE] shadow-md transition-all duration-300 hover:shadow-lg">
+      <div className="w-32 h-32 mb-6 flex items-center justify-center relative group">
+        <div className="absolute inset-0 bg-primary-green/10 rounded-full blur-xl group-hover:bg-primary-green/20 transition-all duration-300"></div>
+        <div className="relative bg-white rounded-full p-4 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
+          {React.cloneElement(icon, {
+            className:
+              "w-16 h-16 text-primary-green transition-all duration-300 group-hover:text-primary-green/80",
+          })}
+        </div>
       </div>
-      <h3 className="font-poppins text-xl sm:text-2xl font-semibold leading-tight text-center text-primary-green mb-6">
+      <h3 className="font-poppins text-xl sm:text-2xl font-semibold leading-tight text-center text-primary-green mb-4">
         {title}
       </h3>
       <p className="font-poppins text-sm sm:text-base font-medium leading-relaxed text-center text-[#36454F] flex-grow">

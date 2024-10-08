@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showGoToTop, setShowGoToTop] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const router = useRouter();
 
   const handleNavigation = (sectionId: string) => {
@@ -17,9 +18,13 @@ export default function Header() {
     } else {
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+        const yOffset = -80;
+        const y =
+          section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     }
+    setActiveSection(sectionId);
     setMenuOpen(false);
   };
 
@@ -36,16 +41,36 @@ export default function Header() {
       }
     };
 
+    const handleScroll = () => {
+      const sections = ["product", "nuestrasHerramientas", "seguridad", "plan"];
+      let current = "";
+
+      for (let section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = section;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScrollVisibility);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScrollVisibility);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <div>
-      <header className="flex items-center justify-between px-4 py-5 bg-white shadow-md">
+      <header className="flex items-center justify-between px-4 py-5 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
         <div
           className="flex-shrink-0 px-2 cursor-pointer"
           onClick={() => router.push("/")}
@@ -80,30 +105,22 @@ export default function Header() {
             menuOpen ? "flex" : "hidden"
           } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
         >
-          <button
-            onClick={() => handleNavigation("product")}
-            className="block py-2 px-4 text- text-gray-600 hover:text-gray-900 md:inline-block"
-          >
-            Product
-          </button>
-          <button
-            onClick={() => handleNavigation("nuestrasHerramientas")}
-            className="block py-2 px-4 text text-gray-600 hover:text-gray-900 md:inline-block"
-          >
-            Nuestras Herramientas
-          </button>
-          <button
-            onClick={() => handleNavigation("security")}
-            className="block py-2 px-4 text text-gray-600 hover:text-gray-900 md:inline-block"
-          >
-            Seguridad
-          </button>
-          <button
-            onClick={() => handleNavigation("plan")}
-            className="block py-2 px-4 text text-gray-600 hover:text-gray-900 md:inline-block"
-          >
-            Plan
-          </button>
+          {["product", "nuestrasHerramientas", "seguridad", "plan"].map(
+            (section) => (
+              <button
+                key={section}
+                onClick={() => handleNavigation(section)}
+                className={`block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block relative ${
+                  activeSection === section ? "font-semibold" : ""
+                }`}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {activeSection === section && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#34C1A6]"></span>
+                )}
+              </button>
+            )
+          )}
         </nav>
 
         <div className="hidden md:flex items-center space-x-2 px-2">
@@ -111,7 +128,7 @@ export default function Header() {
             Sign In
           </button>
           <button className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors">
-            Contact-Us
+            Contact-Usd
           </button>
         </div>
       </header>
