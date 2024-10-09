@@ -1,9 +1,12 @@
 "use client";
+
 import React, { useState } from "react";
-import Card from "../components/PlanCard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Card from "../components/PlanCard"; // Ensure this has necessary props and styles
 
 export default function PlanPage() {
   const [isMonthly, setIsMonthly] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const plans = [
     {
@@ -50,10 +53,22 @@ export default function PlanPage() {
     },
   ];
 
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === plans.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? plans.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
-    <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden mt-10">
-      <div className="absolute left-1/2 bottom-0 w-full  h-96 -translate-x-1/2 bg-gradient-radial from-[#1ABC9C] via-transparent to-transparent opacity-40"></div>
-      <div className="max-w-7xl mx-auto relative z-10">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden mt-20">
+      <div className="absolute left-1/2 bottom-0 w-full h-96 -translate-x-1/2 bg-gradient-radial from-[#1ABC9C] via-transparent to-transparent opacity-40"></div>
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
         <h1 className="text-3xl font-bold text-center mb-2 text-[#36454F]">
           Upgrade your plans for more features
         </h1>
@@ -80,14 +95,53 @@ export default function PlanPage() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4  p-4 mt-4 w-4/5 mx-auto rounded-lg">
-          {plans.map((plan) => (
-            <Card
-              key={plan.name}
-              {...plan}
-              price={isMonthly ? plan.monthlyPrice : plan.yearlyPrice}
-              isMonthly={isMonthly}
-            />
+        <div className="relative w-full max-w-md mx-auto">
+          {/* Carousel Controls */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-transparent p-2 rounded-full shadow-md z-10 focus:outline-none md:-translate-x-[200px]"
+            aria-label="Previous plan"
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-600" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-transparent p-2 rounded-full shadow-md z-10 focus:outline-none  md:translate-x-[200px]"
+            aria-label="Next plan"
+          >
+            <ChevronRight className="w-6 h-6 text-gray-600" />
+          </button>
+
+          {/* Card Carousel */}
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+              }}
+            >
+              {plans.map((plan, index) => (
+                <div key={plan.name} className="w-full flex-shrink-0">
+                  <Card
+                    {...plan}
+                    price={isMonthly ? plan.monthlyPrice : plan.yearlyPrice}
+                    isMonthly={isMonthly}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Pagination Indicator */}
+        <div className="flex justify-center mt-4 space-x-2 md:hidden">
+          {plans.map((_, index) => (
+            <div
+              key={index}
+              className={`h-2 w-2 rounded-full ${
+                index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+              }`}
+            ></div>
           ))}
         </div>
       </div>
