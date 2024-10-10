@@ -65,7 +65,7 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div className="bg-white p-6 h-auto min-h-[448px] w-full max-w-[423px] rounded-2xl flex flex-col shadow-sm transition-shadow duration-200 hover:shadow-md border border-[#E6E6E6]">
+    <div className="bg-white p-6 h-auto min-h-[448px] w-full max-w-[430px] rounded-2xl flex flex-col shadow-sm transition-shadow duration-200 hover:shadow-md border border-[#E6E6E6]">
       <h3 className="text-2xl font-bold mb-2 text-[#36454F]">{name}</h3>
       <p className="text-[#787878] mb-4">{description}</p>
       <div className="text-3xl font-bold mb-6 text-[#36454F]">

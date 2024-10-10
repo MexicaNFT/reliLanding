@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Card from "../components/PlanCard"; // Ensure this has necessary props and styles
+import Card from "../components/PlanCard";
 
 export default function PlanPage() {
   const [isMonthly, setIsMonthly] = useState(true);
@@ -66,7 +66,7 @@ export default function PlanPage() {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden mt-20">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-0 relative overflow-hidden mt-20">
       <div className="absolute left-1/2 bottom-0 w-full h-96 -translate-x-1/2 bg-gradient-radial from-[#1ABC9C] via-transparent to-transparent opacity-40"></div>
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
         <h1 className="text-3xl font-bold text-center mb-2 text-[#36454F]">
