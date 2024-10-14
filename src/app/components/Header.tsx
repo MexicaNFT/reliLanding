@@ -32,6 +32,10 @@ export default function Header() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleContactClick = () => {
+    router.push("/contact");
+  };
+
   useEffect(() => {
     const handleScrollVisibility = () => {
       if (window.scrollY > 300) {
@@ -127,7 +131,10 @@ export default function Header() {
           <button className="bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 shadow-md transition-colors">
             Sign In
           </button>
-          <button className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors">
+          <button
+            onClick={handleContactClick}
+            className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors"
+          >
             Contact-Usd
           </button>
         </div>
