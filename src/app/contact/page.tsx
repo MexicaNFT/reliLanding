@@ -194,7 +194,7 @@ export default function ContactForm() {
         </form>
       </div>
       {showToast && (
-        <div className="fixed bottom-10 right-4 bg-[#1ABC9C] text-white px-4 py-2 rounded-md shadow-lg">
+        <div className="fixed top-20 inset-x-0 mx-auto bg-green-400 text-white px-4 py-2 rounded-md shadow-lg w-11/12 sm:w-auto">
           Thank you for your message. Our team will contact you within 2 days.
         </div>
       )}
