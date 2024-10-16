@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
+      allow_promotion_codes: true,
       mode: "subscription", // Subscription mode for recurring payments
       success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/register/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/register/cancel`,
