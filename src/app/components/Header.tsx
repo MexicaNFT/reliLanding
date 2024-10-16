@@ -15,16 +15,12 @@ export default function Header() {
   const router = useRouter();
 
   const handleNavigation = (sectionId: string) => {
-    if (sectionId === "plan") {
-      router.push("/plan");
-    } else {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const yOffset = -80;
-        const y =
-          section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const yOffset = -80;
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
     setActiveSection(sectionId);
     setMenuOpen(false);
@@ -44,7 +40,7 @@ export default function Header() {
     };
 
     const handleScroll = () => {
-      const sections = ["product", "nuestrasHerramientas", "seguridad", "plan"];
+      const sections = ["product", "nuestrasHerramientas", "seguridad"];
       let current = "";
 
       for (let section of sections) {
@@ -110,7 +106,7 @@ export default function Header() {
             menuOpen ? "flex" : "hidden"
           } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
         >
-          {["product", "nuestrasHerramientas", "seguridad", "plan"].map(
+          {["product", "Nuestras Herramientas", "seguridad"].map(
             (section) => (
               <button
                 key={section}
