@@ -8,7 +8,7 @@ import "@aws-amplify/ui-react/styles.css";
 import Card from "../components/PlanCard";
 import { fetchUserAttributes } from "aws-amplify/auth";
 import { Amplify } from "aws-amplify";
-import outputs from "@/../amplify_outputs.json";
+import outputs from "../../../amplify_outputs.json";
 import { Plan } from "./api/getPrices/route";
 
 Amplify.configure(outputs);
