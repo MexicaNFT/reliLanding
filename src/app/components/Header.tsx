@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowUp } from "lucide-react";
 import Logo from "../assets/Reli_logo.png";
 import { useRouter } from "next/navigation";
+import { handleSigninClick } from "../helpers/handle-sign-in";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -89,7 +90,10 @@ export default function Header() {
         </div>
 
         <div className="md:hidden flex items-center">
-          <button className="mr-2 bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 transition-colors">
+          <button
+            className="mr-2 bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 transition-colors"
+            onClick={handleSigninClick}
+          >
             Sign In
           </button>
           <button
@@ -128,14 +132,17 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-2 px-2">
-          <button className="bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 shadow-md transition-colors">
+          <button
+            className="bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 shadow-md transition-colors"
+            onClick={handleSigninClick}
+          >
             Sign In
           </button>
           <button
             onClick={handleContactClick}
             className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors"
           >
-            Contact-Usd
+            Contáctanos
           </button>
         </div>
       </header>

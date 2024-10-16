@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { handleSigninClick } from "../helpers/handle-sign-in";
 
 export default function Hero() {
   return (
@@ -17,7 +19,10 @@ export default function Hero() {
           <button className="font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-white text-[#36454F] border border-[#36454F] rounded-full hover:bg-gray-100 transition duration-300">
             Contáctanos
           </button>
-          <button className="font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-[#34C1A6] text-white border border-[#34C1A6] rounded-full hover:bg-[#2ca089] transition duration-300">
+          <button
+            className="font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-[#34C1A6] text-white border border-[#34C1A6] rounded-full hover:bg-[#2ca089] transition duration-300"
+            onClick={handleSigninClick}
+          >
             Sign In
           </button>
         </div>
