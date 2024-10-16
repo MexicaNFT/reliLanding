@@ -1,5 +1,3 @@
-// src/app/register/cancel/page.tsx
-
 import React from "react";
 
 export default function CancelPage() {
@@ -10,7 +8,7 @@ export default function CancelPage() {
         You have cancelled the payment. If this was a mistake, you can try
         again.
       </p>
-      <a href="/register" className="mt-6 p-2 bg-blue-500 text-white rounded">
+      <a href="/subscription" className="mt-6 p-2 bg-blue-500 text-white rounded">
         Go Back to Registration
       </a>
     </div>

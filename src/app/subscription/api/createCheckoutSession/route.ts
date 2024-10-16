@@ -1,5 +1,3 @@
-// src/app/register/api/createCheckoutSession/route.ts
-
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -26,8 +24,8 @@ export async function POST(req: NextRequest) {
       ],
       allow_promotion_codes: true,
       mode: "subscription", // Subscription mode for recurring payments
-      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/register/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/register/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/cancel`,
       customer_email: email, // Force the user's email to be used in Stripe
       metadata: {
         userId, // Attach the userId for reference

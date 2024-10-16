@@ -1,6 +1,6 @@
 import React from "react";
 import { Check } from "lucide-react";
-import { Plan } from "../register/api/getPrices/route";
+import { Plan } from "../subscription/api/getPrices/route";
 
 const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
   const { name, description, price, currency, interval, features } = plan; // Destructure plan fields

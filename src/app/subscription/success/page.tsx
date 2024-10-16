@@ -14,7 +14,7 @@ function SuccessPageContent() {
       if (sessionId) {
         try {
           const res = await fetch(
-            `/register/api/getCheckoutSession?session_id=${sessionId}`
+            `/subscription/api/getCheckoutSession?session_id=${sessionId}`
           );
           const data: Stripe.Checkout.Session = await res.json();
           setSession(data);
