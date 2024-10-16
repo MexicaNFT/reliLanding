@@ -1,12 +1,10 @@
-// src/app/register/success/page.tsx
-
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Stripe } from "stripe"; // Use Stripe types from the backend SDK
+import { Stripe } from "stripe";
 
-export default function SuccessPage() {
+function SuccessPageContent() {
   const [session, setSession] = useState<Stripe.Checkout.Session | null>(null);
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
@@ -43,5 +41,13 @@ export default function SuccessPage() {
         <p>Loading details...</p>
       )}
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <SuccessPageContent />
+    </Suspense>
   );
 }
