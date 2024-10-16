@@ -6,6 +6,7 @@ import { Menu, X, ArrowUp } from "lucide-react";
 import Logo from "../assets/Reli_logo.png";
 import { useRouter } from "next/navigation";
 import { handleSigninClick } from "../helpers/handle-sign-in";
+import Link from "next/link";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,10 +32,6 @@ export default function Header() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleContactClick = () => {
-    router.push("/contact");
   };
 
   useEffect(() => {
@@ -138,12 +135,11 @@ export default function Header() {
           >
             Sign In
           </button>
-          <button
-            onClick={handleContactClick}
-            className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors"
-          >
-            Contáctanos
-          </button>
+          <Link href={"/contact"}>
+            <button className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors">
+              Contáctanos
+            </button>
+          </Link>
         </div>
       </header>
 
