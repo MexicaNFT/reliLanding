@@ -50,8 +50,8 @@ function SuccessPageContent() {
           <div className="p-8 space-y-6">
             <div className="bg-gray-50 rounded-2xl p-6 shadow-inner">
               <p className="text-lg text-gray-700 mb-4">
-                Hello,{" "}
-                <span className="font-semibold">{session.customer_email}</span>
+                Your subscription is linked to the email address:
+                <span className="font-semibold"> {session.customer_email}</span>
               </p>
               <div className="flex justify-between items-center border-t border-gray-200 pt-4">
                 <span className="text-gray-600 font-medium">Amount Paid:</span>
@@ -62,18 +62,17 @@ function SuccessPageContent() {
                 </span>
               </div>
             </div>
-            <div className="flex items-center justify-center text-gray-500 bg-gray-50 rounded-full py-3 px-6">
-              <Mail className="h-5 w-5 mr-2 text-green-500" />
-              <p className="text-sm">
-                A confirmation email has been sent to your inbox.
-              </p>
+
+            <div className="mt-6">
+              {" "}
+              {/* Added margin top to create space above the button */}
+              <a href="https://app.reli.ai/">
+                <button className="w-full bg-[#34C1A6] text-white font-bold py-3 px-6 rounded-full hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out flex items-center justify-center">
+                  Go to the App
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </button>
+              </a>
             </div>
-            <a href="https://app.reli.ai/">
-              <button className="w-full bg-[#34C1A6] text-white font-bold py-3 px-6 rounded-full hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out flex items-center justify-center">
-                Go to the App
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-            </a>
           </div>
         ) : (
           <div className="flex justify-center items-center h-64">
