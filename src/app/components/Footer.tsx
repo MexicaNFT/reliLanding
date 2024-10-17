@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="text-center lg:text-left">
-            <h3 className="font-semibold text-lg mb-4">Company</h3>
+            <h3 className="font-bold text-lg mb-4 text-[#1ABC9C]">Company</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -57,32 +57,16 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/policy"
+                  href="/data-policy"
                   className="hover:text-gray-300 transition-colors duration-200"
                 >
                   Data Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/copyright"
-                  className="hover:text-gray-300 transition-colors duration-200"
-                >
-                  Copyright
                 </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-600 my-8"></div>
-        <div className="text-sm text-center lg:text-right">
-          <Link
-            href="/terms"
-            className="hover:text-gray-300 transition-colors duration-200"
-          >
-            Terms and Conditions
-          </Link>
-        </div>
       </div>
     </footer>
   );

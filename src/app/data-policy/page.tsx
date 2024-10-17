@@ -24,7 +24,7 @@ const PolicySection: React.FC<PolicySectionProps> = ({
   </div>
 );
 
-const PrivacyPolicy: React.FC = () => {
+const DataPolicy: React.FC = () => {
   return (
     <>
       <Head>
@@ -101,4 +101,4 @@ const PrivacyPolicy: React.FC = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default DataPolicy;
