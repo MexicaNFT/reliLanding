@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  CreditCard,
+  LogOut,
+} from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import Card from "../components/PlanCard";
 import { fetchUserAttributes } from "aws-amplify/auth";
@@ -15,13 +21,13 @@ const stripePromise = loadStripe(
 export default function Subscriptions() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
-  const [loading, setLoading] = useState(true); // Start loading on component mount
-  const [plans, setPlans] = useState<Plan[]>([]); // Dynamic plans
+  const [loading, setLoading] = useState(true);
+  const [plans, setPlans] = useState<Plan[]>([]);
   const [isMonthly, setIsMonthly] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscriptionUrl, setSubscriptionUrl] = useState("");
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // For error handling
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Check if the user is subscribed
   useEffect(() => {
@@ -173,132 +179,135 @@ export default function Subscriptions() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center flex-col">
-      {loading ? (
-        <div className="h-screen flex items-center justify-center">
-          <p className="text-gray-500">Loading...</p>
-        </div>
-      ) : errorMessage ? (
-        <div className="h-screen flex items-center justify-center">
-          <p className="text-red-500">{errorMessage}</p>
-        </div>
-      ) : (
-        <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-0 relative overflow-hidden mt-20">
-          <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-0 relative overflow-hidden mt-20">
-            <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
-              <h1 className="text-3xl font-bold text-center mb-2 text-[#36454F]">
-                {isSubscribed
-                  ? "Manage your subscription"
-                  : "Upgrade your plans for more features"}
-              </h1>
+    <div className="min-h-screen bg-gradient-to-tr from-[#e6f7f4] via-white via-60% to-[#e6f7f4] flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-4xl mx-auto bg-white bg-opacity-90 rounded-3xl shadow-2xl p-8 backdrop-blur-sm">
+        {loading ? (
+          <div className="flex items-center justify-center h-64">
+            <Loader2 className="h-12 w-12 animate-spin text-green-600" />
+          </div>
+        ) : errorMessage ? (
+          <div
+            className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md shadow-md"
+            role="alert"
+          >
+            <p className="font-bold">Error</p>
+            <p>{errorMessage}</p>
+          </div>
+        ) : (
+          <>
+            <h1 className="text-5xl font-extrabold text-center mb-8 text-green-800 leading-tight">
+              {isSubscribed
+                ? "Manage Your Subscription"
+                : "Choose Your Perfect Plan"}
+            </h1>
 
-              {isSubscribed ? (
-                <a
-                  href={subscriptionUrl}
-                  className="mt-4 p-2 bg-blue-500 text-white rounded-full"
-                >
-                  Manage Subscription
-                </a>
-              ) : (
-                <>
-                  <div className="flex justify-center mb-8">
-                    <div className="bg-gray-200 p-1 rounded-full">
-                      <button
-                        className={`px-4 py-2 rounded-full ${
-                          isMonthly ? "bg-white shadow-sm" : "text-gray-700"
-                        }`}
-                        onClick={() => setIsMonthly(true)}
-                      >
-                        Monthly
-                      </button>
-                      <button
-                        className={`px-4 py-2 rounded-full ${
-                          !isMonthly ? "bg-white shadow-sm" : "text-gray-700"
-                        }`}
-                        onClick={() => setIsMonthly(false)}
-                      >
-                        Annual
-                      </button>
-                    </div>
+            {isSubscribed ? (
+              <a
+                href={subscriptionUrl}
+                className="block w-full max-w-md mx-auto px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out text-center text-lg"
+              >
+                <CreditCard className="inline-block mr-2 h-6 w-6" />
+                Manage Subscription
+              </a>
+            ) : (
+              <>
+                <div className="flex justify-center mb-12">
+                  <div className="bg-green-50 p-1 rounded-full shadow-lg">
+                    <button
+                      className={`px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ${
+                        isMonthly
+                          ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white"
+                          : "text-green-800 hover:bg-green-100"
+                      }`}
+                      onClick={() => setIsMonthly(true)}
+                    >
+                      Monthly
+                    </button>
+                    <button
+                      className={`px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ${
+                        !isMonthly
+                          ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white"
+                          : "text-green-800 hover:bg-green-100"
+                      }`}
+                      onClick={() => setIsMonthly(false)}
+                    >
+                      Annual
+                    </button>
                   </div>
+                </div>
 
-                  <div className="relative w-full max-w-md mx-auto">
-                    {plans.length > 0 ? (
-                      <>
-                        <button
-                          onClick={prevSlide}
-                          className="absolute left-0 top-1/2 -translate-y-1/2 bg-transparent p-2 rounded-full shadow-md z-10 focus:outline-none md:-translate-x-[200px]"
-                          aria-label="Previous plan"
-                        >
-                          <ChevronLeft className="w-6 h-6 text-gray-600" />
-                        </button>
-                        <button
-                          onClick={nextSlide}
-                          className="absolute right-0 top-1/2 -translate-y-1/2 bg-transparent p-2 rounded-full shadow-md z-10 focus:outline-none md:translate-x-[200px]"
-                          aria-label="Next plan"
-                        >
-                          <ChevronRight className="w-6 h-6 text-gray-600" />
-                        </button>
+                <div className="relative w-full max-w-md mx-auto">
+                  {plans.length > 0 ? (
+                    <>
+                      <button
+                        onClick={prevSlide}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg z-10 focus:outline-none hover:bg-green-100 transition duration-300 ease-in-out md:-left-20"
+                        aria-label="Previous plan"
+                      >
+                        <ChevronLeft className="w-8 h-8 text-green-600" />
+                      </button>
+                      <button
+                        onClick={nextSlide}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg z-10 focus:outline-none hover:bg-green-100 transition duration-300 ease-in-out md:-right-20"
+                        aria-label="Next plan"
+                      >
+                        <ChevronRight className="w-8 h-8 text-green-600" />
+                      </button>
 
-                        {/* Card Carousel */}
-                        <div className="overflow-hidden">
-                          <div
-                            className="flex transition-transform duration-300 ease-in-out"
-                            style={{
-                              transform: `translateX(-${currentIndex * 100}%)`,
-                            }}
-                          >
-                            {plans.map((plan) => (
-                              <div
-                                key={plan.id}
-                                className="w-full flex-shrink-0"
-                              >
-                                <Card
-                                  plan={plan}
-                                  onClick={async () => {
-                                    const email = await getUserEmail();
-                                    handleCheckout(
-                                      plan.id,
-                                      user?.username,
-                                      email
-                                    );
-                                  }}
-                                />
-                              </div>
-                            ))}
-                          </div>
+                      <div className="overflow-hidden">
+                        <div
+                          className="flex transition-transform duration-300 ease-in-out"
+                          style={{
+                            transform: `translateX(-${currentIndex * 100}%)`,
+                          }}
+                        >
+                          {plans.map((plan) => (
+                            <div key={plan.id} className="w-full flex-shrink-0">
+                              <Card
+                                plan={plan}
+                                onClick={async () => {
+                                  const email = await getUserEmail();
+                                  handleCheckout(
+                                    plan.id,
+                                    user?.username,
+                                    email
+                                  );
+                                }}
+                              />
+                            </div>
+                          ))}
                         </div>
-                      </>
-                    ) : (
-                      <p className="text-center text-gray-500">
-                        No plans available
-                      </p>
-                    )}
-                  </div>
-                </>
-              )}
+                      </div>
+                    </>
+                  ) : (
+                    <p className="text-center text-green-800 text-lg">
+                      No plans available at the moment
+                    </p>
+                  )}
+                </div>
 
-              {/* Mobile Pagination Indicator */}
-              {!isSubscribed && (
-                <div className="flex justify-center mt-4 space-x-2 md:hidden">
+                <div className="flex justify-center mt-8 space-x-3">
                   {plans.map((_, index) => (
                     <div
                       key={index}
-                      className={`h-2 w-2 rounded-full ${
-                        index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+                      className={`h-3 rounded-full transition-all duration-300 ${
+                        index === currentIndex
+                          ? "bg-green-500 w-8"
+                          : "bg-green-200 w-3"
                       }`}
                     ></div>
                   ))}
                 </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+              </>
+            )}
+          </>
+        )}
+      </div>
       <button
-        className="mt-4 p-2 bg-red-500 text-white rounded-full"
+        className="mt-12 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out font-semibold text-lg flex items-center"
         onClick={signOut}
       >
+        <LogOut className="mr-2 h-5 w-5" />
         Sign Out
       </button>
     </div>

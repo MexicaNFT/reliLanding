@@ -68,10 +68,12 @@ function SuccessPageContent() {
                 A confirmation email has been sent to your inbox.
               </p>
             </div>
-            <button className="w-full bg-[#34C1A6] text-white font-bold py-3 px-6 rounded-full hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out flex items-center justify-center">
-              Continue to Dashboard
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
+            <a href="https://app.reli.ai/">
+              <button className="w-full bg-[#34C1A6] text-white font-bold py-3 px-6 rounded-full hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out flex items-center justify-center">
+                Go to the App
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </button>
+            </a>
           </div>
         ) : (
           <div className="flex justify-center items-center h-64">

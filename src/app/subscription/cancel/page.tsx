@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function CancelPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-tr from-[#e6f7f4] via-white via-60% to-[#e6f7f4] p-4">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <div className="w-full max-w-xl bg-white rounded-3xl shadow-2xl overflow-hidden">
         <div className="bg-gray-400">
           <div className="bg-white rounded-t-3xl p-8">
             <div className="flex items-center justify-center mb-6">
