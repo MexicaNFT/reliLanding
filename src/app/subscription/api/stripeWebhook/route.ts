@@ -1,23 +1,20 @@
-import { NextApiRequest, NextApiResponse } from "next";
+// /src/app/subscription/api/stripeWebhook/route.ts
 
-const HARD_CODED_SECRET = "HEIHFISHBDJBY#E836edh7wredhwwdw098776tdgbsdnnvsv";
+import { NextRequest, NextResponse } from 'next/server';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Check the method (GET for now)
-  if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
+const HARD_CODED_SECRET = "HEIHFISHBDJBY#E836edh7wredhwwdw098776tdgbsdnnvsv"; // Replace this with your secret
 
-  // Check for a hardcoded secret in the query or headers
-  const { secret } = req.query;
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const secret = searchParams.get('secret');
 
+  // Check if the secret matches
   if (secret !== HARD_CODED_SECRET) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
   // Temporarily return the environment variables for testing
-  // WARNING: This should be removed or commented out after testing
-  return res.status(200).json({
+  return NextResponse.json({
     message: 'Environment variables',
     env: process.env, // NEVER expose this in production
   });
