@@ -1,9 +1,10 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
 import Logo from "../assets/Reli_logo.png";
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className="bg-[#36454F] text-white py-8">
       <div className="container mx-auto px-4">
@@ -43,50 +44,32 @@ export default function Footer() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-16 text-center lg:text-left">
-            {[1, 2, 3].map((columnIndex) => (
-              <div key={columnIndex} className="mb-6 lg:mb-0">
-                <h3 className="font-semibold text-lg mb-4">Company</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-gray-300 transition-colors duration-200"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-gray-300 transition-colors duration-200"
-                    >
-                      Data Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      className="hover:text-gray-300 transition-colors duration-200"
-                    >
-                      Copyright
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            ))}
+          <div className="text-center lg:text-left">
+            <h3 className="font-bold text-lg mb-4 text-[#1ABC9C]">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/data-policy"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  Data Policy
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="border-t border-gray-600 my-8"></div>
-        <div className="text-sm text-center lg:text-right">
-          <Link
-            href="/terms"
-            className="hover:text-gray-300 transition-colors duration-200"
-          >
-            Terms and Conditions
-          </Link>
-        </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
