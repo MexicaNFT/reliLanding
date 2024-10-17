@@ -179,8 +179,8 @@ export default function Subscriptions() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-[#e6f7f4] via-white via-60% to-[#e6f7f4] flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-4xl mx-auto bg-white bg-opacity-90 rounded-3xl shadow-2xl p-8 backdrop-blur-sm">
+    <div className="m-16">
+      <div className="mt-16">
         {loading ? (
           <div className="flex items-center justify-center h-64">
             <Loader2 className="h-12 w-12 animate-spin text-green-600" />
@@ -195,7 +195,7 @@ export default function Subscriptions() {
           </div>
         ) : (
           <>
-            <h1 className="text-5xl font-extrabold text-center mb-8 text-green-800 leading-tight">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-center mb-6 md:mb-4 md:mt-24 text-emerald-600 leading-tight">
               {isSubscribed
                 ? "Manage Your Subscription"
                 : "Choose Your Perfect Plan"}
@@ -204,17 +204,17 @@ export default function Subscriptions() {
             {isSubscribed ? (
               <a
                 href={subscriptionUrl}
-                className="block w-full max-w-md mx-auto px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out text-center text-lg"
+                className="block w-full max-w-md mx-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out text-center text-base md:text-lg"
               >
-                <CreditCard className="inline-block mr-2 h-6 w-6" />
+                <CreditCard className="inline-block mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Manage Subscription
               </a>
             ) : (
               <>
-                <div className="flex justify-center mb-12">
+                <div className="flex justify-center mb-8">
                   <div className="bg-green-50 p-1 rounded-full shadow-lg">
                     <button
-                      className={`px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ${
+                      className={`px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-semibold transition-all duration-300 ${
                         isMonthly
                           ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white"
                           : "text-green-800 hover:bg-green-100"
@@ -224,7 +224,7 @@ export default function Subscriptions() {
                       Monthly
                     </button>
                     <button
-                      className={`px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ${
+                      className={`px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-semibold transition-all duration-300 ${
                         !isMonthly
                           ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white"
                           : "text-green-800 hover:bg-green-100"
@@ -241,17 +241,17 @@ export default function Subscriptions() {
                     <>
                       <button
                         onClick={prevSlide}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg z-10 focus:outline-none hover:bg-green-100 transition duration-300 ease-in-out md:-left-20"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 focus:outline-none hover:bg-green-100 transition duration-300 ease-in-out md:-left-16"
                         aria-label="Previous plan"
                       >
-                        <ChevronLeft className="w-8 h-8 text-green-600" />
+                        <ChevronLeft className="w-6 h-6 text-green-600" />
                       </button>
                       <button
                         onClick={nextSlide}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg z-10 focus:outline-none hover:bg-green-100 transition duration-300 ease-in-out md:-right-20"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 focus:outline-none hover:bg-green-100 transition duration-300 ease-in-out md:-right-16"
                         aria-label="Next plan"
                       >
-                        <ChevronRight className="w-8 h-8 text-green-600" />
+                        <ChevronRight className="w-6 h-6 text-green-600" />
                       </button>
 
                       <div className="overflow-hidden">
@@ -280,20 +280,20 @@ export default function Subscriptions() {
                       </div>
                     </>
                   ) : (
-                    <p className="text-center text-green-800 text-lg">
+                    <p className="text-center text-green-800 text-base">
                       No plans available at the moment
                     </p>
                   )}
                 </div>
 
-                <div className="flex justify-center mt-8 space-x-3">
+                <div className="flex justify-center mt-6 space-x-2">
                   {plans.map((_, index) => (
                     <div
                       key={index}
-                      className={`h-3 rounded-full transition-all duration-300 ${
+                      className={`h-2 rounded-full transition-all duration-300 ${
                         index === currentIndex
-                          ? "bg-green-500 w-8"
-                          : "bg-green-200 w-3"
+                          ? "bg-green-500 w-6"
+                          : "bg-green-200 w-2"
                       }`}
                     ></div>
                   ))}
@@ -303,13 +303,15 @@ export default function Subscriptions() {
           </>
         )}
       </div>
-      <button
-        className="mt-12 px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out font-semibold text-lg flex items-center"
-        onClick={signOut}
-      >
-        <LogOut className="mr-2 h-5 w-5" />
-        Sign Out
-      </button>
+      <div className="flex justify-center mt-8 mb-8">
+        <button
+          className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out font-semibold text-base flex items-center"
+          onClick={signOut}
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          Sign Out
+        </button>
+      </div>
     </div>
   );
 }
