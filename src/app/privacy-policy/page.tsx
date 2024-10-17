@@ -163,7 +163,7 @@ const PrivacyPolicy: React.FC = () => {
         </main>
 
         {/* Footer */}
-        <footer className="py-8 text-center bg-gray-100">
+        <footer className="py-8 text-center ">
           <p className="text-gray-600 mb-2">
             © 2024 Reli AI. All rights reserved.
           </p>
