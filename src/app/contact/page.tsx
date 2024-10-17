@@ -11,10 +11,11 @@ const baseSchema = z.object({
   lastName: z
     .string()
     .min(2, { message: "Last name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  services: z
+  email: z
     .string()
-    .min(5, { message: "Services must be at least 5 characters." }),
+    .email({ message: "Please enter a valid email address." })
+    .optional(),
+  services: z.string().min(5, { message: "Why do you want to use Reli?" }),
   message: z
     .string()
     .min(10, { message: "Message must be at least 10 characters." }),
@@ -25,16 +26,16 @@ const workSchema = baseSchema.extend({
   companyName: z
     .string()
     .min(2, { message: "Company name must be at least 2 characters." }),
-  contact: z
+  phoneNo: z
     .string()
-    .min(5, { message: "Contact must be at least 5 characters." }),
+    .min(5, { message: "Phone number must be at least 5 characters." }),
 });
 
 const personalSchema = baseSchema.extend({
   usage: z.literal("Personal"),
-  contact: z
+  phoneNo: z
     .string()
-    .min(5, { message: "Contact must be at least 5 characters." }),
+    .min(5, { message: "Phone number must be at least 5 characters." }),
 });
 
 const educationalSchema = baseSchema.extend({
@@ -42,6 +43,9 @@ const educationalSchema = baseSchema.extend({
   institutionName: z
     .string()
     .min(2, { message: "Institution name must be at least 2 characters." }),
+  phoneNo: z
+    .string()
+    .min(5, { message: "Phone number must be at least 5 characters." }),
 });
 
 // Combine schemas using discriminated union
@@ -87,11 +91,11 @@ export default function ContactForm() {
     return null;
   }
 
-  // Adjust `renderField` to handle dynamic field names
   const renderField = (
-    fieldName: keyof FormData | "companyName" | "institutionName" | "contact",
+    fieldName: keyof FormData | "companyName" | "institutionName" | "phoneNo",
     label: string,
-    type: string = "text"
+    type: string = "text",
+    required: boolean = false
   ) => {
     return (
       <div>
@@ -100,6 +104,7 @@ export default function ContactForm() {
           className="block text-sm font-semibold text-gray-700"
         >
           {label}
+          {required && <span className="text-red-500">*</span>}
         </label>
         <input
           type={type}
@@ -121,8 +126,9 @@ export default function ContactForm() {
     <div className="min-h-screen bg-gradient-to-br from-[#e6f7f4] via-white via-60% to-[#e6f7f4] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-[120px]">
       <div className="w-full max-w-md space-y-5 p-4 rounded-lg">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-[#36454F]">
-            Contact our team
+          <h2 className="text-4xl sm:text-5xl font-bold text-center text-[#36454F] tracking-tight leading-snug">
+            <span className="block sm:inline">Start Your Journey with</span>
+            <span className="block sm:inline text-[#1ABC9C]"> Reli</span>
           </h2>
           <p className="mt-2 text-sm text-gray-600 mb-10">
             We'd love to hear from you. Please fill out this form!
@@ -134,7 +140,8 @@ export default function ContactForm() {
               htmlFor="usage"
               className="block text-sm font-semibold text-gray-700"
             >
-              What will you use Reli for?
+              What will you use Reli for?{" "}
+              <span className="text-red-500">*</span>
             </label>
             <select
               id="usage"
@@ -152,17 +159,27 @@ export default function ContactForm() {
             )}
           </div>
 
-          {usage === "Work" && renderField("companyName", "Company Name")}
+          {usage === "Work" &&
+            renderField("companyName", "Company Name", "text", true)}
           {usage === "Educational" &&
-            renderField("institutionName", "Institution Name")}
+            renderField("institutionName", "Institution Name", "text", true)}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {renderField("firstName", "First Name")}
+            {renderField("firstName", "First Name", "text", true)}
             {renderField("lastName", "Last Name")}
           </div>
-          {(usage === "Work" || usage === "Personal") &&
-            renderField("contact", "Contact")}
-          {renderField("email", "Email", "email")}
-          {renderField("services", "Services you're looking for?")}
+
+          {renderField("phoneNo", "Phone No", "tel", true)}
+
+          {usage !== "Educational" && renderField("email", "Email", "email")}
+
+          {renderField(
+            "services",
+            usage === "Educational"
+              ? "Why do you want to use Reli?"
+              : "Services you're looking for?"
+          )}
+
           <div>
             <label
               htmlFor="message"
