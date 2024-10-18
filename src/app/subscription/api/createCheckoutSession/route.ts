@@ -13,9 +13,39 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    // Create Stripe Checkout Session with the email
+    // Check if a customer with the given email already exists
+    const customers = await stripe.customers.list({
+      email: email,
+      limit: 1,
+    });
+
+    let customerId: string;
+
+    if (customers.data.length > 0) {
+      // Customer exists, use the existing customer ID
+      customerId = customers.data[0].id;
+
+      // Optionally update the customer's metadata
+      await stripe.customers.update(customerId, {
+        metadata: {
+          userId,
+        },
+      });
+    } else {
+      // Customer does not exist, create a new one with the metadata
+      const customer = await stripe.customers.create({
+        email: email,
+        metadata: {
+          userId,
+        },
+      });
+      customerId = customer.id;
+    }
+
+    // Create Stripe Checkout Session with the customer ID
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
+      customer: customerId, // Use the customer ID
       line_items: [
         {
           price: planId, // Stripe Price ID of the plan selected by the user
@@ -26,10 +56,9 @@ export async function POST(req: NextRequest) {
       mode: "subscription", // Subscription mode for recurring payments
       success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/cancel`,
-      customer_email: email, // Force the user's email to be used in Stripe
-      metadata: {
-        userId, // Attach the userId for reference
-      },
+      metadata: { // Store the user ID in the session metadata
+        userId
+      }
     });
 
     return NextResponse.json({ sessionId: session.id });
