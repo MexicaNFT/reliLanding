@@ -39,7 +39,7 @@ export default function Header() {
     };
 
     const handleScroll = () => {
-      const sections = ["product", "nuestrasHerramientas", "seguridad"];
+      const sections = ["product", "nuestras-herramientas", "seguridad"];
       let current = "";
 
       for (let section of sections) {
@@ -105,16 +105,20 @@ export default function Header() {
             menuOpen ? "flex" : "hidden"
           } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
         >
-          {["product", "Nuestras Herramientas", "seguridad"].map((section) => (
+          {[
+            { id: "product", label: "Product" },
+            { id: "nuestras-herramientas", label: "Nuestras Herramientas" },
+            { id: "seguridad", label: "Seguridad" },
+          ].map(({ id, label }) => (
             <button
-              key={section}
-              onClick={() => handleNavigation(section)}
+              key={id}
+              onClick={() => handleNavigation(id)}
               className={`block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block relative ${
-                activeSection === section ? "font-semibold" : ""
+                activeSection === id ? "font-semibold" : ""
               }`}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-              {activeSection === section && (
+              {label}
+              {activeSection === id && (
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#34C1A6]"></span>
               )}
             </button>

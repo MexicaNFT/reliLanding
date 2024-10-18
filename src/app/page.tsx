@@ -12,7 +12,7 @@ export default function Home() {
       <section id="product" className="mb-36">
         <Product />
       </section>
-      <section id="nuestrasHerramientas" className="mb-36">
+      <section id="nuestras-herramientas" className="mb-36">
         <NuestrasHerramientas />
       </section>
       <section id="seguridad" className="mb-36">
