@@ -82,6 +82,42 @@ export default function ContactForm() {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log("Form data submitted:", data);
+
+    // Construct the message using \n for better formatting
+    const message =
+      `Hi! I'm interested in getting a Reli.Ai account.\n\n` +
+      `I plan to use Reli for ${data.usage.toLowerCase()} purposes.\n` +
+      (data.usage === "Work"
+        ? `The company I work for is ${data.companyName}.\n`
+        : "") +
+      (data.usage === "Educational"
+        ? `I’m studying at ${data.institutionName}.\n`
+        : "") +
+      `My name is ${data.firstName} ${
+        data.lastName || ""
+      }, and you can reach me at ${data.phoneNo}.\n` +
+      (data.email
+        ? `You can also contact me via email at ${data.email}.\n`
+        : "") +
+      (data.services
+        ? `I'm interested in the following services: ${data.services}.\n`
+        : "") +
+      (data.message ? `\n${data.message}\n` : "") +
+      `\nThanks!`;
+
+    // URL-encode the message (this ensures proper encoding of spaces and special characters)
+    const encodedMessage = encodeURIComponent(message);
+
+    // WhatsApp phone number for Mexico (+52 1 55 5500 5151)
+    const phoneNumber = "5215555005151"; // Correctly formatted phone number
+
+    // Construct WhatsApp URL
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Redirect to WhatsApp URL
+    window.location.href = whatsappUrl;
+
+    // Reset form and show toast
     reset();
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
