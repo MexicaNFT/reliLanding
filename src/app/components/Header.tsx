@@ -106,7 +106,7 @@ export default function Header() {
           } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
         >
           {[
-            { id: "product", label: "Product" },
+            { id: "product", label: "Producto" },
             { id: "nuestras-herramientas", label: "Nuestras Herramientas" },
             { id: "seguridad", label: "Seguridad" },
           ].map(({ id, label }) => (

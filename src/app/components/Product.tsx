@@ -5,7 +5,7 @@ const Product: React.FC = () => {
     <div>
       <div className="text-center my-16 md:my-24">
         <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
-          Product
+          Producto
         </h2>
         <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[28px]">
           En Reli.Ai puedes encontrar una cartera de productos desarrollados
