@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
-import Logo from "../assets/Reli_logo.png";
 
 const Footer: React.FC = () => {
   return (
@@ -12,7 +11,7 @@ const Footer: React.FC = () => {
           <div className="mb-8 lg:mb-0 text-center lg:text-left w-full lg:w-auto">
             <div className="flex justify-center lg:justify-start">
               <Image
-                src={Logo}
+                src="/assets/Reli_logo.png"
                 alt="Reli"
                 width={100}
                 height={40}

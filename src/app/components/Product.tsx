@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Assistant from "../assets/Assistant.png";
 
 const Product: React.FC = () => {
   return (
@@ -16,12 +14,15 @@ const Product: React.FC = () => {
       </div>
 
       <div className="relative w-full max-w-[1000px] aspect-[1200/700] mx-auto mb-10 sm:mb-16 border-2 border-[#dcdfe1] rounded-xl overflow-hidden">
-        <Image
-          src={Assistant}
-          alt="Hero image"
-          style={{ objectFit: "cover" }}
-          className="rounded-lg"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-fit"
+        >
+          <source src="/assets/product.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   );

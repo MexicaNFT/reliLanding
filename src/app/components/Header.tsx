@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUp } from "lucide-react";
-import Logo from "../assets/Reli_logo.png";
 import { useRouter } from "next/navigation";
 import { handleSigninClick } from "../helpers/handle-sign-in";
 import Link from "next/link";
@@ -74,7 +73,7 @@ export default function Header() {
           onClick={() => router.push("/")}
         >
           <Image
-            src={Logo}
+            src="/assets/Reli_logo.png"
             alt="Reli"
             width={90}
             height={36}
@@ -106,22 +105,20 @@ export default function Header() {
             menuOpen ? "flex" : "hidden"
           } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
         >
-          {["product", "Nuestras Herramientas", "seguridad"].map(
-            (section) => (
-              <button
-                key={section}
-                onClick={() => handleNavigation(section)}
-                className={`block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block relative ${
-                  activeSection === section ? "font-semibold" : ""
-                }`}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-                {activeSection === section && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#34C1A6]"></span>
-                )}
-              </button>
-            )
-          )}
+          {["product", "Nuestras Herramientas", "seguridad"].map((section) => (
+            <button
+              key={section}
+              onClick={() => handleNavigation(section)}
+              className={`block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block relative ${
+                activeSection === section ? "font-semibold" : ""
+              }`}
+            >
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {activeSection === section && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#34C1A6]"></span>
+              )}
+            </button>
+          ))}
         </nav>
 
         <div className="hidden md:flex items-center space-x-2 px-2">
