@@ -16,15 +16,15 @@ export default function Hero() {
           medida para tu empresa
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-24 md:mb-40 my-14">
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-24 md:mb-40 my-14">
           <Link
             href="/contact"
-            className="font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-white text-[#36454F] border border-[#36454F] rounded-full hover:bg-gray-100 transition duration-300 text-center"
+            className="w-48  sm:w-auto font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-white text-[#36454F] border border-[#36454F] rounded-full hover:bg-gray-100 transition duration-300 text-center"
           >
             Contáctanos
           </Link>
           <button
-            className="font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-[#34C1A6] text-white border border-[#34C1A6] rounded-full hover:bg-[#2ca089] transition duration-300"
+            className="w-48 sm:w-auto font-poppins text-xs sm:text-sm font-normal leading-5 sm:leading-6 px-3 py-2 sm:px-4 sm:py-3 bg-[#34C1A6] text-white border border-[#34C1A6] rounded-full hover:bg-[#2ca089] transition duration-300"
             onClick={handleSigninClick}
           >
             Sign In
