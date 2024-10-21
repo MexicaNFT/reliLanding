@@ -24,7 +24,7 @@ export default function Seguridad() {
         <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-2">
           Seguridad
         </h2>
-        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[24px]">
+        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[28px]">
           Trabajando en infraestructura desarrollada con AWS, Reli está
           construido para apegarse a los estándares de seguridad más completos.
           Así blindamos tus datos.
