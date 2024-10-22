@@ -21,7 +21,7 @@ export default function Seguridad() {
   return (
     <section className="p-4">
       <div className="text-center my-8 md:my-12">
-        <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-2">
+        <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
           Seguridad
         </h2>
         <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[28px]">
