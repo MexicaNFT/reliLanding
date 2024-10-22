@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import { Shield, Book, Clock } from "lucide-react";
 
 interface PolicySectionProps {
@@ -7,6 +6,11 @@ interface PolicySectionProps {
   content: string;
   icon: React.ReactNode;
 }
+
+export const metadata = {
+  title: "Privacy Policy",
+  description: "Our Privacy and Data Policy",
+};
 
 const PolicySection: React.FC<PolicySectionProps> = ({
   title,
@@ -27,11 +31,6 @@ const PolicySection: React.FC<PolicySectionProps> = ({
 const DataPolicy: React.FC = () => {
   return (
     <>
-      <Head>
-        <title>Privacy Policy | Reli.Ai</title>
-        <meta name="description" content="Our Privacy and Data Policy" />
-      </Head>
-
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#e6f7f4] via-white to-[#e6f7f4] text-gray-800">
         {/* Header */}
         <header className="py-20 text-center bg-[#1ABC9C] text-white relative overflow-hidden">
