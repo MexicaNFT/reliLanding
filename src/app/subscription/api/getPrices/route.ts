@@ -39,13 +39,11 @@ export async function GET(req: NextRequest) {
 
     // Filter prices based on the requested interval (monthly/yearly)
     const filteredPrices = prices.data.filter((price) => {
-        console.log(price.recurring?.interval);
       return price.recurring?.interval === requestedInterval;
     });
 
     // Format the response to include necessary fields (price id, product name, description, amount, etc.)
     const formattedPrices = filteredPrices.map((price) => {
-      // Check if product is fully expanded and has a name and description
       const productName =
         typeof price.product === "object" && "name" in price.product
           ? price.product.name
@@ -56,23 +54,25 @@ export async function GET(req: NextRequest) {
           ? price.product.description
           : "No description available";
 
-      // Split features from metadata into an array
       const features = price.metadata.features
         ? price.metadata.features.split(",").map((feature) => feature.trim())
         : [];
 
       return {
         id: price.id,
-        name: productName, // Safely access product name
-        description: productDescription, // Safely access product description
-        price: price.unit_amount ? (price.unit_amount / 100).toFixed(2) : "N/A", // Handle null unit_amount
+        name: productName,
+        description: productDescription,
+        price: price.unit_amount ? (price.unit_amount / 100).toFixed(2) : "N/A",
         currency: price.currency.toUpperCase(),
-        interval: price.recurring?.interval || "Recurring", // Default to 'Recurring' if interval is missing
-        features, // Array of features
+        interval: price.recurring?.interval || "Recurring",
+        features,
       } as Plan;
     });
 
-    return NextResponse.json({ prices: formattedPrices });
+    // Sort the prices from least expensive to most expensive
+    const sortedPrices = formattedPrices.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+
+    return NextResponse.json({ prices: sortedPrices });
   } catch (error) {
     console.error("Error fetching prices from Stripe:", error);
     return NextResponse.json(
