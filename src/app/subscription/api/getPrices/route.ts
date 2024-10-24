@@ -69,8 +69,29 @@ export async function GET(req: NextRequest) {
       } as Plan;
     });
 
+    // Add free plan to the list of prices
+    formattedPrices.push({
+      id: "free",
+      name: "Reli.Ai Gratis",
+      description:
+        "Plan gratuito para siempre, sin tarjeta de crédito requerida",
+      price: "0.00",
+      currency: "MXN",
+      interval: "forever",
+      features: [
+        "Acceso a todas las funciones",
+        "5 compendios",
+        "3 documentos analizados por consulta",
+        "10 consultas a S.A.U.L.",
+        "Una consulta a U.L.P.I.A.N.O.",
+        "Recarga de consultas cada mes",
+      ],
+    });
+
     // Sort the prices from least expensive to most expensive
-    const sortedPrices = formattedPrices.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    const sortedPrices = formattedPrices.sort(
+      (a, b) => parseFloat(a.price) - parseFloat(b.price)
+    );
 
     return NextResponse.json({ prices: sortedPrices });
   } catch (error) {
