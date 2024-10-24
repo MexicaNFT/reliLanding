@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Reli",
-  description: "Reli Landing Page",
+  description: "La plataforma de LegalTech más completa de México",
 };
 
 export default function RootLayout({

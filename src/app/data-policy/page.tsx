@@ -8,8 +8,8 @@ interface PolicySectionProps {
 }
 
 export const metadata = {
-  title: "Privacy Policy",
-  description: "Our Privacy and Data Policy",
+  title: "Política de Datos",
+  description: "Nuestra Política de Privacidad y Datos",
 };
 
 const PolicySection: React.FC<PolicySectionProps> = ({
@@ -39,10 +39,10 @@ const DataPolicy: React.FC = () => {
           </div>
           <div className="relative z-10">
             <h1 className="text-6xl font-extrabold mb-4 mt-6">
-              Data <span className="text-[#e6f7f4]">Policy</span>
+              Política de <span className="text-[#e6f7f4]">Datos</span>
             </h1>
             <p className="text-2xl max-w-2xl mx-auto">
-              Protecting your privacy with transparency and care
+              Protegiendo tu privacidad con transparencia y cuidado
             </p>
           </div>
         </header>
@@ -51,42 +51,42 @@ const DataPolicy: React.FC = () => {
         <main className="max-w-4xl mx-auto px-4 py-16 flex-grow">
           <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-8 mb-12 transform transition-all duration-300 hover:shadow-2xl">
             <h2 className="text-3xl font-bold text-[#1ABC9C] mb-4">
-              Our Commitment
+              Nuestro Compromiso
             </h2>
             <p className="text-xl text-gray-700 leading-relaxed">
-              At Reli.Ai, we prioritize the privacy and security of our
-              customers' data. We have designed our data usage and retention
-              policies in accordance with OpenAI's guidelines to ensure the
-              responsible handling of your information.
+              En Reli.Ai, priorizamos la privacidad y seguridad de los datos de
+              nuestros clientes. Hemos diseñado nuestras políticas de uso y
+              retención de datos de acuerdo con las directrices de OpenAI para
+              garantizar el manejo responsable de tu información.
             </p>
           </div>
 
           <PolicySection
             icon={<Book className="w-8 h-8 text-white" />}
-            title="Introduction"
-            content="At Reli.Ai, we prioritize the privacy and security of our customers' data. We have designed our data usage and retention policies in accordance with OpenAI's guidelines to ensure the responsible handling of your information. This Data Policy outlines our practices and procedures for data submitted through our Reli.Ai toolbox, which is built on top of the OpenAI API"
+            title="Introducción"
+            content="En Reli.Ai, priorizamos la privacidad y seguridad de los datos de nuestros clientes. Hemos diseñado nuestras políticas de uso y retención de datos de acuerdo con las directrices de OpenAI para garantizar el manejo responsable de tu información. Esta Política de Datos describe nuestras prácticas y procedimientos para los datos enviados a través de nuestra caja de herramientas de Reli.Ai, que está construida sobre la API de OpenAI."
           />
 
           <PolicySection
             icon={<Shield className="w-8 h-8 text-white" />}
-            title="Data Usage"
-            content="Starting from April 1, 2023, Reli.Ai and OpenAI will not use data submitted by customers via our API to train or improve our models, unless you explicitly decide to share your data with us for this purpose. You can opt-in to share data during the tool-making process.By default, we will not use data submitted by customers via our API to train OpenAI models or improve our service offerings. Data submitted by the user for fine-tuning will only be used to fine-tune the customer's model. However, we will allow users to opt-in to share their data to improve model performance. Sharing your data will ensure that future iterations of the model improve for your use cases. Data submitted to the API prior to April 1, 2023, may have been used for improvements if the customer had not previously opted out of sharing data."
+            title="Uso de Datos"
+            content="A partir del 1 de abril de 2023, Reli.Ai y OpenAI no utilizarán los datos enviados por los clientes a través de nuestra API para entrenar o mejorar nuestros modelos, a menos que decidas explícitamente compartir tus datos con nosotros para este propósito. Puedes optar por compartir datos durante el proceso de creación de herramientas. Por defecto, no utilizaremos los datos enviados por los clientes a través de nuestra API para entrenar modelos de OpenAI o mejorar nuestras ofertas de servicios. Los datos enviados por el usuario para el ajuste fino solo se usarán para ajustar el modelo del cliente. Sin embargo, permitiremos que los usuarios opten por compartir sus datos para mejorar el rendimiento del modelo. Compartir tus datos asegurará que futuras iteraciones del modelo mejoren para tus casos de uso. Los datos enviados a la API antes del 1 de abril de 2023 pueden haber sido utilizados para mejoras si el cliente no había optado anteriormente por no compartir los datos."
           />
 
           <PolicySection
             icon={<Clock className="w-8 h-8 text-white" />}
-            title="Data Retention"
-            content="Any data sent through the API will be retained for abuse and misuse monitoring purposes for a maximum of 30 days, after which it will be deleted (unless otherwise required by law). This applies to both user prompts and completions, as well as training data submitted to fine-tune models via the Files endpoint. We refer to this data as API data. A limited number of authorized Reli.Ai and OpenAI employees, as well as specialized third-party contractors subject to confidentiality and security obligations, can access this data solely to investigate and verify suspected abuse. Enterprise customers deploying use cases with a low likelihood of misuse may request not to have API data stored at all, including for safety monitoring and prevention. OpenAI may still have content classifiers flag when data is suspected to contain platform abuse. Data submitted by the user through the Files endpoint, for instance, to fine-tune a model, is retained until the user deletes the file.For more information on the technical protections, security certifications, data storage, encryption, and other relevant details, please refer to our Frequently Asked Questions section above.If you have any questions or concerns about our data policy, please contact us at support@reli.ai."
+            title="Retención de Datos"
+            content="Cualquier dato enviado a través de la API se retendrá para fines de monitoreo de abuso y mal uso durante un máximo de 30 días, después de lo cual se eliminará (a menos que la ley exija lo contrario). Esto se aplica tanto a las solicitudes de los usuarios como a las respuestas, así como a los datos de entrenamiento enviados para ajustar modelos a través del endpoint de archivos. Un número limitado de empleados autorizados de Reli.Ai y OpenAI, así como contratistas externos especializados sujetos a obligaciones de confidencialidad y seguridad, pueden acceder a estos datos únicamente para investigar y verificar el abuso sospechado. Los clientes empresariales que implementen casos de uso con baja probabilidad de mal uso pueden solicitar que no se almacenen en absoluto los datos de la API, incluso para monitoreo de seguridad y prevención. OpenAI aún puede tener clasificadores de contenido que marquen cuando se sospeche que los datos contienen abuso de la plataforma. Los datos enviados por el usuario a través del endpoint de archivos, por ejemplo, para ajustar un modelo, se retendrán hasta que el usuario elimine el archivo. Para más información sobre las protecciones técnicas, certificaciones de seguridad, almacenamiento de datos, cifrado y otros detalles relevantes, consulta nuestra sección de preguntas frecuentes. Si tienes alguna pregunta o inquietud sobre nuestra política de datos, contáctanos en support@reli.ai."
           />
         </main>
 
         {/* Footer */}
         <footer className="py-8 text-center bg-gray-100">
           <p className="text-gray-600 mb-2">
-            © 2024 Reli AI. All rights reserved.
+            © 2024 Reli AI. Todos los derechos reservados.
           </p>
           <p className="text-gray-500">
-            For questions or concerns, contact us at{" "}
+            Para preguntas o inquietudes, contáctanos en{" "}
             <a
               href="mailto:support@reli.ai"
               className="text-[#1ABC9C] hover:underline transition duration-300"
