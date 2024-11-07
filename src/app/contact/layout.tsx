@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    title: "Contacto Reli - Comienza Tu Viaje",
+    title: "Contacto Reli ",
     description:
       "Ponte en contacto con Reli. Completa nuestro formulario de contacto.",
   },
