@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex justify-center lg:justify-start space-x-4 mt-4 lg:mt-16">
               <SocialIcon
-                url="https://www.linkedin.com/company/reliai/"
+                url="https://www.linkedin.com/company/reli-legaltech/"
                 network="linkedin"
                 bgColor="transparent"
                 fgColor="white"

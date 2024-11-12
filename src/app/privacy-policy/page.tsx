@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import {
   Shield,
   FileText,
@@ -16,6 +15,10 @@ interface PolicySectionProps {
   content: React.ReactNode;
   icon: React.ReactNode;
 }
+export const metadata = {
+  title: "Política de Privacidad",
+  description: "Nuestra Política de Privacidad y Datos",
+};
 
 const PolicySection: React.FC<PolicySectionProps> = ({
   title,
@@ -36,78 +39,74 @@ const PolicySection: React.FC<PolicySectionProps> = ({
 const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <Head>
-        <title>Privacy Policy | Reli.Ai</title>
-        <meta name="description" content="Our Privacy and Data Policy" />
-      </Head>
-
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#e6f7f4] via-white to-[#e6f7f4] text-gray-800">
-        {/* Header */}
+        {/* Encabezado */}
         <header className="py-20 text-center bg-[#1ABC9C] text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNjZmQzZDQiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
           </div>
           <div className="relative z-10">
             <h1 className="text-6xl font-extrabold mb-4 mt-6">
-              Privacy <span className="text-[#e6f7f4]">Policy</span>
+              Política de <span className="text-[#e6f7f4]">Privacidad</span>
             </h1>
             <p className="text-2xl max-w-2xl mx-auto">
-              Protecting your privacy with transparency and care
+              Protegiendo tu privacidad con transparencia y cuidado
             </p>
           </div>
         </header>
 
-        {/* Main Content */}
+        {/* Contenido Principal */}
         <main className="max-w-4xl mx-auto px-4 py-16 flex-grow">
           <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-8 mb-12 transform transition-all duration-300 hover:shadow-2xl">
             <h2 className="text-3xl font-bold text-[#1ABC9C] mb-4">
-              Our Commitment
+              Nuestro Compromiso
             </h2>
             <p className="text-xl text-gray-700 leading-relaxed">
-              At Reli.Ai, we are committed to safeguarding the privacy of our
-              users and ensuring their data is handled with care and security.
+              En Reli.Ai, estamos comprometidos con la protección de la
+              privacidad de nuestros usuarios y garantizando que sus datos sean
+              manejados con cuidado y seguridad.
             </p>
           </div>
 
-          {/* Sections */}
+          {/* Secciones */}
           <PolicySection
             icon={<FileText className="w-8 h-8 text-white" />}
-            title="Introduction"
-            content="Reli.Ai is committed to protecting the privacy and security of our users' personal information. This Privacy Policy outlines our practices for collecting, using, and disclosing information that can be used to identify or contact a user.
-"
+            title="Introducción"
+            content="Reli.Ai está comprometido con la protección de la privacidad y la seguridad de la información personal de nuestros usuarios. Esta Política de Privacidad describe nuestras prácticas para la recolección, uso y divulgación de información que puede usarse para identificar o contactar a un usuario."
           />
 
           <PolicySection
             icon={<UserCheck className="w-8 h-8 text-white" />}
-            title="Information Collection"
-            content="We collect personal information from users when they register on our website, such as name, email address, and other contact information. We also collect non-personally identifiable information, such as IP addresses, browser types, and website usage patterns.
-"
+            title="Recolección de Información"
+            content="Recopilamos información personal de los usuarios cuando se registran en nuestro sitio web, como nombre, dirección de correo electrónico y otros datos de contacto. También recopilamos información no identificable personalmente, como direcciones IP, tipos de navegador y patrones de uso del sitio web."
           />
 
           <PolicySection
             icon={<Shield className="w-8 h-8 text-white" />}
-            title="Information Use"
+            title="Uso de la Información"
             content={
               <>
                 <p className="text-lg text-gray-700 mb-4">
-                  We use the collected information to provide, maintain, and
-                  improve our services. This includes:
+                  Utilizamos la información recopilada para proporcionar,
+                  mantener y mejorar nuestros servicios. Esto incluye:
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-lg text-gray-700">
-                  <li>Registering users and managing their accounts</li>
+                  <li>Registrar usuarios y gestionar sus cuentas</li>
                   <li>
-                    Personalizing user experiences and providing customer
-                    support
+                    Personalizar la experiencia del usuario y proporcionar
+                    soporte al cliente
                   </li>
                   <li>
-                    Communicating with users about our services, promotions, and
-                    updates
+                    Comunicarnos con los usuarios acerca de nuestros servicios,
+                    promociones y actualizaciones
                   </li>
                   <li>
-                    Monitoring and analyzing usage patterns to improve our
-                    services
+                    Monitorizar y analizar los patrones de uso para mejorar
+                    nuestros servicios
                   </li>
-                  <li>Ensuring the security and integrity of our systems</li>
+                  <li>
+                    Garantizar la seguridad e integridad de nuestros sistemas
+                  </li>
                 </ul>
               </>
             }
@@ -115,21 +114,21 @@ const PrivacyPolicy: React.FC = () => {
 
           <PolicySection
             icon={<Share className="w-8 h-8 text-white" />}
-            title="Information Sharing"
+            title="Compartir Información"
             content={
               <>
                 <p className="text-lg text-gray-700 mb-4">
-                  We do not sell or share personal information with third
-                  parties, except:
+                  No vendemos ni compartimos información personal con terceros,
+                  excepto:
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-lg text-gray-700">
                   <li>
-                    As necessary to comply with legal obligations or protect our
-                    rights
+                    Cuando sea necesario para cumplir con obligaciones legales o
+                    proteger nuestros derechos
                   </li>
                   <li>
-                    With service providers who help us operate our business,
-                    subject to confidentiality agreements
+                    Con proveedores de servicios que nos ayudan a operar nuestro
+                    negocio, sujetos a acuerdos de confidencialidad
                   </li>
                 </ul>
               </>
@@ -138,37 +137,36 @@ const PrivacyPolicy: React.FC = () => {
 
           <PolicySection
             icon={<Server className="w-8 h-8 text-white" />}
-            title="Data Storage and Security"
-            content="We use Amazon Web Services (AWS) Amplify Server to store users' data securely. We employ industry-standard encryption and security measures to protect user data from unauthorized access or disclosure."
+            title="Almacenamiento y Seguridad de Datos"
+            content="Utilizamos Amazon Web Services (AWS) Amplify Server para almacenar los datos de los usuarios de manera segura. Empleamos medidas de seguridad y encriptación de nivel industrial para proteger los datos de los usuarios contra accesos no autorizados o divulgaciones."
           />
 
           <PolicySection
             icon={<Clock className="w-8 h-8 text-white" />}
-            title="Data Retention"
-            content="We retain personal information for as long as necessary to fulfill the purposes for which it was collected, or as required by law."
+            title="Retención de Datos"
+            content="Conservamos la información personal durante el tiempo necesario para cumplir con los fines para los que fue recopilada, o según lo exija la ley."
           />
 
           <PolicySection
             icon={<RefreshCw className="w-8 h-8 text-white" />}
-            title="Changes to This Privacy Policy"
-            content="We may update this Privacy Policy from time to time. We encourage users to periodically review the policy for any changes.
-"
+            title="Cambios a Esta Política de Privacidad"
+            content="Podemos actualizar esta Política de Privacidad de vez en cuando. Alentamos a los usuarios a revisar periódicamente la política para ver los cambios."
           />
 
           <PolicySection
             icon={<Mail className="w-8 h-8 text-white" />}
-            title="Contact Information"
-            content="If you have any questions or concerns about our Privacy Policy, please contact us at support@reli.ai."
+            title="Información de Contacto"
+            content="Si tienes alguna pregunta o inquietud sobre nuestra Política de Privacidad, por favor contáctanos en support@reli.ai."
           />
         </main>
 
-        {/* Footer */}
+        {/* Pie de página */}
         <footer className="py-8 text-center ">
           <p className="text-gray-600 mb-2">
-            © 2024 Reli AI. All rights reserved.
+            © 2024 Reli AI. Todos los derechos reservados.
           </p>
           <p className="text-gray-500">
-            For questions or concerns, contact us at{" "}
+            Para preguntas o inquietudes, contáctanos en{" "}
             <a
               href="mailto:support@reli.ai"
               className="text-[#1ABC9C] hover:underline transition duration-300"

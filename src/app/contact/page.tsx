@@ -163,11 +163,11 @@ export default function ContactForm() {
       <div className="w-full max-w-md space-y-5 p-4 rounded-lg">
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-center text-[#36454F] tracking-tight leading-snug">
-            <span className="block sm:inline">Start Your Journey with</span>
+            <span className="block sm:inline">Comience su viaje con</span>
             <span className="block sm:inline text-[#1ABC9C]"> Reli</span>
           </h2>
           <p className="mt-2 text-sm text-gray-600 mb-10">
-            We'd love to hear from you. Please fill out this form!
+            Nos encantaría saber de usted. ¡Por favor complete este formulario!
           </p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -176,17 +176,16 @@ export default function ContactForm() {
               htmlFor="usage"
               className="block text-sm font-semibold text-gray-700"
             >
-              What will you use Reli for?{" "}
-              <span className="text-red-500">*</span>
+              ¿Para qué usarás Reli? <span className="text-red-500">*</span>
             </label>
             <select
               id="usage"
               {...register("usage")}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#1ABC9C] focus:border-[#1ABC9C] sm:text-sm"
             >
-              <option value="Work">Work</option>
+              <option value="Work">Trabajar</option>
               <option value="Personal">Personal</option>
-              <option value="Educational">Educational</option>
+              <option value="Educational">Educativa</option>
             </select>
             {errors.usage && (
               <p className="mt-1 text-xs text-red-500">
@@ -196,24 +195,30 @@ export default function ContactForm() {
           </div>
 
           {usage === "Work" &&
-            renderField("companyName", "Company Name", "text", true)}
+            renderField("companyName", "nombre de empresa", "text", true)}
           {usage === "Educational" &&
-            renderField("institutionName", "Institution Name", "text", true)}
+            renderField(
+              "institutionName",
+              "Nombre de la institución",
+              "text",
+              true
+            )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {renderField("firstName", "First Name", "text", true)}
-            {renderField("lastName", "Last Name")}
+            {renderField("firstName", "Nombre de pila", "text", true)}
+            {renderField("lastName", "Apellido")}
           </div>
 
-          {renderField("phoneNo", "Phone No", "tel", true)}
+          {renderField("phoneNo", "Número de teléfono", "tel", true)}
 
-          {usage !== "Educational" && renderField("email", "Email", "email")}
+          {usage !== "Educational" &&
+            renderField("email", "Correo electrónico", "email")}
 
           {renderField(
             "services",
             usage === "Educational"
-              ? "Why do you want to use Reli?"
-              : "Services you're looking for?"
+              ? "¿Por qué quieres utilizar Reli?"
+              : "¿Servicios que estás buscando?"
           )}
 
           <div>
@@ -221,14 +226,14 @@ export default function ContactForm() {
               htmlFor="message"
               className="block text-sm font-semibold text-gray-700"
             >
-              Message
+              Mensaje
             </label>
             <textarea
               id="message"
               {...register("message")}
               rows={4}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#1ABC9C] focus:border-[#1ABC9C] sm:text-sm"
-              placeholder="Enter your message"
+              placeholder="Introduce tu mensaje"
             ></textarea>
             {errors.message && (
               <p className="mt-1 text-xs text-red-500">
@@ -241,14 +246,15 @@ export default function ContactForm() {
               type="submit"
               className="w-1/2 flex justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#1ABC9C] hover:bg-[#16a085] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1ABC9C]"
             >
-              Submit
+              Entregar
             </button>
           </div>
         </form>
       </div>
       {showToast && (
         <div className="fixed top-20 inset-x-0 mx-auto bg-green-400 text-white px-4 py-2 rounded-md shadow-lg w-11/12 sm:w-auto">
-          Thank you for your message. Our team will contact you within 2 days.
+          Gracias por tu mensaje. Nuestro equipo se comunicará con usted dentro
+          de 2 días.
         </div>
       )}
     </div>
