@@ -103,7 +103,7 @@ export default function Header() {
         <nav
           className={`${
             menuOpen ? "flex" : "hidden"
-          } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
+          } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row md:ml-14`}
         >
           {[
             { id: "product", label: "Producto" },
