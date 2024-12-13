@@ -70,7 +70,7 @@ export default function NuestrasHerramientas() {
 
   return (
     <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center my-16 md:my-24">
+      <div className="text-center my-8 md:my-6">
         <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
           Nuestras Herramientas
         </h2>
