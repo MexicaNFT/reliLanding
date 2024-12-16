@@ -41,11 +41,11 @@ const ReportProblemForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#e6f7f4] via-white via-60% to-[#e6f7f4] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-[120px]">
-      <div className="w-full max-w-md space-y-5 p-4 rounded-lg ">
+    <div className="min-h-screen bg-gradient-to-br from-[#e6f7f4] via-white via-60% to-[#e6f7f4] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-[10px]">
+      <div className="w-full max-w-xl space-y-5 p-4 rounded-lg ">
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-center text-[#36454F] tracking-tight leading-snug mb-4">
-            <span>Reportar un Problema</span>
+            <span>Reportar Problema</span>
           </h2>
           <p className="mt-2 text-sm text-gray-600 mb-10">
             ¿Tienes preguntas sobre el producto o la escalabilidad en nuestra
