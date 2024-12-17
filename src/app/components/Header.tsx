@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUp } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { handleSigninClick } from "../helpers/handle-sign-in";
 import Link from "next/link";
 
@@ -12,30 +12,31 @@ export default function Header() {
   const [showGoToTop, setShowGoToTop] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const handleNavigation = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const yOffset = -80;
-      const y =
-        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    setActiveSection(sectionId);
+    router.push(`/?section=${sectionId}`);
     setMenuOpen(false);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  useEffect(() => {
+    // Scroll to the section if the "section" query parameter is present
+    const sectionId = searchParams.get("section");
+    if (sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const yOffset = -80; // Offset for sticky header
+        const y =
+          section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+        setActiveSection(sectionId);
+      }
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const handleScrollVisibility = () => {
-      if (window.scrollY > 300) {
-        setShowGoToTop(true);
-      } else {
-        setShowGoToTop(false);
-      }
+      setShowGoToTop(window.scrollY > 300);
     };
 
     const handleScroll = () => {
@@ -64,6 +65,10 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div>
