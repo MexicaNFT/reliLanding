@@ -56,9 +56,15 @@ export async function POST(req: NextRequest) {
       mode: "subscription", // Subscription mode for recurring payments
       success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/cancel`,
-      metadata: { // Store the user ID in the session metadata
-        userId
-      }
+      subscription_data: {
+        metadata: {
+          userId,
+        },
+      },
+      metadata: {
+        // Store the user ID in the session metadata
+        userId,
+      },
     });
 
     return NextResponse.json({ sessionId: session.id });
