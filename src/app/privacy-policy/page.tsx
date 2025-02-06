@@ -161,17 +161,17 @@ const PrivacyPolicy: React.FC = () => {
         </main>
 
         {/* Pie de página */}
-        <footer className="py-8 text-center ">
+        <footer className="py-8 text-center">
           <p className="text-gray-600 mb-2">
-            © 2024 Reli AI. Todos los derechos reservados.
+            © {new Date().getFullYear()} Reli AI. Todos los derechos reservados.
           </p>
           <p className="text-gray-500">
-            Para preguntas o inquietudes, contáctanos en{" "}
+            Para preguntas o inquietudes, visita nuestra página de{" "}
             <a
-              href="mailto:support@reli.ai"
+              href="/support"
               className="text-[#1ABC9C] hover:underline transition duration-300"
             >
-              support@reli.ai
+              Soporte
             </a>
           </p>
         </footer>

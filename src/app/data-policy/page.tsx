@@ -76,22 +76,22 @@ const DataPolicy: React.FC = () => {
           <PolicySection
             icon={<Clock className="w-8 h-8 text-white" />}
             title="Retención de Datos"
-            content="Cualquier dato enviado a través de la API se retendrá para fines de monitoreo de abuso y mal uso durante un máximo de 30 días, después de lo cual se eliminará (a menos que la ley exija lo contrario). Esto se aplica tanto a las solicitudes de los usuarios como a las respuestas, así como a los datos de entrenamiento enviados para ajustar modelos a través del endpoint de archivos. Un número limitado de empleados autorizados de Reli.Ai y OpenAI, así como contratistas externos especializados sujetos a obligaciones de confidencialidad y seguridad, pueden acceder a estos datos únicamente para investigar y verificar el abuso sospechado. Los clientes empresariales que implementen casos de uso con baja probabilidad de mal uso pueden solicitar que no se almacenen en absoluto los datos de la API, incluso para monitoreo de seguridad y prevención. OpenAI aún puede tener clasificadores de contenido que marquen cuando se sospeche que los datos contienen abuso de la plataforma. Los datos enviados por el usuario a través del endpoint de archivos, por ejemplo, para ajustar un modelo, se retendrán hasta que el usuario elimine el archivo. Para más información sobre las protecciones técnicas, certificaciones de seguridad, almacenamiento de datos, cifrado y otros detalles relevantes, consulta nuestra sección de preguntas frecuentes. Si tienes alguna pregunta o inquietud sobre nuestra política de datos, contáctanos en support@reli.ai."
+            content="Cualquier dato enviado a través de la API se retendrá para fines de monitoreo de abuso y mal uso durante un máximo de 30 días, después de lo cual se eliminará (a menos que la ley exija lo contrario). Esto se aplica tanto a las solicitudes de los usuarios como a las respuestas, así como a los datos de entrenamiento enviados para ajustar modelos a través del endpoint de archivos. Un número limitado de empleados autorizados de Reli.Ai y OpenAI, así como contratistas externos especializados sujetos a obligaciones de confidencialidad y seguridad, pueden acceder a estos datos únicamente para investigar y verificar el abuso sospechado. Los clientes empresariales que implementen casos de uso con baja probabilidad de mal uso pueden solicitar que no se almacenen en absoluto los datos de la API, incluso para monitoreo de seguridad y prevención. OpenAI aún puede tener clasificadores de contenido que marquen cuando se sospeche que los datos contienen abuso de la plataforma. Los datos enviados por el usuario a través del endpoint de archivos, por ejemplo, para ajustar un modelo, se retendrán hasta que el usuario elimine el archivo. Para más información sobre las protecciones técnicas, certificaciones de seguridad, almacenamiento de datos, cifrado y otros detalles relevantes, consulta nuestra sección de preguntas frecuentes. Si tienes alguna pregunta o inquietud sobre nuestra política de datos, contáctanos en reli.ai/support."
           />
         </main>
 
         {/* Footer */}
-        <footer className="py-8 text-center bg-gray-100">
+        <footer className="py-8 text-center">
           <p className="text-gray-600 mb-2">
-            © 2024 Reli AI. Todos los derechos reservados.
+            © {new Date().getFullYear()} Reli AI. Todos los derechos reservados.
           </p>
           <p className="text-gray-500">
-            Para preguntas o inquietudes, contáctanos en{" "}
-            <a
-              href="mailto:support@reli.ai"
+          Para preguntas o inquietudes, visita nuestra página de{" "}
+          <a
+              href="/support"
               className="text-[#1ABC9C] hover:underline transition duration-300"
             >
-              support@reli.ai
+              Soporte
             </a>
           </p>
         </footer>
