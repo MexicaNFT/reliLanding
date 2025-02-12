@@ -79,12 +79,10 @@ export async function GET(req: NextRequest) {
       currency: "MXN",
       interval: "forever",
       features: [
-        "Acceso a todas las funciones",
-        "5 compendios",
-        "3 documentos analizados por consulta",
-        "10 consultas a S.A.U.L.",
-        "Una consulta a U.L.P.I.A.N.O.",
-        "Recarga de consultas cada mes",
+        "🗄️ Acceso a Compendios Temáticos",
+        "📜 Acceso a los 500 documentos legales más relevantes",
+        "👨‍⚖️ Acceso limitado a S.A.U.L.",
+        "🔍 7 documentos analizados por consulta",
       ],
     });
 
