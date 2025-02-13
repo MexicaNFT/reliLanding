@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
@@ -12,24 +12,28 @@ import Subscriptions from "../components/Subscriptions";
 // Configure Amplify once at the top level of your app.
 Amplify.configure(outputs);
 
-export default function SubscriptionPage() {
+/**
+ * This component does the actual work of using `useSearchParams`.
+ */
+function SubscriptionContent() {
   const searchParams = useSearchParams();
   const [initialState, setInitialState] = useState<
     "signUp" | "signIn" | "forgotPassword" | null
   >(null);
 
-  React.useEffect(() => {
-    // Type assertion to ensure stateParam is one of the allowed values
+  useEffect(() => {
+    // Ensure stateParam is one of the allowed values
     const stateParam = (searchParams.get("state") || "signUp") as
       | "signUp"
       | "signIn"
       | "forgotPassword";
+
     setInitialState(stateParam);
   }, [searchParams]);
 
-  // Don't render anything (or optionally show a loading indicator) until we know the initialState
+  // Until we have an initialState, show nothing or a loader
   if (!initialState) {
-    return null; // or <p>Loading...</p>
+    return null; // or return <p>Loading...</p>
   }
 
   return (
@@ -40,5 +44,23 @@ export default function SubscriptionPage() {
         </Authenticator>
       </div>
     </Authenticator.Provider>
+  );
+}
+
+/**
+ * The default export for the page.
+ * Wraps `SubscriptionContent` in a Suspense boundary to satisfy Next.js requirements.
+ */
+export default function SubscriptionPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-screen flex items-center justify-center">
+          Loading subscription...
+        </div>
+      }
+    >
+      <SubscriptionContent />
+    </Suspense>
   );
 }
