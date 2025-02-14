@@ -126,17 +126,17 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-2 px-2">
+          <Link href={"/subscription"}>
+            <button className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors">
+              Sign Up
+            </button>
+          </Link>
           <button
             className="bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 shadow-md transition-colors"
             onClick={handleSigninClick}
           >
             Sign In
           </button>
-          <Link href={"/contact"}>
-            <button className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors">
-              Contáctanos
-            </button>
-          </Link>
         </div>
       </header>
 

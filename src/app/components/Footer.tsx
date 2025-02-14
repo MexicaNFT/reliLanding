@@ -62,6 +62,14 @@ const Footer: React.FC = () => {
                   Data Policy
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
