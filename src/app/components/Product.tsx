@@ -1,45 +1,48 @@
-import React from "react";
+"use client";
+
+import React, { useState, useRef } from "react";
+import { Pause, Play } from "lucide-react";
 
 const Product = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
-    <div className="px-4 sm:px-6">
-      <div className="text-center my-16 md:my-24">
-        <h2 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#36454F] mb-4">
-          Producto
-        </h2>
-        <p className="font-poppins text-base sm:text-lg md:text-xl text-[#787878] max-w-3xl mx-auto leading-tight md:leading-[28px]">
-          En Reli.Ai puedes encontrar una cartera de productos desarrollados
-          para abogados y equipos legales de todas las áreas y ámbitos
-        </p>
-      </div>
-
-      {/* Background container with grid pattern */}
-      <div className="relative py-8 mb-10 sm:mb-16">
-        {/* Grid background */}
-        <div className="absolute inset-0 bg-white">
-          <div
-            className="absolute inset-0 bg-repeat h-full w-full"
-            style={{
-              backgroundImage: `
-                   linear-gradient(to right, #e2f8fc 1px, transparent 1px),
-                   linear-gradient(to bottom, #e2f8fc 1px, transparent 1px)
-                 `,
-              backgroundSize: "20px 20px",
-            }}
-          ></div>
-        </div>
-
-        {/* Video container */}
-        <div className="relative w-full max-w-[1000px] aspect-[1200/700] mx-auto border-2 border-[#dcdfe1] rounded-xl overflow-hidden bg-white">
+    <div className="px-4 sm:px-6 md:px-8 py-2 md:py-2 flex flex-col justify-center">
+      <div className="relative w-full max-w-[1200px] mx-auto">
+        <div className="absolute -inset-2 sm:-inset-5 bg-[#1ABC9C]/15 backdrop-blur-md rounded-2xl"></div>
+        <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-[#1ABC9C]/20 bg-white z-10">
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-fit"
+            className="w-full h-full object-cover"
           >
             <source src="/assets/product.mp4" type="video/mp4" />
           </video>
+          <button
+            onClick={togglePlayPause}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/25 rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center transition-opacity duration-200 hover:bg-black/40"
+          >
+            {isPlaying ? (
+              <Pause className="w-5 h-5 sm:w-6 sm:h-6 text-[#D9D9D9]" />
+            ) : (
+              <Play className="w-5 h-5 sm:w-6 sm:h-6 text-[#D9D9D9] ml-0.5" />
+            )}
+          </button>
         </div>
       </div>
     </div>
