@@ -39,7 +39,7 @@ export default function Header() {
     };
 
     const handleScroll = () => {
-      const sections = ["product", "nuestras-herramientas", "seguridad"];
+      const sections = ["product", "why-reli", "seguridad"];
       let current = "";
 
       for (let section of sections) {
@@ -107,7 +107,7 @@ export default function Header() {
         >
           {[
             { id: "product", label: "Producto" },
-            { id: "nuestras-herramientas", label: "Nuestras Herramientas" },
+            { id: "why-reli", label: "¿Por qué Reli?" },
             { id: "seguridad", label: "Seguridad" },
           ].map(({ id, label }) => (
             <button
