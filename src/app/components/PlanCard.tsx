@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { Plan } from "../subscription/api/getPrices/route";
 
 const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
-  const { name, description, price, currency, interval, features, id } = plan; // Destructure plan fields
+  const { name, description, formattedPrice, interval, features, id } = plan; // Destructure plan fields
 
   const onClickFreePlan = () => {
     // Redirect to the app's dashboard
@@ -15,7 +15,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
       <h3 className="text-2xl font-bold mb-2 text-[#36454F]">{name}</h3>
       <p className="text-[#787878] mb-4">{description}</p>
       <div className="text-3xl font-bold mb-6 text-[#36454F]">
-        {price} {currency}
+        {formattedPrice}
         <span className="text-base font-normal text-[#787878]">
           {" "}
           / {interval}

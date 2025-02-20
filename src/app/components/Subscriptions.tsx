@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -10,9 +10,20 @@ import {
 } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import Card from "../components/PlanCard";
-import { fetchUserAttributes } from "aws-amplify/auth";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import { Plan } from "../subscription/api/getPrices/route";
+import { Plan as BasePlan } from "../subscription/api/getPrices/route";
+import {
+  ErrorCode,
+  Package,
+  Purchases,
+  PurchasesError,
+} from "@revenuecat/purchases-js";
+import { fetchUserAttributes } from "aws-amplify/auth";
+
+// 1) Extend your existing Plan type to store rcPackage
+interface ExtendedPlan extends BasePlan {
+  rcPackage?: Package;
+}
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
@@ -22,91 +33,157 @@ export default function Subscriptions() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
   const [loading, setLoading] = useState(true);
-  const [plans, setPlans] = useState<Plan[]>([]);
+  const [plans, setPlans] = useState<ExtendedPlan[]>([]);
   const [isMonthly, setIsMonthly] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [subscriptionUrl, setSubscriptionUrl] = useState("");
+  const [subscriptionUrl, setSubscriptionUrl] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Check if the user is subscribed
+  // We'll keep a ref to store the Purchases instance
+  const purchasesRef = useRef<Purchases | null>(null);
+
+  // ------------------------------------------------------------------
+  // !!! KEEP THESE useEffect HOOKS EXACTLY AS THEY ARE (per your code) !!!
+  // ------------------------------------------------------------------
+
+  // Check if the user is subscribed on revenuecat
   useEffect(() => {
     const checkSubscription = async () => {
       setLoading(true); // Set loading before the async task
-      const email = await getUserEmail();
       try {
-        const response = await fetch("/subscription/api/checkSubscription", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to check subscription status.");
-        }
-
-        const data = await response.json();
-        if (data.subscribed) {
-          setIsSubscribed(true);
-          const portalResponse = await fetch(
-            "/subscription/api/createCustomerPortalSession",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ email }),
-            }
+        // Only configure if we haven't yet
+        if (!purchasesRef.current) {
+          purchasesRef.current = Purchases.configure(
+            "rcb_sb_lswGPZrndUEQiJOirkugQuaQR",
+            user.username
           );
-          if (!portalResponse.ok) {
-            throw new Error("Failed to create customer portal session.");
-          }
-          const portalData = await portalResponse.json();
-          setSubscriptionUrl(portalData.url);
         }
+
+        const info = await purchasesRef.current.getCustomerInfo();
+
+        setSubscriptionUrl(info.managementURL);
+
+        setLoading(false); // Set loading after the async task
       } catch (error) {
         console.error("Error checking subscription status:", error);
         setErrorMessage(
           "Unable to check subscription status. Please try again."
         );
-      } finally {
-        setLoading(false); // Ensure loading is set to false regardless of success or failure
       }
     };
 
     checkSubscription();
   }, [user]);
 
-  // Fetch Stripe plans dynamically
+  // Fetch RevenueCat offerings
   useEffect(() => {
-    const fetchPlans = async () => {
-      setLoading(true);
+    (async function fetchOfferings() {
+      if (!user) return;
+
       try {
-        const interval = isMonthly ? "month" : "year";
-        const response = await fetch(
-          `/subscription/api/getPrices?interval=${interval}`
+        // Only configure if we haven't yet
+        if (!purchasesRef.current) {
+          purchasesRef.current = Purchases.configure(
+            "rcb_sb_lswGPZrndUEQiJOirkugQuaQR",
+            user.username
+          );
+        }
+
+        // 1. Fetch ALL offerings from RevenueCat
+        const offerings = await purchasesRef.current.getOfferings();
+        if (!offerings.all) {
+          console.warn("No offerings returned from RevenueCat");
+          return;
+        } else {
+          console.log("Offerings:", offerings.all);
+        }
+
+        const allOfferings = offerings.all;
+        const formattedPlans: ExtendedPlan[] = [];
+        setPlans([]); // Clear existing plans
+
+        // 2. Loop over each offering key (e.g. "basic", "pro")
+        for (const offeringKey in allOfferings) {
+          const offering = allOfferings[offeringKey];
+          if (!offering) continue;
+
+          // Choose monthly OR annual based on `isMonthly`
+          const rcPackage = isMonthly ? offering.monthly : offering.annual;
+          if (!rcPackage) {
+            // If, for example, there's no annual package, skip
+            continue;
+          }
+
+          // Optional: parse metadata-based features (if present)
+          let features: string[] = [""];
+          if (offering.metadata?.features) {
+            features = (offering.metadata.features as string)
+              .split(",")
+              .map((feat: string) => feat.trim());
+          }
+
+          // 3. Create a Plan object, and store the entire `rcPackage`
+          const plan: ExtendedPlan = {
+            id: rcPackage.webBillingProduct.identifier,
+            name: rcPackage.webBillingProduct.title,
+            description:
+              (offering.metadata?.description as string) ||
+              rcPackage.webBillingProduct.description ||
+              "No description available",
+            price:
+              rcPackage.webBillingProduct.currentPrice.amountMicros /
+                1_000_000 +
+              "",
+            currency: rcPackage.webBillingProduct.currentPrice.currency,
+            formattedPrice:
+              rcPackage.webBillingProduct.currentPrice.formattedPrice,
+            interval:
+              rcPackage.webBillingProduct.subscriptionOptions.base_option.base
+                .period?.unit || "month",
+            features,
+            rcPackage: rcPackage, // <-- store the entire Package object
+          };
+
+          formattedPlans.push(plan);
+        }
+
+        // 4. Optionally add a free plan at the end
+        formattedPlans.push({
+          id: "free",
+          name: "Reli.Ai Gratis",
+          description:
+            "Plan gratuito para siempre, sin tarjeta de crédito requerida",
+          price: "0.00",
+          currency: "MXN",
+          formattedPrice: "MXN 0.00",
+          interval: "month",
+          features: [
+            "🗄️ Acceso a Compendios Temáticos",
+            "📜 Acceso a los 500 documentos legales más relevantes",
+            "👨‍⚖️ Acceso limitado a S.A.U.L.",
+            "🔍 7 documentos analizados por consulta",
+          ],
+          // no rcPackage here because it's a free plan
+        });
+
+        // 5. Sort by price if desired
+        const sortedPlans = formattedPlans.sort(
+          (a, b) => parseFloat(a.price) - parseFloat(b.price)
         );
-        if (!response.ok) {
-          throw new Error("Failed to fetch plans.");
-        }
-        const data = await response.json();
-        if (data.prices) {
-          setPlans(data.prices);
-        }
-      } catch (error) {
-        console.error("Error fetching prices:", error);
-        setErrorMessage("Unable to load plans. Please try again later.");
-      } finally {
-        setLoading(false);
+
+        // 6. Set state
+        setPlans(sortedPlans);
+      } catch (err) {
+        console.error("Error fetching RevenueCat offerings:", err);
       }
-    };
+    })();
+  }, [user, isMonthly]);
 
-    fetchPlans();
-  }, [isMonthly]);
+  // ------------------------------------------------------------------
+  // End of required effects
+  // ------------------------------------------------------------------
 
-  // Get the user's email from Amplify
+  // Utility: get the user's email from Amplify
   const getUserEmail = async () => {
     try {
       const userAttributes = await fetchUserAttributes();
@@ -116,52 +193,36 @@ export default function Subscriptions() {
     }
   };
 
-  // Handle Stripe Checkout session creation
-  const handleCheckout = async (
-    planId: string,
-    userId: string | undefined,
-    email: string | undefined
-  ) => {
-    if (!userId || !email) {
-      console.error("User ID or email is missing.");
+  // A function to handle purchases (using rcPackage):
+  const handlePurchase = async (plan: ExtendedPlan) => {
+    if (!purchasesRef.current || !plan.rcPackage) {
+      console.error(
+        "Purchases not initialized or no rcPackage found for this plan."
+      );
       return;
     }
-    setLoading(true);
+
     try {
-      const response = await fetch("/subscription/api/createCheckoutSession", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId,
-          email,
-          planId,
-        }),
+      // Purchase using the entire Package object
+      const email = await getUserEmail();
+      const purchaseResult = await purchasesRef.current.purchase({
+        rcPackage: plan.rcPackage,
+        customerEmail: email,
       });
+      console.log("Purchase successful:", purchaseResult);
 
-      if (!response.ok) {
-        throw new Error("Failed to create checkout session.");
+      // After purchase, refresh customer info
+      const info = await purchasesRef.current.getCustomerInfo();
+      setSubscriptionUrl(info.managementURL);
+    } catch (err) {
+      const error = err as PurchasesError;
+      console.error("Error purchasing product:", err);
+      const userCancelError = 1 as ErrorCode;
+      if (error.errorCode == userCancelError) {
+        console.warn("User cancelled the purchase.");
+        return;
       }
-
-      const { sessionId } = await response.json();
-      const stripe = await stripePromise;
-
-      if (stripe) {
-        const { error } = await stripe.redirectToCheckout({ sessionId });
-        if (error) {
-          console.error(error.message);
-          setErrorMessage("Error redirecting to checkout.");
-        }
-      } else {
-        console.error("Stripe.js failed to load.");
-        setErrorMessage("Stripe.js failed to load.");
-      }
-    } catch (error) {
-      console.error("Error initiating checkout:", error);
-      setErrorMessage("Failed to initiate checkout. Please try again.");
-    } finally {
-      setLoading(false);
+      setErrorMessage(`Error purchasing plan: ${err}`);
     }
   };
 
@@ -196,12 +257,12 @@ export default function Subscriptions() {
         ) : (
           <>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-center mb-6 md:mb-4 md:mt-24 text-emerald-600 leading-tight">
-              {isSubscribed
+              {subscriptionUrl
                 ? "Manage Your Subscription"
                 : "Choose Your Perfect Plan"}
             </h1>
 
-            {isSubscribed ? (
+            {subscriptionUrl ? (
               <a
                 href={subscriptionUrl}
                 className="block w-full max-w-md mx-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out text-center text-base md:text-lg"
@@ -265,14 +326,7 @@ export default function Subscriptions() {
                             <div key={plan.id} className="w-full flex-shrink-0">
                               <Card
                                 plan={plan}
-                                onClick={async () => {
-                                  const email = await getUserEmail();
-                                  handleCheckout(
-                                    plan.id,
-                                    user?.username,
-                                    email
-                                  );
-                                }}
+                                onClick={() => handlePurchase(plan)}
                               />
                             </div>
                           ))}

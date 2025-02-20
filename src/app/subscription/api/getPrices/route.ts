@@ -11,6 +11,7 @@ export interface Plan {
   description: string;
   price: string;
   currency: string;
+  formattedPrice: string;
   interval: string;
   features: string[];
 }
@@ -64,6 +65,10 @@ export async function GET(req: NextRequest) {
         description: productDescription,
         price: price.unit_amount ? (price.unit_amount / 100).toFixed(2) : "N/A",
         currency: price.currency.toUpperCase(),
+        formattedPrice: `${price.currency.toUpperCase()} ${(
+          (price.unit_amount ?? 0) / 100
+        ).toFixed(2)}`,
+
         interval: price.recurring?.interval || "Recurring",
         features,
       } as Plan;
@@ -77,6 +82,7 @@ export async function GET(req: NextRequest) {
         "Plan gratuito para siempre, sin tarjeta de crédito requerida",
       price: "0.00",
       currency: "MXN",
+      formattedPrice: "MXN 0.00",
       interval: "forever",
       features: [
         "🗄️ Acceso a Compendios Temáticos",
