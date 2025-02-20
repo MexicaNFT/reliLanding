@@ -1,23 +1,40 @@
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Hero from "./components/Hero";
 import Seguridad from "./components/Seguridad";
 import Product from "./components/Product";
 import WhyReli from "./components/WhyReli";
 
 export default function Home() {
+  const [showProduct, setShowProduct] = useState(false);
+
   return (
-    <>
-      <section id="hero" className="mb-36">
-        <Hero />
-      </section>
-      <section id="product" className="mb-36">
-        <Product />
-      </section>
-      <section id="why-reli" className="mb-36">
-        <WhyReli />
-      </section>
-      <section id="seguridad" className="mb-36">
-        <Seguridad />
-      </section>
-    </>
+    <div className="relative">
+      <AnimatePresence>
+        {!showProduct && (
+          <Hero onTransitionComplete={() => setShowProduct(true)} />
+        )}
+      </AnimatePresence>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showProduct ? 1 : 0 }}
+        className={`${showProduct ? "relative" : "invisible"}`}
+      >
+        <section id="product" className="mb-36 pt-20">
+          <Product />
+        </section>
+        <section id="why-reli" className="mb-36">
+          <WhyReli />
+        </section>
+        <section id="seguridad" className="mb-36">
+          <Seguridad />
+        </section>
+      </motion.div>
+
+      {/* Spacer for initial scroll trigger */}
+      <div className="h-screen" />
+    </div>
   );
 }

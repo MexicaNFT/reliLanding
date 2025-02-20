@@ -1,6 +1,6 @@
 "use client";
-
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 
 const Product = () => {
@@ -19,7 +19,12 @@ const Product = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 py-2 md:py-2 flex flex-col justify-center">
+    <motion.div
+      className="px-4 sm:px-6 md:px-8 py-2 md:py-2 flex flex-col justify-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="relative w-full max-w-[1200px] mx-auto">
         <div className="absolute -inset-2 sm:-inset-5 bg-[#1ABC9C]/15 backdrop-blur-md rounded-2xl"></div>
         <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-[#1ABC9C]/20 bg-white z-10">
@@ -45,7 +50,7 @@ const Product = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
