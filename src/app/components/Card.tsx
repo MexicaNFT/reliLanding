@@ -26,12 +26,13 @@ const Card: React.FC<CardProps> = ({
           imageFirst ? "lg:order-1" : "lg:order-2"
         }`}
       >
-        <div className="relative bg-gray-100 w-full aspect-[4/3] rounded-lg overflow-hidden">
+        <div className="relative bg-gray-100 w-full h-[300px] lg:h-[400px] rounded-lg overflow-hidden">
           <Image
             src={imagePath}
             alt={title}
-            fill
-            className="object-cover"
+            width={600}
+            height={400}
+            className="object-cover w-full h-full"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>

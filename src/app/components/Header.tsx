@@ -110,6 +110,7 @@ export default function Header() {
             { id: "why-reli", label: "¿Por qué Reli?" },
             { id: "use-case", label: "Use Case" },
             { id: "seguridad", label: "Seguridad" },
+            { id: "process", label: "Process" },
           ].map(({ id, label }) => (
             <button
               key={id}

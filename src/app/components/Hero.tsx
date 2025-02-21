@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { handleSigninClick } from "../helpers/handle-sign-in";
@@ -13,17 +14,26 @@ export default function Hero({
   const circleRef = useRef<HTMLDivElement>(null);
   const [circlePosition, setCirclePosition] = useState({ x: 0, y: 0 });
   const [isAnimating, setIsAnimating] = useState(false);
+  const [maxScale, setMaxScale] = useState(1); // State to store max scale
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  // Calculate the viewport diagonal for maximum scale
-  const viewportDiagonal = Math.sqrt(
-    Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)
-  );
-  const maxScale = viewportDiagonal / 20; // Assuming circle starts at 20px
+  // Calculate maxScale only on the client
+  useEffect(() => {
+    const updateMaxScale = () => {
+      const viewportDiagonal = Math.sqrt(
+        Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)
+      );
+      setMaxScale(viewportDiagonal / 20); // Assuming circle starts at 20px
+    };
+
+    updateMaxScale();
+    window.addEventListener("resize", updateMaxScale);
+    return () => window.removeEventListener("resize", updateMaxScale);
+  }, []);
 
   const scale = useTransform(scrollYProgress, [0, 0.5], [0, maxScale]);
   const opacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);

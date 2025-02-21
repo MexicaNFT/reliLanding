@@ -1,4 +1,4 @@
-// UseCase.tsx
+"use client";
 import { useState, useRef, useEffect } from "react";
 import WelcomeBanner from "../components/WelcomeBanner";
 import Card from "../components/Card";
@@ -15,35 +15,35 @@ export interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    title: "Un problema común",
+    title: "Un Problema Común",
     description:
-      "Sabemos cómo es. Haces malabares entre tus casos, revisando la normativa, sentencias, criterios y demás que necesitas. Y te funciona, hasta que no. La información se actualiza todos los días, las tareas se te acumulan, y se te escapa el control.",
+      "Sabemos cómo es. Haces malabares entre tus casos, revisando la normativa, sentencias, criterios y demás que necesites. Y te funciona, hasta que no. La información se actualiza todos los días, las tareas se te acumulan, y se te escapa el control.",
     buttonText: "Read case study",
-    imagePath: "/assets/Reli_logo.png",
+    imagePath: "/assets/temp.jpg",
   },
   {
     id: 2,
-    title: "Streamlined Workflow",
+    title: "Las Alternativas",
     description:
-      "Our platform centralizes all your regulatory information, case histories, and precedents in one searchable database. Stay up-to-date automatically and focus on what matters most - serving your clients effectively.",
-    buttonText: "View solution",
-    imagePath: "/assets/Reli_logo.png",
+      "ChatGPT y los LLMs no otorgan los resultados esperados, con referencias equivocadas o incompletas. Desarrollar un sistema interno tarda meses en desarrollar, y otros sistemas de IA aplicadas a derecho no tienen la normativa completa mexicana.",
+    buttonText: "Read case study",
+    imagePath: "/assets/temp.jpg",
   },
   {
     id: 3,
-    title: "Client Success Story",
+    title: " Por eso Reli",
     description:
-      "See how a mid-sized law firm reduced research time by 68% and increased case throughput by 43% within just three months of implementing our solution.",
+      "Imagina una plataforma tan sencilla como WhatsApp, pero diseñada específicamente para hacer que tu práctica profesional sea exponencialmente más productiva, sin complicaciones.",
     buttonText: "Read case study",
-    imagePath: "/assets/Reli_logo.png",
+    imagePath: "/assets/temp.jpg",
   },
   {
     id: 4,
-    title: "Industry Recognition",
+    title: "¿Qué buscamos?",
     description:
-      "Our platform has been recognized by legal technology experts for its innovative approach to managing regulatory compliance and case management workflows.",
-    buttonText: "See awards",
-    imagePath: "/assets/Reli_logo.png",
+      "Nuestro objetivo es simple: ayudarte a gestionar tu práctica de una manera eficiente, con una plataforma sencilla, personalizada y lista para crecer contigo.",
+    buttonText: "Read case study",
+    imagePath: "/assets/temp.jpg",
   },
 ];
 
@@ -89,12 +89,11 @@ export default function UseCase() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with logo and title */}
-      <div className="container mx-auto px-4 pt-20 pb-16">
+      <div className="container mx-auto px-4 ">
         <div className="flex flex-col items-center justify-center">
           <div className="inline-flex items-center mb-2 ">
             <WelcomeBanner text="Use Case" />
           </div>
-          <div className="w-24 h-0.5 bg-gray-200 mt-1"></div>
         </div>
       </div>
 
@@ -117,7 +116,7 @@ export default function UseCase() {
                 <div
                   className={`transition-all duration-300 ${
                     activeCard === study.id
-                      ? "w-1 h-8 bg-[#36464F] rounded-full"
+                      ? "w-2 h-10 bg-[#36464F] rounded-full"
                       : "w-1 h-1 bg-gray-300 rounded-full"
                   }`}
                 />

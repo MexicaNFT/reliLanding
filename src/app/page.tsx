@@ -6,6 +6,7 @@ import Seguridad from "./components/Seguridad";
 import Product from "./components/Product";
 import WhyReli from "./components/WhyReli";
 import UseCase from "./components/UseCase";
+import ProcessPage from "./components/ProcessPage";
 
 export default function Home() {
   const [showProduct, setShowProduct] = useState(false);
@@ -34,6 +35,9 @@ export default function Home() {
         </section>
         <section id="seguridad" className="mb-36">
           <Seguridad />
+        </section>
+        <section id="process" className="mb-36">
+          <ProcessPage />
         </section>
       </motion.div>
 
