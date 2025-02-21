@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Seguridad from "./components/Seguridad";
 import Product from "./components/Product";
 import WhyReli from "./components/WhyReli";
+import UseCase from "./components/UseCase";
 
 export default function Home() {
   const [showProduct, setShowProduct] = useState(false);
@@ -27,6 +28,9 @@ export default function Home() {
         </section>
         <section id="why-reli" className="mb-36">
           <WhyReli />
+        </section>
+        <section id="use-case" className="mb-36">
+          <UseCase />
         </section>
         <section id="seguridad" className="mb-36">
           <Seguridad />
