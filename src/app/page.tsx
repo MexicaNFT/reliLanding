@@ -7,6 +7,7 @@ import Product from "./components/Product";
 import WhyReli from "./components/WhyReli";
 import UseCase from "./components/UseCase";
 import ProcessPage from "./components/ProcessPage";
+import Pricing from "./components/Pricing";
 
 export default function Home() {
   const [showProduct, setShowProduct] = useState(false);
@@ -38,6 +39,9 @@ export default function Home() {
         </section>
         <section id="process" className="mb-36">
           <ProcessPage />
+        </section>
+        <section id="pricing" className="mb-36">
+          <Pricing />
         </section>
       </motion.div>
 

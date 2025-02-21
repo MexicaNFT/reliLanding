@@ -16,22 +16,28 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
   ctaLink,
 }) => {
   return (
-    <div className="rounded-lg border border-[#1ABC9C] overflow-hidden max-w-md">
+    <div className="rounded-lg border border-[#1ABC9C] overflow-hidden w-full h-auto md:w-[780px] md:h-[450px] shadow-md">
       {/* Step indicator */}
-      <div className="bg-white p-4 border-b border-[#1ABC9C]">
-        <p className="text-[#1ABC9C] font-medium">Paso {step}</p>
+      <div className="bg-white p-4 md:p-6 border-b border-[#1ABC9C]">
+        <p className="text-[#1ABC9C] font-medium text-base md:text-lg">
+          Paso {step}
+        </p>
       </div>
 
       {/* Card content */}
-      <div className="bg-gray-50 p-6">
-        <h3 className="text-[#36454F] text-xl font-semibold mb-4">{title}</h3>
-        <p className="text-[#787878] mb-6">{description}</p>
+      <div className="bg-gray-50 p-6 md:p-8 flex flex-col h-[calc(100%-56px)] md:h-[calc(100%-72px)]">
+        <h3 className="text-[#36454F] text-xl md:text-2xl font-semibold mb-4 md:mb-6">
+          {title}
+        </h3>
+        <p className="text-[#787878] mb-6 md:mb-auto text-base md:text-lg">
+          {description}
+        </p>
 
         {ctaText && ctaLink && (
-          <div>
+          <div className="mt-auto pt-4">
             <a
               href={ctaLink}
-              className="text-[#1ABC9C] flex items-center gap-2 hover:underline"
+              className="text-[#1ABC9C] flex items-center gap-2 hover:underline text-base md:text-lg"
             >
               {ctaText} <span>→</span>
             </a>
