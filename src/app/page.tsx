@@ -8,6 +8,8 @@ import WhyReli from "./components/WhyReli";
 import UseCase from "./components/UseCase";
 import ProcessPage from "./components/ProcessPage";
 import Pricing from "./components/Pricing";
+import TestimonialCarousel from "./components/TestimonialPage";
+import TestimonialPage from "./components/TestimonialPage";
 
 export default function Home() {
   const [showProduct, setShowProduct] = useState(false);
@@ -39,6 +41,9 @@ export default function Home() {
         </section>
         <section id="process" className="mb-36">
           <ProcessPage />
+        </section>
+        <section id="testimonial-carousel" className="mb-36">
+          <TestimonialPage />
         </section>
         <section id="pricing" className="mb-36">
           <Pricing />

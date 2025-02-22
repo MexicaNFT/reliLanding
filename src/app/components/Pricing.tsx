@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import PriceCard from "../components/PriceCard";
+import WelcomeBanner from "./WelcomeBanner";
 
 interface PlanData {
   planName: string;
@@ -120,7 +121,7 @@ const Pricing: React.FC = () => {
     <div className="container mx-auto px-4 py-12">
       {/* Heading */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Pricing</h1>
+        <WelcomeBanner text="Pricing" />
         <p className="text-gray-600 max-w-2xl mx-auto">
           Choose the perfect plan for your needs. We offer flexible options to
           help you get the most out of our service.
@@ -152,7 +153,7 @@ const Pricing: React.FC = () => {
           </button>
         </div>
         {billingCycle === "annually" && (
-          <span className="ml-2 bg-green-100 text-green-800 text-xs text-center font-medium px-2.5 py-2 rounded-full">
+          <span className="ml-2 bg-green-100 text-green-800 text-xs text-center font-medium px-2.5 pt-4 rounded-full">
             Save 16%
           </span>
         )}

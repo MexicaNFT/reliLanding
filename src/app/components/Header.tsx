@@ -111,6 +111,7 @@ export default function Header() {
             { id: "use-case", label: "Use Case" },
             { id: "seguridad", label: "Seguridad" },
             { id: "process", label: "Process" },
+            { id: "testimonial-carousel", label: "Testimonial" },
             { id: "pricing", label: "Pricing" },
           ].map(({ id, label }) => (
             <button
