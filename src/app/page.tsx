@@ -10,6 +10,7 @@ import ProcessPage from "./components/ProcessPage";
 import Pricing from "./components/Pricing";
 import TestimonialCarousel from "./components/TestimonialPage";
 import TestimonialPage from "./components/TestimonialPage";
+import MiguelProfile from "./components/MiguelProfile";
 
 export default function Home() {
   const [showProduct, setShowProduct] = useState(false);
@@ -38,6 +39,9 @@ export default function Home() {
         </section>
         <section id="seguridad" className="mb-36">
           <Seguridad />
+        </section>
+        <section id="miguel-profile" className="mb-36">
+          <MiguelProfile />
         </section>
         <section id="process" className="mb-36">
           <ProcessPage />
