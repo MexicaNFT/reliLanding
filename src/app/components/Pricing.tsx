@@ -122,10 +122,6 @@ const Pricing: React.FC = () => {
       {/* Heading */}
       <div className="text-center mb-12">
         <WelcomeBanner text="Pricing" />
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Choose the perfect plan for your needs. We offer flexible options to
-          help you get the most out of our service.
-        </p>
       </div>
 
       {/* Billing Toggle */}
@@ -159,19 +155,20 @@ const Pricing: React.FC = () => {
         )}
       </div>
 
-      {/* Price Cards - equal height with grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+      <div className="flex flex-col md:flex-row gap-6 justify-center">
         {activePlans.map((plan, index) => (
-          <div key={index} className="h-full flex">
-            <PriceCard
-              planName={plan.planName}
-              price={plan.price}
-              features={plan.features}
-              isCurrentPlan={plan.isCurrentPlan}
-              isRecommended={plan.isRecommended}
-              imagePath={plan.imagePath}
-              onSelectPlan={() => handleSelectPlan(index)}
-            />
+          <div key={index} className="flex w-full md:w-1/3 mb-6">
+            <div className="flex flex-col w-full h-full">
+              <PriceCard
+                planName={plan.planName}
+                price={plan.price}
+                features={plan.features}
+                isCurrentPlan={plan.isCurrentPlan}
+                isRecommended={plan.isRecommended}
+                imagePath={plan.imagePath}
+                onSelectPlan={() => handleSelectPlan(index)}
+              />
+            </div>
           </div>
         ))}
       </div>
