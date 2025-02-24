@@ -55,11 +55,19 @@ const TestimonialPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 to-teal-100 py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-[#36454F] mb-12">
+    <div className="min-h-screen bg-gradient-to-r from-[#ddf5f0] via-white to-[#ddf5f0] py-16 px-4">
+      <div className="max-w-4xl mx-auto relative">
+        <h1 className="text-3xl font-bold text-center text-[#36454F] mb-12 mt-5">
           Why People Choose Us
         </h1>
+
+        <button
+          onClick={handlePrevious}
+          className="absolute -left-4 md:-left-28 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-colors z-20"
+          aria-label="Previous testimonial"
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-600" />
+        </button>
 
         <div className="bg-white rounded-lg shadow-lg p-8 relative min-h-[400px] overflow-hidden">
           <Quote
@@ -67,21 +75,18 @@ const TestimonialPage: React.FC = () => {
             strokeWidth={1}
           />
 
-          <div className="flex items-center justify-between h-full">
-            <button
-              onClick={handlePrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
-            >
-              <ChevronLeft className="w-6 h-6 text-gray-600" />
-            </button>
-
+          <div className="relative h-full">
             <div
-              className={`mx-12 transition-transform duration-300 w-full
-                ${slideDirection === "left" ? "-translate-x-full" : ""}
-                ${slideDirection === "right" ? "translate-x-full" : ""}
+              className={`transition-all duration-300 w-full 
+                ${slideDirection === "left" ? "opacity-0 -translate-x-10" : ""}
+                ${
+                  slideDirection === "right"
+                    ? "opacity-0 translate-x-10"
+                    : "opacity-100"
+                }
               `}
             >
-              <blockquote className="text-[#36454F] text-lg mb-6 relative z-10 mt-16">
+              <blockquote className="text-[#36454F] text-lg mb-6 relative z-10 mt-20">
                 {testimonials[currentIndex].content}
               </blockquote>
 
@@ -89,23 +94,27 @@ const TestimonialPage: React.FC = () => {
                 <p className="font-semibold">
                   {testimonials[currentIndex].name}
                 </p>
-                <p className="text-gray-[#36454F]">
+                <p className="text-[#36454F]">
                   {testimonials[currentIndex].company}
                 </p>
               </div>
             </div>
-
-            <button
-              onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
-            >
-              <ChevronRight className="w-6 h-6 text-gray-600" />
-            </button>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2">
+
+          <div className="absolute bottom-0 left-0 right-0">
             <div className="w-full h-10 bg-[#36454F] mt-8 " />
           </div>
         </div>
+
+        <button
+          onClick={handleNext}
+          className="absolute -right-4 md:-right-28 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-colors z-20"
+          aria-label="Next testimonial"
+        >
+          <ChevronRight className="w-6 h-6 text-gray-600" />
+        </button>
+
+        <div className="flex justify-center mt-8 gap-2"></div>
       </div>
     </div>
   );
