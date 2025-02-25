@@ -16,7 +16,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
   ctaLink,
 }) => {
   return (
-    <div className="rounded-lg border border-[#1ABC9C] overflow-hidden w-full h-auto md:w-[780px] md:h-[450px] shadow-md">
+    <div className="rounded-lg border border-[#1ABC9C] overflow-hidden w-full h-auto md:w-[780px] md:h-[450px]">
       {/* Step indicator */}
       <div className="bg-white p-4 md:p-6 border-b border-[#1ABC9C]">
         <p className="text-[#1ABC9C] font-medium text-base md:text-lg">

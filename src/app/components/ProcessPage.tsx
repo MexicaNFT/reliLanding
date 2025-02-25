@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import ProcessCard from "./ProcessCard";
 
 interface ProcessCardData {
@@ -38,45 +38,18 @@ const processCardData = [
 
 const ProcessPage: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-
-      const containerTop = containerRef.current.getBoundingClientRect().top;
-      const containerHeight = containerRef.current.clientHeight;
-      const viewportHeight = window.innerHeight;
-
-      // Calculate scroll progress through the section
-      const scrollProgress =
-        (viewportHeight - containerTop) / (containerHeight + viewportHeight);
-      const normalizedProgress = Math.max(0, Math.min(1, scrollProgress));
-
-      // Map scroll progress to card index
-      const newIndex = Math.min(
-        Math.floor(normalizedProgress * processCardData.length),
-        processCardData.length - 1
-      );
-
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initialize on mount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [processCardData.length, activeIndex]);
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-10">
-        {/* Use flex instead of grid for precise control over widths */}
-        <div className="flex flex-col lg:flex-row">
-          {/* Left side - Fixed text (30% width) */}
-          <div className="lg:w-4/10 lg:pr-8 lg:sticky lg:top-0 h-fit self-center lg:h-screen flex flex-col justify-center">
-            <div className="py-8 lg:py-0 max-w-md lg:max-w-xs">
+    <div className="bg-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left side - Fixed text */}
+          <div className="lg:w-2/5 lg:pr-8 md:sticky md:top-16 md:mt-32">
+            <div className="max-w-md">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#36454F] mb-6">
                 How does it work?
               </h2>
@@ -89,28 +62,41 @@ const ProcessPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Right side - Scrolling cards (70% width) */}
-          <div className="lg:w-6/10 mt-8 lg:mt-0">
-            <div ref={containerRef} className="relative h-[300vh] w-full">
-              <div className="sticky top-0 h-screen flex items-center justify-center w-full">
-                <div className="relative w-full">
-                  {processCardData.map((card, index) => (
-                    <div
-                      key={index}
-                      className="absolute transition-all duration-500 w-full"
-                      style={{
-                        opacity: index === activeIndex ? 1 : 0,
-                        transform: `translateY(${
-                          (index - activeIndex) * 20
-                        }px) scale(${index <= activeIndex ? 1 : 0.95})`,
-                        zIndex: processCardData.length - index,
-                        pointerEvents: index === activeIndex ? "auto" : "none",
-                      }}
-                    >
-                      <ProcessCard {...card} />
-                    </div>
-                  ))}
-                </div>
+          {/* Right side - Cards */}
+          <div className="lg:w-3/5 flex flex-col">
+            <div className="relative ">
+              {/* Card container */}
+              <div className="relative flex-1 mb-40">
+                {processCardData.map((card, index) => (
+                  <div
+                    key={index}
+                    className="transition-all duration-500"
+                    style={{
+                      opacity: index === activeIndex ? 1 : 0,
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      visibility: index === activeIndex ? "visible" : "hidden",
+                      height: "auto", // Ensure the height is fluid and fits the content
+                    }}
+                  >
+                    <ProcessCard {...card} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Dot navigation */}
+              <div className="flex justify-center top-0">
+                {processCardData.map((_, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handleDotClick(index)}
+                    className={`w-3 h-3 mx-2 rounded-full cursor-pointer ${
+                      index === activeIndex ? "bg-blue-600" : "bg-gray-300"
+                    }`}
+                  ></div>
+                ))}
               </div>
             </div>
           </div>
