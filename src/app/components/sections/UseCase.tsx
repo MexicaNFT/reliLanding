@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import WelcomeBanner from "../components/WelcomeBanner";
-import Card from "../components/Card";
+import WelcomeBanner from "../common/WelcomeBanner";
+import Card from "../common/Card";
 
 // Define the case study type
 export interface CaseStudy {

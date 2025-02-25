@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { handleSigninClick } from "../helpers/handle-sign-in";
-import WelcomeBanner from "../components/WelcomeBanner";
+import { handleSigninClick } from "../../../helpers/handle-sign-in";
+import WelcomeBanner from "../common/WelcomeBanner";
 
 export default function Hero({
   onTransitionComplete,
@@ -114,7 +114,7 @@ export default function Hero({
           borderRadius: "50%",
           backgroundColor: "white",
           transform: "translate(-50%, -50%)",
-          zIndex: 20,
+          zIndex: 0,
           pointerEvents: "none",
         }}
       />

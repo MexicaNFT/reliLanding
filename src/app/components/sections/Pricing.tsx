@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import PriceCard from "../components/PriceCard";
-import WelcomeBanner from "./WelcomeBanner";
+import PriceCard from "../common/PriceCard";
+import WelcomeBanner from "../common/WelcomeBanner";
 
 interface PlanData {
   planName: string;

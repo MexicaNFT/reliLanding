@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import ProcessCard from "./ProcessCard";
+import ProcessCard from "../common/ProcessCard";
+import WelcomeBanner from "../common/WelcomeBanner";
 
 interface ProcessCardData {
   step: number;
@@ -44,15 +45,13 @@ const ProcessPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#F1F5F9]">
       <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left side - Fixed text */}
           <div className="lg:w-2/5 lg:pr-8 md:sticky md:top-16 md:mt-32">
             <div className="max-w-md">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#36454F] mb-6">
-                How does it work?
-              </h2>
+              <WelcomeBanner text="El proceso" />
               <p className="text-[#787878] text-base md:text-lg">
                 Our process is designed to be simple and effective, ensuring
                 that you get the perfect solution for your business needs.

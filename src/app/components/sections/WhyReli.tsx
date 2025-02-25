@@ -139,7 +139,7 @@
 "use client";
 
 import {} from "react";
-import WelcomeBanner from "./WelcomeBanner";
+import WelcomeBanner from "../common/WelcomeBanner";
 
 const WhyReli = () => {
   return (

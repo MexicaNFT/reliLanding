@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Hero from "./components/Hero";
-import Seguridad from "./components/Seguridad";
-import Product from "./components/Product";
-import WhyReli from "./components/WhyReli";
-import UseCase from "./components/UseCase";
-import ProcessPage from "./components/ProcessPage";
-import Pricing from "./components/Pricing";
-import TestimonialCarousel from "./components/TestimonialPage";
-import TestimonialPage from "./components/TestimonialPage";
-import MiguelProfile from "./components/MiguelProfile";
+import Hero from "./components/sections/Hero";
+import Seguridad from "./components/sections/Seguridad";
+import Product from "./components/sections/Product";
+import WhyReli from "./components/sections/WhyReli";
+import UseCase from "./components/sections/UseCase";
+import ProcessPage from "./components/sections/ProcessPage";
+import Pricing from "./components/sections/Pricing";
+import TestimonialCarousel from "./components/sections/TestimonialPage";
+import TestimonialPage from "./components/sections/TestimonialPage";
+import MiguelProfile from "./components/sections/MiguelProfile";
 
 export default function Home() {
   const [showProduct, setShowProduct] = useState(false);

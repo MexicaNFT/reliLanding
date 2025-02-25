@@ -9,7 +9,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
-import Card from "../components/PlanCard";
+import Card from "../components/common/PlanCard";
 import { fetchUserAttributes } from "aws-amplify/auth";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import { Plan } from "../subscription/api/getPrices/route";

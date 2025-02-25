@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUp } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { handleSigninClick } from "../helpers/handle-sign-in";
+import { handleSigninClick } from "../../../helpers/handle-sign-in";
 import Link from "next/link";
 
 export default function Header() {
