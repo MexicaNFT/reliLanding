@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ plan, onClick }) => {
   const { name, description, price, currency, interval, features, id } = plan;
   const isCurrentPlan = id === "free";
-  const isRecommended = id === "pro"; // Assuming "pro" is the recommended plan - adjust as needed
+  const isRecommended = id === "pro";
 
   const imagePath = `/assets/two_lawyer.png`;
 
