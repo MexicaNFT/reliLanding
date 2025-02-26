@@ -19,7 +19,7 @@ const caseStudies: CaseStudy[] = [
     description:
       "Sabemos cómo es. Haces malabares entre tus casos, revisando la normativa, sentencias, criterios y demás que necesites. Y te funciona, hasta que no. La información se actualiza todos los días, las tareas se te acumulan, y se te escapa el control.",
     buttonText: "Read case study",
-    imagePath: "/assets/temp.jpg",
+    imagePath: "/assets/lawyer.png",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const caseStudies: CaseStudy[] = [
     description:
       "ChatGPT y los LLMs no otorgan los resultados esperados, con referencias equivocadas o incompletas. Desarrollar un sistema interno tarda meses en desarrollar, y otros sistemas de IA aplicadas a derecho no tienen la normativa completa mexicana.",
     buttonText: "Read case study",
-    imagePath: "/assets/temp.jpg",
+    imagePath: "/assets/image3.png",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const caseStudies: CaseStudy[] = [
     description:
       "Imagina una plataforma tan sencilla como WhatsApp, pero diseñada específicamente para hacer que tu práctica profesional sea exponencialmente más productiva, sin complicaciones.",
     buttonText: "Read case study",
-    imagePath: "/assets/temp.jpg",
+    imagePath: "/assets/lawyer.png",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const caseStudies: CaseStudy[] = [
     description:
       "Nuestro objetivo es simple: ayudarte a gestionar tu práctica de una manera eficiente, con una plataforma sencilla, personalizada y lista para crecer contigo.",
     buttonText: "Read case study",
-    imagePath: "/assets/temp.jpg",
+    imagePath: "/assets/image3.png",
   },
 ];
 
