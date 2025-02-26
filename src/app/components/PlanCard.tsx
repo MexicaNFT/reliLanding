@@ -1,9 +1,19 @@
 import React from "react";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { Plan } from "../subscription/api/getPrices/route";
 
-const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
-  const { name, description, price, currency, interval, features, id } = plan; // Destructure plan fields
+interface CardProps {
+  plan: Plan;
+  onClick: () => void;
+}
+
+const Card: React.FC<CardProps> = ({ plan, onClick }) => {
+  const { name, description, price, currency, interval, features, id } = plan;
+  const isCurrentPlan = id === "free";
+  const isRecommended = id === "pro"; // Assuming "pro" is the recommended plan - adjust as needed
+
+  const imagePath = `/assets/two_lawyer.png`;
 
   const onClickFreePlan = () => {
     // Redirect to the app's dashboard
@@ -11,50 +21,103 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
   };
 
   return (
-    <div className="bg-white p-6 h-auto min-h-[448px] w-full max-w-[430px] rounded-2xl flex flex-col shadow-sm transition-shadow duration-200 hover:shadow-md border border-[#E6E6E6]">
-      <h3 className="text-2xl font-bold mb-2 text-[#36454F]">{name}</h3>
-      <p className="text-[#787878] mb-4">{description}</p>
-      <div className="text-3xl font-bold mb-6 text-[#36454F]">
-        {price} {currency}
-        <span className="text-base font-normal text-[#787878]">
-          {" "}
-          / {interval}
-        </span>
+    <div
+      className={`flex flex-col h-full rounded-2xl bg-[#F1F5F9] shadow-sm overflow-hidden border ${
+        isCurrentPlan ? "border-[#36454F]" : "border-[#00B894]"
+      }`}
+    >
+      {/* Recommended Banner */}
+      {isRecommended && (
+        <div className="w-full bg-[#00B894] text-white py-0.5 text-center font-medium">
+          Recommended
+        </div>
+      )}
+
+      {/* Header Section */}
+      <div className="p-4 bg-[#F1F5F9]">
+        <div className="flex flex-row justify-between items-center">
+          <div>
+            <p className="text-gray-800 text-lg font-medium">{name}</p>
+            <div className="flex flex-row items-baseline">
+              <p className="text-2xl font-bold">{currency}</p>
+              <p className="text-3xl font-bold">{price}</p>
+              <p className="text-gray-600 ml-1">/ {interval}</p>
+            </div>
+          </div>
+          <div className="relative w-24 h-16">
+            <Image
+              src={imagePath}
+              alt={`${name} plan`}
+              className="rounded-lg"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
       </div>
-      <div className="flex-grow">
-        <p className="font-semibold mb-2 text-[#36454F]">This includes:</p>
-        <ul className="space-y-2">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-center text-[#36454F]">
-              <Check className="text-green-500 mr-2 flex-shrink-0" size={16} />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
+
+      <div
+        className={`h-[1px] ${isCurrentPlan ? "bg-black" : "bg-[#00B894]"}`}
+      ></div>
+
+      {/* Features Section */}
+      <div className="px-4 py-3 flex-grow bg-[#F1F5F9]">
+        <p className="text-gray-600 mb-2">This includes:</p>
+        {features.map((feature, index) => (
+          <div key={index} className="flex flex-row items-center mb-2">
+            <span className="mr-2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  fill={isCurrentPlan ? "#36454F" : "#00B894"}
+                />
+                <path
+                  d="M8 12L11 15L16 9"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <p className="text-gray-600 ml-2">{feature}</p>
+          </div>
+        ))}
       </div>
-      {
-        // Only render the button if id is not "free"
-        id !== "free" ? (
-          <button
-            className="w-full py-2 rounded-xl mt-6 font-medium transition-colors duration-200 border-2 border-[#1ABC9C] text-[#1ABC9C] hover:bg-[#1ABC9C] hover:text-white"
-            onClick={onClick} // Trigger the click handler passed from the parent
-          >
-            Choose Plan
-          </button>
-        ) : (
-          <>
-            <p className="text-[#787878] text-center mt-6">
+
+      {/* Button Section */}
+      <div className="mt-auto px-4 pb-4">
+        {isCurrentPlan ? (
+          <div>
+            <p className="text-gray-600 text-center mb-2">
               Te encuentras en el plan gratuito
             </p>
             <button
-              className="w-full py-2 rounded-xl mt-6 font-medium transition-colors duration-200 bg-[#1ABC9C] text-white"
-              onClick={onClickFreePlan} // Redirect to the app's dashboard
+              onClick={onClickFreePlan}
+              className="w-full py-2 rounded-full bg-[#36454F]"
             >
-              Probar Reli.Ai
+              <p className="text-white text-center font-medium">
+                Probar Reli.Ai
+              </p>
             </button>
-          </>
-        )
-      }
+          </div>
+        ) : (
+          <button
+            onClick={onClick}
+            className="w-full py-2 rounded-full bg-[#00B894]"
+          >
+            <p className="text-white text-center font-medium">Choose Plan</p>
+          </button>
+        )}
+      </div>
     </div>
   );
 };
