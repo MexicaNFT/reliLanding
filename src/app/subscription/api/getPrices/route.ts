@@ -30,15 +30,40 @@ export async function GET(req: NextRequest) {
   const requestedInterval = searchParams.get("interval");
 
   try {
-    // Fetch active prices for the specific product, expanding the associated product object
-    const prices = await stripe.prices.list({
-      product: productId,
-      active: true,
-      expand: ["data.product"], // Expand to get full product details
-    });
+    // Check if STRIPE_PRODUCT_ID contains commas and split into an array
+    const productIds = productId
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean);
+
+    let pricesData = [];
+
+    if (productIds.length > 1) {
+      // If there are multiple product IDs, fetch prices for each product concurrently
+      const priceResponses = await Promise.all(
+        productIds.map(async (id) =>
+          stripe.prices.list({
+            product: id,
+            active: true,
+            expand: ["data.product"],
+          })
+        )
+      );
+
+      // Combine all prices from the responses
+      pricesData = priceResponses.flatMap((response) => response.data);
+    } else {
+      // Only one product ID, fetch prices normally
+      const pricesResponse = await stripe.prices.list({
+        product: productIds[0],
+        active: true,
+        expand: ["data.product"],
+      });
+      pricesData = pricesResponse.data;
+    }
 
     // Filter prices based on the requested interval (monthly/yearly)
-    const filteredPrices = prices.data.filter((price) => {
+    const filteredPrices = pricesData.filter((price) => {
       return price.recurring?.interval === requestedInterval;
     });
 
