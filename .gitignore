@@ -36,3 +36,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 amplify_outputs.json
+
+.env.development
+.env.production
