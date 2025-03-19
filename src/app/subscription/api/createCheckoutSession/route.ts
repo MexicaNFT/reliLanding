@@ -9,6 +9,19 @@ export async function POST(req: NextRequest) {
   try {
     const { userId, email, planId } = await req.json();
 
+    // Extract the domain from the email
+    const emailDomain = email.substring(email.indexOf("@") + 1);
+    // Initialize a discounts array if a user has a special domain
+    let discounts: Stripe.Checkout.SessionCreateParams.Discount[] | undefined;
+    if (emailDomain === "mycompany.com") {
+      // Replace MYCOMPANY_COUPON_ID with a valid Stripe coupon ID
+      discounts = [
+        {
+          coupon: "MYCOMPANY_COUPON_ID",
+        },
+      ];
+    }
+
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
@@ -52,6 +65,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
+      discounts,
       allow_promotion_codes: true,
       mode: "subscription", // Subscription mode for recurring payments
       success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/subscription/success?session_id={CHECKOUT_SESSION_ID}`,
