@@ -1,84 +1,130 @@
-import React from "react";
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import { SocialIcon } from "react-social-icons";
+import { Linkedin, Twitter, Instagram, Send } from "lucide-react";
 
 /**
- * A footer component that displays the company logo, social media links, and company-related links.
+ * Footer component matching the Figma design.
+ * Features company links, newsletter signup, and social media links.
  *
  * @returns {JSX.Element} The rendered footer component.
  */
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState("");
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter subscription
+    console.log("Newsletter signup:", email);
+    setEmail("");
+  };
+
   return (
-    <footer className="bg-[#36454F] text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center lg:flex-row lg:justify-between">
-          <div className="mb-8 lg:mb-0 text-center lg:text-left w-full lg:w-auto">
-            <div className="flex justify-center lg:justify-start">
-              <Image
-                src="/assets/Reli_logo.png"
-                alt="Reli"
-                width={100}
-                height={40}
-                className="mb-4"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <div className="flex justify-center lg:justify-start space-x-4 mt-4 lg:mt-16">
-              <SocialIcon
-                url="https://www.linkedin.com/company/reli-legaltech/"
-                network="linkedin"
-                bgColor="transparent"
-                fgColor="white"
-                style={{ height: 40, width: 40 }}
-              />
-              <SocialIcon
-                url="https://twitter.com/Reli_AI"
-                network="twitter"
-                bgColor="transparent"
-                fgColor="white"
-                style={{ height: 40, width: 40 }}
-              />
-              <SocialIcon
-                url="https://www.instagram.com/reli_on_ai/"
-                network="instagram"
-                bgColor="transparent"
-                fgColor="white"
-                style={{ height: 40, width: 40 }}
-              />
-            </div>
+    <footer className="bg-dark text-white overflow-hidden relative h-[473px]">
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] py-[64px]">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-[48px]">
+          {/* Logo */}
+          <div>
+            <h2 className="font-poppins font-semibold text-[48px] leading-[1.4] text-neutral-100 tracking-[-0.48px]">
+              Reli
+            </h2>
           </div>
-          <div className="text-center lg:text-left">
-            <h3 className="font-bold text-lg mb-4 text-[#1ABC9C]">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="hover:text-gray-300 transition-colors duration-200"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/data-policy"
-                  className="hover:text-gray-300 transition-colors duration-200"
-                >
-                  Data Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-gray-300 transition-colors duration-200"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
+
+          {/* Company Links */}
+          <div className="flex flex-col gap-[12px]">
+            <h3 className="font-inter font-bold text-[18px] leading-[normal] text-white mb-[24px]">
+              Company
+            </h3>
+            <Link
+              href="#"
+              className="font-inter font-normal text-[16px] leading-[normal] text-neutral-200 hover:text-white transition-colors"
+            >
+              About us
+            </Link>
+            <Link
+              href="/contact"
+              className="font-inter font-normal text-[16px] leading-[normal] text-neutral-200 hover:text-white transition-colors"
+            >
+              Contact us
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="font-inter font-normal text-[16px] leading-[normal] text-[#f1f4f4] hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/data-policy"
+              className="font-inter font-normal text-[16px] leading-[normal] text-[#f1f4f4] hover:text-white transition-colors"
+            >
+              Data Policy
+            </Link>
+            <Link
+              href="#"
+              className="font-inter font-normal text-[16px] leading-[normal] text-[#f1f4f4] hover:text-white transition-colors"
+            >
+              Terms & condition
+            </Link>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div className="flex flex-col gap-[10px] w-full lg:w-[282px]">
+            <label className="font-inter font-bold text-[16px] leading-[24px] text-white">
+              Subscribe to our Newsletter!
+            </label>
+            <form onSubmit={handleNewsletterSubmit} className="relative">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your email address"
+                className="w-full bg-white border border-[#dfe4ea] rounded-[6px] px-[20px] py-[12px] pr-[48px] font-inter font-normal text-[16px] leading-[24px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-blue"
+              />
+              <button
+                type="submit"
+                className="absolute right-[16px] top-1/2 transform -translate-y-1/2 text-primary-blue hover:text-primary-blue/80 transition-colors"
+              >
+                <Send className="w-[24px] h-[24px]" />
+              </button>
+            </form>
           </div>
         </div>
-        <div className="border-t border-gray-600 my-8"></div>
+
+        {/* Social Media Links */}
+        <div className="mt-[48px] pt-[24px]">
+          <p className="font-poppins text-[12px] leading-[normal] text-white mb-[12px]">
+            Follow Us
+          </p>
+          <div className="flex gap-[27px]">
+            <Link
+              href="https://www.linkedin.com/company/reli-legaltech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-primary-blue transition-colors"
+            >
+              <Linkedin className="w-[20px] h-[20px]" />
+            </Link>
+            <Link
+              href="https://twitter.com/Reli_AI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-primary-blue transition-colors"
+            >
+              <Twitter className="w-[20px] h-[20px]" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/reli_on_ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-primary-blue transition-colors"
+            >
+              <Instagram className="w-[20px] h-[20px]" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-[2px] bg-[#455b6a] mt-[24px]" />
       </div>
     </footer>
   );

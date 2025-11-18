@@ -1,29 +1,53 @@
 import Hero from "./components/Hero";
+import WhyReli from "./components/WhyReli";
+import UseCases from "./components/UseCases";
+import Process from "./components/Process";
+import Features from "./components/Features";
+import UserJourney from "./components/UserJourney";
+import NumbersReli from "./components/NumbersReli";
+import Testimonials from "./components/Testimonials";
+import Pricing from "./components/Pricing";
 import Seguridad from "./components/Seguridad";
-import Product from "./components/Product";
-import NuestrasHerramientas from "./components/NuestrasHerramientas";
 
 /**
  * The home page of the application.
- * It displays the Hero, Product, NuestrasHerramientas, and Seguridad sections.
+ * Displays all sections in the order matching the Figma design.
  *
  * @returns {JSX.Element} The rendered home page.
  */
 export default function Home() {
   return (
-    <>
-      <section id="hero" className="mb-36">
-        <Hero />
-      </section>
-      <section id="product" className="mb-36">
-        <Product />
-      </section>
-      <section id="nuestras-herramientas" className="mb-36">
-        <NuestrasHerramientas />
-      </section>
-      <section id="seguridad" className="mb-36">
-        <Seguridad />
-      </section>
-    </>
+    <main className="bg-neutral-100">
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Why Reli Section */}
+      <WhyReli />
+
+      {/* Use Cases Section */}
+      <UseCases />
+
+      {/* Process Section */}
+      <Process />
+
+      {/* Features Section */}
+      <Features />
+
+      {/* User Journey Section */}
+      <UserJourney />
+
+      {/* Numbers Reli Section */}
+      <NumbersReli />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* Pricing Section */}
+      <Pricing />
+
+      {/* Security Section */}
+      <Seguridad />
+    </main>
   );
 }
+
