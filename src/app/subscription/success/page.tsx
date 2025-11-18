@@ -5,6 +5,11 @@ import { useSearchParams } from "next/navigation";
 import { Stripe } from "stripe";
 import { CheckCircle, Mail, ArrowRight } from "lucide-react";
 
+/**
+ * Renders the success page content, including fetching and displaying the Stripe Checkout session details.
+ *
+ * @returns {JSX.Element} The rendered success page content.
+ */
 function SuccessPageContent() {
   const [session, setSession] = useState<Stripe.Checkout.Session | null>(null);
   const searchParams = useSearchParams();
@@ -84,6 +89,12 @@ function SuccessPageContent() {
   );
 }
 
+/**
+ * The success page component.
+ * It wraps the `SuccessPageContent` component in a `Suspense` boundary to handle dynamic loading.
+ *
+ * @returns {JSX.Element} The rendered success page.
+ */
 export default function SuccessPage() {
   return (
     <Suspense

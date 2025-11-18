@@ -18,6 +18,12 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
 );
 
+/**
+ * A component that handles user subscriptions, allowing users to view, choose, and manage their subscription plans.
+ * It integrates with Stripe for payment processing and AWS Amplify for user authentication.
+ *
+ * @returns {JSX.Element} The rendered subscriptions component.
+ */
 export default function Subscriptions() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 

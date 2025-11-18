@@ -2,6 +2,12 @@ import React from "react";
 import { XCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * A component that displays a payment cancellation message.
+ * It provides a link to return to the subscription page.
+ *
+ * @returns {JSX.Element} The rendered cancel page.
+ */
 export default function CancelPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-tr from-[#e6f7f4] via-white via-60% to-[#e6f7f4] p-4">

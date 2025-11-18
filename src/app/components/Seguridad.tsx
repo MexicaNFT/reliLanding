@@ -4,6 +4,13 @@ interface SecurityItemProps {
   icon: any;
 }
 
+/**
+ * A component that displays a single security item with an icon.
+ *
+ * @param {object} props - The props for the component.
+ * @param {any} props.icon - The icon to display for the security item.
+ * @returns {JSX.Element} The rendered security item.
+ */
 const SecurityItem: React.FC<SecurityItemProps> = ({ icon }) => (
   <div className="flex flex-col items-center rounded-lg">
     <Image
@@ -17,6 +24,11 @@ const SecurityItem: React.FC<SecurityItemProps> = ({ icon }) => (
   </div>
 );
 
+/**
+ * A component that displays a security section with a title, description, and a list of security items.
+ *
+ * @returns {JSX.Element} The rendered security section.
+ */
 export default function Seguridad() {
   return (
     <section className="p-4">

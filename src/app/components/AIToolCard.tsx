@@ -6,6 +6,15 @@ interface AIToolCardProps {
   icon: React.ReactElement;
 }
 
+/**
+ * A card component that displays an AI tool with its title, description, and an icon.
+ *
+ * @param {object} props - The props for the component.
+ * @param {string} props.title - The title of the AI tool.
+ * @param {string} props.description - A brief description of the AI tool.
+ * @param {React.ReactElement} props.icon - The icon representing the AI tool.
+ * @returns {JSX.Element} The rendered AI tool card.
+ */
 export default function AIToolCard({
   title,
   description,

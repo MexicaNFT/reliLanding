@@ -23,6 +23,14 @@ export const metadata: Metadata = {
   }
 };
 
+/**
+ * The root layout for the application.
+ * This component wraps all pages and includes the header, footer, and global fonts.
+ *
+ * @param {object} props - The props for the component.
+ * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
+ * @returns {JSX.Element} The rendered root layout.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

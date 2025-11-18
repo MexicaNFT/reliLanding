@@ -7,6 +7,12 @@ import { useRouter } from "next/navigation";
 import { handleSigninClick } from "../helpers/handle-sign-in";
 import Link from "next/link";
 
+/**
+ * A header component that provides navigation, a mobile menu, and a "go to top" button.
+ * It also handles smooth scrolling to different sections of the page.
+ *
+ * @returns {JSX.Element} The rendered header component.
+ */
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showGoToTop, setShowGoToTop] = useState(false);

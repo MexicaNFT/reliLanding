@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
 
+/**
+ * A footer component that displays the company logo, social media links, and company-related links.
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 const Footer: React.FC = () => {
   return (
     <footer className="bg-[#36454F] text-white py-8">

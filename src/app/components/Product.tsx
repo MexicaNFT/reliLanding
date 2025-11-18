@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * A component that displays a product section with a title, description, and a video.
+ *
+ * @returns {JSX.Element} The rendered product component.
+ */
 const Product = () => {
   return (
     <div className="px-4 sm:px-6">

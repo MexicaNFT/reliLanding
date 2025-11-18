@@ -3,6 +3,12 @@ import Seguridad from "./components/Seguridad";
 import Product from "./components/Product";
 import NuestrasHerramientas from "./components/NuestrasHerramientas";
 
+/**
+ * The home page of the application.
+ * It displays the Hero, Product, NuestrasHerramientas, and Seguridad sections.
+ *
+ * @returns {JSX.Element} The rendered home page.
+ */
 export default function Home() {
   return (
     <>

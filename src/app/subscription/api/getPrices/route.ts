@@ -5,6 +5,17 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2024-09-30.acacia",
 });
 
+/**
+ * @interface Plan
+ * @description Defines the structure of a subscription plan object.
+ * @property {string} id - The unique identifier for the plan.
+ * @property {string} name - The name of the plan.
+ * @property {string} description - A short description of the plan.
+ * @property {string} price - The price of the plan.
+ * @property {string} currency - The currency of the price.
+ * @property {string} interval - The billing interval (e.g., 'month', 'year').
+ * @property {string[]} features - A list of features included in the plan.
+ */
 export interface Plan {
   id: string;
   name: string;
@@ -15,6 +26,14 @@ export interface Plan {
   features: string[];
 }
 
+/**
+ * Handles a GET request to fetch subscription plans from Stripe.
+ * It filters plans based on the `interval` query parameter (e.g., 'month' or 'year'),
+ * formats the data, adds a free plan, sorts them by price, and returns the list.
+ *
+ * @param {NextRequest} req - The incoming Next.js request object.
+ * @returns {Promise<NextResponse>} A response object with the list of plans or an error message.
+ */
 export async function GET(req: NextRequest) {
   const productId = process.env.STRIPE_PRODUCT_ID;
 

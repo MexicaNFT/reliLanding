@@ -13,7 +13,10 @@ import Subscriptions from "../components/Subscriptions";
 Amplify.configure(outputs);
 
 /**
- * This component does the actual work of using `useSearchParams`.
+ * Renders the subscription content, including the AWS Amplify Authenticator.
+ * It uses the `useSearchParams` hook to determine the initial state of the authenticator.
+ *
+ * @returns {JSX.Element | null} The rendered subscription content, or null if the initial state is not yet determined.
  */
 function SubscriptionContent() {
   const searchParams = useSearchParams();
@@ -48,8 +51,10 @@ function SubscriptionContent() {
 }
 
 /**
- * The default export for the page.
- * Wraps `SubscriptionContent` in a Suspense boundary to satisfy Next.js requirements.
+ * The subscription page component.
+ * It wraps the `SubscriptionContent` component in a `Suspense` boundary to handle dynamic loading.
+ *
+ * @returns {JSX.Element} The rendered subscription page.
  */
 export default function SubscriptionPage() {
   return (

@@ -5,6 +5,14 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2024-09-30.acacia',
 });
 
+/**
+ * Handles a POST request to create a Stripe Customer Portal session.
+ * It takes an email address in the request body, finds the corresponding Stripe customer,
+ * and creates a new billing portal session for them.
+ *
+ * @param {NextRequest} req - The incoming Next.js request object.
+ * @returns {Promise<NextResponse>} A response object with the session URL or an error message.
+ */
 export async function POST(req: NextRequest) {
     const { email } = await req.json();
   

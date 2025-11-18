@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * The layout for the contact page.
+ * It sets the metadata for the page and renders the children.
+ *
+ * @param {object} props - The props for the component.
+ * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
+ * @returns {JSX.Element} The rendered contact layout.
+ */
 export default function ContactLayout({
   children,
 }: {

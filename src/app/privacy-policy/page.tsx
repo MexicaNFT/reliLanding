@@ -20,6 +20,15 @@ export const metadata = {
   description: "Nuestra Política de Privacidad y Datos",
 };
 
+/**
+ * A component that displays a section of the privacy policy with a title, content, and an icon.
+ *
+ * @param {object} props - The props for the component.
+ * @param {string} props.title - The title of the policy section.
+ * @param {React.ReactNode} props.content - The content of the policy section.
+ * @param {React.ReactNode} props.icon - The icon for the policy section.
+ * @returns {JSX.Element} The rendered policy section.
+ */
 const PolicySection: React.FC<PolicySectionProps> = ({
   title,
   content,
@@ -36,6 +45,13 @@ const PolicySection: React.FC<PolicySectionProps> = ({
   </div>
 );
 
+/**
+ * A component that displays the company's privacy policy.
+ * It includes sections on Introduction, Information Collection, Use of Information, Information Sharing,
+ * Data Storage and Security, Data Retention, Changes to this Privacy Policy, and Contact Information.
+ *
+ * @returns {JSX.Element} The rendered privacy policy page.
+ */
 const PrivacyPolicy: React.FC = () => {
   return (
     <>

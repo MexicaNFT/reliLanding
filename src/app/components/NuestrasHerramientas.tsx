@@ -11,6 +11,12 @@ import {
   ChartSplineIcon,
 } from "lucide-react";
 
+/**
+ * A component that displays a carousel of AI tools, allowing users to navigate through them.
+ * The number of cards per slide is responsive to the screen size.
+ *
+ * @returns {JSX.Element} The rendered Nuestras Herramientas component.
+ */
 export default function NuestrasHerramientas() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cardsPerSlide, setCardsPerSlide] = useState(3);

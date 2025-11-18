@@ -2,6 +2,14 @@ import React from "react";
 import { Check } from "lucide-react";
 import { Plan } from "../subscription/api/getPrices/route";
 
+/**
+ * A card component that displays the details of a subscription plan.
+ *
+ * @param {object} props - The props for the component.
+ * @param {Plan} props.plan - The plan object containing details like name, price, and features.
+ * @param {() => void} props.onClick - The function to call when the "Choose Plan" button is clicked.
+ * @returns {JSX.Element} The rendered plan card.
+ */
 const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
   const { name, description, price, currency, interval, features, id } = plan; // Destructure plan fields
 
