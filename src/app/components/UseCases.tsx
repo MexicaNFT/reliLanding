@@ -57,9 +57,9 @@ export default function UseCases() {
             <div
               key={index}
               className="sticky top-0 pt-[120px] pb-0"
-              style={{ zIndex: useCases.length - index }}
+              style={{ zIndex: index + 1 }}
             >
-              <div className="bg-neutral-100 border border-[#aec3ff] rounded-[16px] p-[78px] max-w-[1200px] mx-auto">
+              <div className="bg-neutral-100 border border-[#aec3ff] rounded-[16px] p-[78px] max-w-[1200px] mx-auto shadow-lg">
                 <div className="flex flex-col lg:flex-row gap-[102px] items-start">
                   {/* Image/Logo Section */}
                   <div className="w-full lg:w-[432px] h-[270px] rounded-[16px] bg-white flex items-center justify-center flex-shrink-0">
