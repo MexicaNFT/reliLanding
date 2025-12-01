@@ -54,9 +54,9 @@ export default function Process() {
             <div
               key={index}
               className="sticky top-0 pt-[120px] pb-0"
-              style={{ zIndex: index + 1 }}
+              style={{ zIndex: steps.length - index }}
             >
-              <div className="bg-white border-[2.5px] border-[#1abc9c] rounded-[16px] max-w-[1200px] mx-auto overflow-hidden shadow-lg">
+              <div className="bg-neutral-100 border-[2.5px] border-[#1abc9c] rounded-[16px] max-w-[1200px] mx-auto overflow-hidden">
                 <div className="p-[24px]">
                   {/* Step Header */}
                   <div className="flex justify-end mb-[24px]">

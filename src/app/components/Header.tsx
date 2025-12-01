@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -17,9 +18,14 @@ export default function Header() {
     <header className="bg-neutral-100 h-[78px] fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 lg:px-[120px]">
       {/* Logo */}
       <Link href="/" className="flex items-center">
-        <h1 className="font-inter font-semibold text-[48px] text-primary-blue tracking-[-0.48px]">
-          Reli
-        </h1>
+        <Image
+          src="/assets/Reli.ai.svg"
+          alt="Reli.AI"
+          width={48}
+          height={48}
+          priority
+          className="object-contain"
+        />
       </Link>
 
       {/* Mobile menu button */}
