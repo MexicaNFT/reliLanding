@@ -42,11 +42,11 @@ export default function Home() {
       {/* Testimonials Section */}
       <Testimonials />
 
-      {/* Pricing Section */}
-      <Pricing />
-
       {/* Security Section */}
       <Seguridad />
+
+      {/* Pricing Section */}
+      <Pricing />
     </main>
   );
 }
