@@ -12,32 +12,32 @@ export default function NumbersReli() {
     {
       icon: RefreshCw,
       text: "Actualizado Diario",
-      position: "top-left", // Top center-left
+      desktop: { left: "32.7%", top: "15.2%" }, // upper-left along arc
     },
     {
       icon: MapPin,
       text: "Toda la Normativa Local",
-      position: "top-right", // Top center-right
+      desktop: { left: "67.3%", top: "15.2%" }, // upper-right along arc
     },
     {
       icon: MessageSquare,
       text: "+20k Consultas Resueltas",
-      position: "middle-left", // Middle left
+      desktop: { left: "14.4%", top: "42%" }, // mid-left arc
     },
     {
       icon: Globe,
       text: "Todos los Tratados Internacionales",
-      position: "middle-right", // Middle right
+      desktop: { left: "85.6%", top: "42%" }, // mid-right arc
     },
     {
       icon: FileText,
       text: "Toda la Normativa Federal",
-      position: "bottom-left", // Bottom left
+      desktop: { left: "8.9%", top: "75%" }, // left endpoint of arc
     },
     {
       icon: FileCheck,
       text: "Todas las Sentencias y Jurisprudencias",
-      position: "bottom-right", // Bottom right
+      desktop: { left: "91.1%", top: "75%" }, // right endpoint of arc
     },
   ];
 
@@ -54,11 +54,11 @@ export default function NumbersReli() {
         </div>
 
         {/* Desktop: Semi-circle arrangement */}
-        <div className="hidden lg:block relative h-[480px] w-full max-w-[800px] mx-auto">
+        <div className="hidden lg:block relative h-[560px] w-full max-w-[900px] mx-auto">
           {/* Background Dashed Arc - smooth curved path connecting cards */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 800 480"
+            viewBox="0 0 900 560"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid meet"
@@ -66,8 +66,8 @@ export default function NumbersReli() {
           >
             {/* Perfect upper semi-circle (half-circle) using an arc */}
             <path
-              d="M 100 380
-                 A 300 300 0 0 1 700 380"
+              d="M 80 420
+                 A 370 370 0 0 1 820 420"
               stroke="#b8c5e0"
               strokeWidth="1.5"
               strokeDasharray="8 8"
@@ -77,38 +77,19 @@ export default function NumbersReli() {
             />
           </svg>
 
-          {/* Card 1: Actualizado Diario - Top Left (11 o'clock) */}
-          <div className="absolute left-[calc(50%-100px)] top-0 -translate-x-1/2">
-            <StatCard icon={RefreshCw} text="Actualizado Diario" />
-          </div>
-
-          {/* Card 2: Toda la Normativa Local - Top Right (1 o'clock) */}
-          <div className="absolute left-[calc(50%+100px)] top-0 -translate-x-1/2">
-            <StatCard icon={MapPin} text="Toda la Normativa Local" />
-          </div>
-
-          {/* Card 3: +20k Consultas Resueltas - Mid Left (9 o'clock) */}
-          <div className="absolute left-0 top-[80px]">
-            <StatCard icon={MessageSquare} text="+20k Consultas Resueltas" />
-          </div>
-
-          {/* Card 4: Todos los Tratados Internacionales - Mid Right (3 o'clock) */}
-          <div className="absolute right-0 top-[80px]">
-            <StatCard icon={Globe} text="Todos los Tratados Internacionales" />
-          </div>
-
-          {/* Card 5: Toda la Normativa Federal - Bottom Left endpoint */}
-          <div className="absolute left-[100px] bottom-0">
-            <StatCard icon={FileText} text="Toda la Normativa Federal" />
-          </div>
-
-          {/* Card 6: Todas las Sentencias y Jurisprudencias - Bottom Right endpoint */}
-          <div className="absolute right-[100px] bottom-0">
-            <StatCard icon={FileCheck} text="Todas las Sentencias y Jurisprudencias" />
-          </div>
+          {/* Cards positioned along the arc */}
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="absolute -translate-x-1/2 -translate-y-1/2"
+              style={stat.desktop}
+            >
+              <StatCard icon={stat.icon} text={stat.text} />
+            </div>
+          ))}
 
           {/* Tagline - Center */}
-          <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-[480px]">
+          <div className="absolute top-[56%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-[540px]">
             <p className="font-inter text-[32px] leading-snug italic">
               <span className="font-semibold text-[#3758f9]">Reli :</span>{" "}
               <span className="font-medium text-[#36454f]">
