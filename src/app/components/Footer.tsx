@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Linkedin, Twitter, Instagram, Send } from "lucide-react";
+import Image from "next/image";
+import { Send } from "lucide-react";
 
 /**
  * Footer component matching the Figma design.
- * Features company links, newsletter signup, and social media links.
+ * Features header with logo and newsletter, and footer links organized in columns.
  *
  * @returns {JSX.Element} The rendered footer component.
  */
@@ -19,112 +20,121 @@ const Footer: React.FC = () => {
     setEmail("");
   };
 
+  // Footer link columns data
+  const footerColumns = [
+    {
+      title: "Company",
+      links: [
+        { label: "About us", href: "#" },
+        { label: "Contact us", href: "/contact" },
+      ],
+    },
+    {
+      title: "Our Products",
+      links: [
+        { label: "Instagram", href: "#" },
+        { label: "Twitter", href: "#" },
+        { label: "LinkedIn", href: "#" },
+      ],
+    },
+    {
+      title: "Apps",
+      links: [
+        { label: "Reli for Android", href: "#" },
+        { label: "Reli for iOS", href: "#" },
+      ],
+    },
+    {
+      title: "Help & Support",
+      links: [
+        { label: "Reli for Android", href: "#" },
+        { label: "Reli for iOS", href: "#" },
+      ],
+    },
+    {
+      title: "Privacy Terms",
+      links: [
+        { label: "Política de Privacidad", href: "/privacy-policy" },
+        { label: "Política de Datos", href: "/data-policy" },
+      ],
+    },
+    {
+      title: "Social Media",
+      links: [
+        { label: "Instagram", href: "https://www.instagram.com/reli_on_ai/" },
+        { label: "Twitter", href: "https://twitter.com/Reli_AI" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/reli-legaltech/" },
+      ],
+    },
+  ];
+
   return (
-    <footer className="bg-dark text-white overflow-hidden relative h-[473px]">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] py-[64px]">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-[48px]">
-          {/* Logo */}
-          <div>
-            <h2 className="font-poppins font-semibold text-[48px] leading-[1.4] text-neutral-100 tracking-[-0.48px]">
-              Reli
-            </h2>
-          </div>
-
-          {/* Company Links */}
-          <div className="flex flex-col gap-[12px]">
-            <h3 className="font-inter font-bold text-[18px] leading-[normal] text-white mb-[24px]">
-              Company
-            </h3>
-            <Link
-              href="#"
-              className="font-inter font-normal text-[16px] leading-[normal] text-neutral-200 hover:text-white transition-colors"
-            >
-              About us
-            </Link>
-            <Link
-              href="/contact"
-              className="font-inter font-normal text-[16px] leading-[normal] text-neutral-200 hover:text-white transition-colors"
-            >
-              Contact us
-            </Link>
-            <Link
-              href="/privacy-policy"
-              className="font-inter font-normal text-[16px] leading-[normal] text-[#f1f4f4] hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/data-policy"
-              className="font-inter font-normal text-[16px] leading-[normal] text-[#f1f4f4] hover:text-white transition-colors"
-            >
-              Data Policy
-            </Link>
-            <Link
-              href="#"
-              className="font-inter font-normal text-[16px] leading-[normal] text-[#f1f4f4] hover:text-white transition-colors"
-            >
-              Terms & condition
-            </Link>
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="flex flex-col gap-[10px] w-full lg:w-[282px]">
-            <label className="font-inter font-bold text-[16px] leading-[24px] text-white">
-              Subscribe to our Newsletter!
-            </label>
-            <form onSubmit={handleNewsletterSubmit} className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your email address"
-                className="w-full bg-white border border-[#dfe4ea] rounded-[6px] px-[20px] py-[12px] pr-[48px] font-inter font-normal text-[16px] leading-[24px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-blue"
+    <footer className="relative w-full">
+      {/* Top Section - Light Gray Background */}
+      <div className="bg-[#f9fafb] w-full">
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] py-3">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Logo Section */}
+            <div className="flex items-center gap-2">
+              <Image
+                src="/assets/ReliLogo.svg"
+                alt="Reli logo"
+                width={78}
+                height={78}
+                className="w-[78px] h-[78px]"
               />
-              <button
-                type="submit"
-                className="absolute right-[16px] top-1/2 transform -translate-y-1/2 text-primary-blue hover:text-primary-blue/80 transition-colors"
-              >
-                <Send className="w-[24px] h-[24px]" />
-              </button>
+              <span className="font-poppins font-extralight text-[40px] text-[#111827] tracking-[-0.4px]">
+                Reli
+              </span>
+            </div>
+
+            {/* Newsletter Input */}
+            <form onSubmit={handleNewsletterSubmit} className="w-full md:w-auto">
+              <div className="flex items-center bg-[#f3f4f6] border border-[#d2d5da] rounded-[6px] px-6 py-3 gap-12">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter e-mail to subscribe to our Newsletter"
+                  className="bg-transparent font-inter font-normal text-[16px] leading-[24px] text-[#374151] placeholder:text-[#374151] focus:outline-none w-full md:w-auto min-w-[280px]"
+                />
+                <button
+                  type="submit"
+                  className="text-[#3758F9] hover:text-[#3758F9]/80 transition-colors shrink-0"
+                >
+                  <Send className="w-6 h-6" />
+                </button>
+              </div>
             </form>
           </div>
         </div>
+      </div>
 
-        {/* Social Media Links */}
-        <div className="mt-[48px] pt-[24px]">
-          <p className="font-poppins text-[12px] leading-[normal] text-white mb-[12px]">
-            Follow Us
-          </p>
-          <div className="flex gap-[27px]">
-            <Link
-              href="https://www.linkedin.com/company/reli-legaltech/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary-blue transition-colors"
-            >
-              <Linkedin className="w-[20px] h-[20px]" />
-            </Link>
-            <Link
-              href="https://twitter.com/Reli_AI"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary-blue transition-colors"
-            >
-              <Twitter className="w-[20px] h-[20px]" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/reli_on_ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-primary-blue transition-colors"
-            >
-              <Instagram className="w-[20px] h-[20px]" />
-            </Link>
+      {/* Bottom Section - Dark Background */}
+      <div className="bg-[#111827] w-full">
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] py-16">
+          {/* Footer Links Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
+            {footerColumns.map((column) => (
+              <div key={column.title} className="flex flex-col gap-5">
+                <h3 className="font-inter font-bold text-[18px] leading-normal text-white">
+                  {column.title}
+                </h3>
+                <div className="flex flex-col gap-3">
+                  {column.links.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="font-inter font-normal text-[16px] leading-normal text-[#f1f4f4] hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* Divider */}
-        <div className="h-[2px] bg-[#455b6a] mt-[24px]" />
       </div>
     </footer>
   );
