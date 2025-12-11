@@ -25,6 +25,7 @@ export default function UseCases() {
       buttonText: "Read case study",
       image: "/assets/bb.png",
       showIcon: true,
+      reverseLayout: true,
     },
     {
       title: "That's why Reli",
@@ -36,8 +37,8 @@ export default function UseCases() {
     },
   ];
 
-  // Card gap for offset calculation when stacking
-  const cardGap = 60;
+  // Keep cards fully stacked without showing a header strip of the previous one
+  const cardGap = 0;
 
   return (
     <section className="bg-[#d8dff1] relative">
@@ -63,7 +64,13 @@ export default function UseCases() {
               }}
             >
               <div className="bg-neutral-100 border border-[#aec3ff] rounded-[16px] overflow-hidden max-w-[1200px] mx-auto">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-[102px] items-center p-6 md:p-[48px] lg:p-[56px]">
+                <div
+                  className={`flex ${
+                    useCase.reverseLayout
+                      ? "flex-col-reverse lg:flex-row-reverse"
+                      : "flex-col lg:flex-row"
+                  } gap-8 lg:gap-[102px] items-center p-6 md:p-[48px] lg:p-[56px]`}
+                >
                   {/* Image/Logo Section */}
                   <div className="w-full lg:w-[380px] h-[180px] md:h-[220px] rounded-[16px] bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
                     {useCase.showLogo ? (
