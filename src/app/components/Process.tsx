@@ -39,8 +39,8 @@ export default function Process() {
     },
   ];
 
-  // Card gap for offset calculation when stacking
-  const cardGap = 50;
+  // Peek height so only the header of previous cards stays visible when stacking
+  const cardGap = 102;
 
   return (
     <section id="how-it-works" className="bg-neutral-100 relative">
@@ -64,7 +64,7 @@ export default function Process() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="sticky pt-[60px]"
+              className="sticky pt-6"
               style={{
                 top: `${index * cardGap}px`,
                 zIndex: index + 1,
