@@ -18,6 +18,10 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Reli",
   description: "La plataforma de LegalTech más completa de México",
+  icons: {
+    icon: "/assets/ReliLogo.svg",
+    shortcut: "/assets/ReliLogo.svg",
+  },
   other: {
     "apple-itunes-app": "app-id=6740542982"
   }

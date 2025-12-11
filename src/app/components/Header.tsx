@@ -19,8 +19,8 @@ export default function Header() {
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <Image
-          src="/assets/Reli.ai.svg"
-          alt="Reli.AI"
+          src="/assets/ReliLogo.svg"
+          alt="Reli logo"
           width={48}
           height={48}
           priority
