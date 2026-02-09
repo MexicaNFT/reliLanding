@@ -1,198 +1,167 @@
 import React from "react";
-import {
-  Shield,
-  FileText,
-  UserCheck,
-  Share,
-  Server,
-  Clock,
-  RefreshCw,
-  Mail,
-} from "lucide-react";
+import { Metadata } from "next";
 
-interface PolicySectionProps {
-  title: string;
-  content: React.ReactNode;
-  icon: React.ReactNode;
-}
-export const metadata = {
+export const metadata: Metadata = {
   title: "Política de Privacidad",
   description: "Nuestra Política de Privacidad y Datos",
 };
 
-/**
- * A component that displays a section of the privacy policy with a title, content, and an icon.
- *
- * @param {object} props - The props for the component.
- * @param {string} props.title - The title of the policy section.
- * @param {React.ReactNode} props.content - The content of the policy section.
- * @param {React.ReactNode} props.icon - The icon for the policy section.
- * @returns {JSX.Element} The rendered policy section.
- */
-const PolicySection: React.FC<PolicySectionProps> = ({
-  title,
-  content,
-  icon,
-}) => (
-  <div className="mb-12 bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
-    <div className="p-6">
-      <div className="flex items-center mb-4">
-        <div className="bg-[#1ABC9C] p-3 rounded-full mr-4">{icon}</div>
-        <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
-      </div>
-      <p className="text-lg leading-relaxed text-gray-700">{content}</p>
-    </div>
-  </div>
-);
-
-/**
- * A component that displays the company's privacy policy.
- * It includes sections on Introduction, Information Collection, Use of Information, Information Sharing,
- * Data Storage and Security, Data Retention, Changes to this Privacy Policy, and Contact Information.
- *
- * @returns {JSX.Element} The rendered privacy policy page.
- */
 const PrivacyPolicy: React.FC = () => {
   return (
-    <>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#e6f7f4] via-white to-[#e6f7f4] text-gray-800">
-        {/* Encabezado */}
-        <header className="py-20 text-center bg-[#1ABC9C] text-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNjZmQzZDQiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
-          </div>
-          <div className="relative z-10">
-            <h1 className="text-6xl font-extrabold mb-4 mt-6">
-              Política de <span className="text-[#e6f7f4]">Privacidad</span>
-            </h1>
-            <p className="text-2xl max-w-2xl mx-auto">
-              Protegiendo tu privacidad con transparencia y cuidado
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#d8dff1] via-white to-[#d8dff1] text-gray-800">
+      <header className="py-20 text-center bg-[#3758f9] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiNjZmQzZDQiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]" />
+        </div>
+        <div className="relative z-10">
+          <h1 className="text-6xl font-extrabold mb-4 mt-6">
+            Política de <span className="text-[#d8dff1]">Privacidad</span>
+          </h1>
+        </div>
+      </header>
+
+      <main className="max-w-4xl mx-auto px-4 py-16 flex-grow">
+        <section className="bg-white rounded-lg shadow-lg p-8">
+          <div className="space-y-5 text-gray-700 leading-relaxed">
+            <p className="text-2xl font-bold text-[#3758f9]">Aviso de Privacidad Integral</p>
+            <p>Última actualización: 06/02/2026</p>
+            <p>
+              Reli.Ai, en adelante el “Responsable”, como parte de MEXICANFTIMES, S.A DE C.V.,
+              con domicilio en Hacienda del Ciervo 22, Huixquilucan, Estado de México, es
+              responsable del uso y protección de sus datos personales, y al respecto le informa
+              lo siguiente.
             </p>
-          </div>
-        </header>
 
-        {/* Contenido Principal */}
-        <main className="max-w-4xl mx-auto px-4 py-16 flex-grow">
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-8 mb-12 transform transition-all duration-300 hover:shadow-2xl">
-            <h2 className="text-3xl font-bold text-[#1ABC9C] mb-4">
-              Nuestro Compromiso
-            </h2>
-            <p className="text-xl text-gray-700 leading-relaxed">
-              En Reli.Ai, estamos comprometidos con la protección de la
-              privacidad de nuestros usuarios y garantizando que sus datos sean
-              manejados con cuidado y seguridad.
+            <p className="font-semibold text-[#3758f9]">DATOS PERSONALES QUE RECABAMOS</p>
+            <p>
+              Para la presentación de nuestros servicios Legaltech podemos recabar, según uso de
+              la Plataforma, las siguientes categorías:
             </p>
+            <p>
+              Datos de Identificación y Contacto: nombre, correo electrónico, información de
+              contacto y datos asociados a la cuenta.
+            </p>
+            <p>
+              Datos de uso: identificadores del dispositivo/cuenta, métricas de uso y, en su
+              caso, historial de búsqueda (cuando se habilita en la app/plataforma).
+            </p>
+            <p>
+              Datos Patrimoniales y Financieros: si el pago ocurre mediante compras dentro de la
+              app, la transacción es procesada por la tienda de aplicaciones (no recibimos el
+              CVV); si existe facturación directa fuera de la tienda, se recaban datos fiscales y
+              de facturación necesarios.
+            </p>
+            <p>
+              Datos Sensibles: en caso de que el Usuario ingrese información sensible dentro de
+              documentos o consultas, se tratará conforme a las reglas de consentimiento expreso
+              aplicables cuando corresponda.
+            </p>
+
+            <p className="font-semibold text-[#3758f9]">FINALIDADES DEL TRATAMIENTO</p>
+            <p>Finalidades Primarias (necesarias):</p>
+            <p>Creación y gestión de cuenta de usuario.</p>
+            <p>
+              Prestación del servicio de investigación/consulta y generación/gestión de contenidos
+              y documentos.
+            </p>
+            <p>Soporte técnico y atención a clientes (contacto: support@reli.ai).</p>
+            <p>Finalidades Secundarias (no necesarias):</p>
+            <p>
+              Envío de comunicaciones informativas, promociones y actualizaciones del Servicio.
+            </p>
+            <p>
+              Analítica y mejora del Servicio mediante información no identificable personalmente
+              (por ejemplo, patrones de uso agregados).
+            </p>
+            <p>
+              Si usted no desea que sus datos sean tratados para finalidades secundarias, puede
+              enviar un correo a support@reli.ai manifestando su negativa.
+            </p>
+
+            <p className="font-semibold text-[#3758f9]">ÉTICA DE DATOS E INTELIGENCIA ARTIFICIAL</p>
+            <p>Política aplicable (modelo “Privacidad por defecto con opt-in”):</p>
+            <p>
+              De acuerdo con la Política de Datos del Responsable por defecto los datos enviados
+              por clientes a través de nuestras herramientas no se usan para entrenar modelos,
+              salvo que el Usuario opte explícitamente por compartir datos para ese propósito;
+              asimismo, se menciona una retención máxima de 30 días para monitoreo de abuso y mal
+              uso, salvo obligación legal.
+            </p>
+
+            <p className="font-semibold text-[#3758f9]">TRANSFERENCIA DE DATOS</p>
+            <p>Sus datos pueden ser transferidos a:</p>
+            <p>
+              Autoridades competentes (por requerimiento legal): por ejemplo, o, cuando exista
+              obligación legal o requerimiento válido.
+            </p>
+            <p>Proveedores de Servicios:</p>
+            <p>
+              Cuando el almacenamiento/hosting del servicio opere en GCS, según su política
+              pública consultable en:
+            </p>
+            <p>
+              Cuando la herramienta use una integración para procesar solicitudes y generar
+              respuestas, conforme a la Política de Datos.
+            </p>
+            <p>
+              Para gestionar compras dentro de la app y suscripciones cuando corresponda.
+            </p>
+
+            <p className="font-semibold text-[#3758f9]">DERECHOS ARCO</p>
+            <p>
+              Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus
+              datos personales.
+            </p>
+            <p>
+              Para ejercer sus derechos ARCO, deberá enviar una solicitud a support@reli.ai
+              conteniendo:
+            </p>
+            <p>Nombre del titular y medio para comunicarle la respuesta.</p>
+            <p>Documentos que acrediten su identidad.</p>
+            <p>
+              Descripción clara de los datos respecto de los que busca ejercer el derecho.
+            </p>
+            <p>
+              Plazos: El Responsable comunicará la determinación adoptada en un plazo máximo de 20
+              días hábiles y, si procede, hará efectiva la solicitud dentro de los 15 días hábiles
+              siguientes.
+            </p>
+
+            <p className="font-semibold text-[#3758f9]">USO DE COOKIES</p>
+            <p>
+              En nuestra página de internet podemos utilizar cookies y tecnologías para monitorear
+              comportamiento de navegación (como dirección IP, tipo de navegador y sistema
+              operativo) y mejorar la experiencia del usuario.
+            </p>
+
+            <p className="font-semibold text-[#3758f9]">CAMBIOS AL AVISO DE PRIVACIDAD</p>
+            <p>
+              El presente aviso de privacidad puede sufrir modificaciones derivadas de nuevos
+              requerimientos legales o de nuestras propias necesidades. Nos comprometemos a
+              mantenerlo informado sobre los cambios a través de nuestro sitio web oficial
+              (reli.ai)
+            </p>
+
+            <p className="font-semibold">ÚLTIMA ACTUALIZACIÓN: 06/02/2025</p>
           </div>
+        </section>
+      </main>
 
-          {/* Secciones */}
-          <PolicySection
-            icon={<FileText className="w-8 h-8 text-white" />}
-            title="Introducción"
-            content="Reli.Ai está comprometido con la protección de la privacidad y la seguridad de la información personal de nuestros usuarios. Esta Política de Privacidad describe nuestras prácticas para la recolección, uso y divulgación de información que puede usarse para identificar o contactar a un usuario."
-          />
-
-          <PolicySection
-            icon={<UserCheck className="w-8 h-8 text-white" />}
-            title="Recolección de Información"
-            content="Recopilamos información personal de los usuarios cuando se registran en nuestro sitio web, como nombre, dirección de correo electrónico y otros datos de contacto. También recopilamos información no identificable personalmente, como direcciones IP, tipos de navegador y patrones de uso del sitio web."
-          />
-
-          <PolicySection
-            icon={<Shield className="w-8 h-8 text-white" />}
-            title="Uso de la Información"
-            content={
-              <>
-                <p className="text-lg text-gray-700 mb-4">
-                  Utilizamos la información recopilada para proporcionar,
-                  mantener y mejorar nuestros servicios. Esto incluye:
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-lg text-gray-700">
-                  <li>Registrar usuarios y gestionar sus cuentas</li>
-                  <li>
-                    Personalizar la experiencia del usuario y proporcionar
-                    soporte al cliente
-                  </li>
-                  <li>
-                    Comunicarnos con los usuarios acerca de nuestros servicios,
-                    promociones y actualizaciones
-                  </li>
-                  <li>
-                    Monitorizar y analizar los patrones de uso para mejorar
-                    nuestros servicios
-                  </li>
-                  <li>
-                    Garantizar la seguridad e integridad de nuestros sistemas
-                  </li>
-                </ul>
-              </>
-            }
-          />
-
-          <PolicySection
-            icon={<Share className="w-8 h-8 text-white" />}
-            title="Compartir Información"
-            content={
-              <>
-                <p className="text-lg text-gray-700 mb-4">
-                  No vendemos ni compartimos información personal con terceros,
-                  excepto:
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-lg text-gray-700">
-                  <li>
-                    Cuando sea necesario para cumplir con obligaciones legales o
-                    proteger nuestros derechos
-                  </li>
-                  <li>
-                    Con proveedores de servicios que nos ayudan a operar nuestro
-                    negocio, sujetos a acuerdos de confidencialidad
-                  </li>
-                </ul>
-              </>
-            }
-          />
-
-          <PolicySection
-            icon={<Server className="w-8 h-8 text-white" />}
-            title="Almacenamiento y Seguridad de Datos"
-            content="Utilizamos Amazon Web Services (AWS) Amplify Server para almacenar los datos de los usuarios de manera segura. Empleamos medidas de seguridad y encriptación de nivel industrial para proteger los datos de los usuarios contra accesos no autorizados o divulgaciones."
-          />
-
-          <PolicySection
-            icon={<Clock className="w-8 h-8 text-white" />}
-            title="Retención de Datos"
-            content="Conservamos la información personal durante el tiempo necesario para cumplir con los fines para los que fue recopilada, o según lo exija la ley."
-          />
-
-          <PolicySection
-            icon={<RefreshCw className="w-8 h-8 text-white" />}
-            title="Cambios a Esta Política de Privacidad"
-            content="Podemos actualizar esta Política de Privacidad de vez en cuando. Alentamos a los usuarios a revisar periódicamente la política para ver los cambios."
-          />
-
-          <PolicySection
-            icon={<Mail className="w-8 h-8 text-white" />}
-            title="Información de Contacto"
-            content="Si tienes alguna pregunta o inquietud sobre nuestra Política de Privacidad, por favor contáctanos en support@reli.ai."
-          />
-        </main>
-
-        {/* Pie de página */}
-        <footer className="py-8 text-center">
-          <p className="text-gray-600 mb-2">
-            © {new Date().getFullYear()} Reli AI. Todos los derechos reservados.
-          </p>
-          <p className="text-gray-500">
-            Para preguntas o inquietudes, visita nuestra página de{" "}
-            <a
-              href="/support"
-              className="text-[#1ABC9C] hover:underline transition duration-300"
-            >
-              Soporte
-            </a>
-          </p>
-        </footer>
-      </div>
-    </>
+      <footer className="py-8 text-center">
+        <p className="text-gray-600 mb-2">
+          © {new Date().getFullYear()} Reli AI. Todos los derechos reservados.
+        </p>
+        <p className="text-gray-500">
+          Para preguntas o inquietudes, visita nuestra página de{" "}
+          <a
+            href="/support"
+            className="text-[#3758f9] hover:underline transition duration-300"
+          >
+            Soporte
+          </a>
+        </p>
+      </footer>
+    </div>
   );
 };
 

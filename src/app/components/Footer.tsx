@@ -52,10 +52,10 @@ const Footer: React.FC = () => {
       ],
     },
     {
-      title: "Privacy Terms",
+      title: "Políticas de Uso",
       links: [
         { label: "Política de Privacidad", href: "/privacy-policy" },
-        { label: "Política de Datos", href: "/data-policy" },
+        { label: "Términos y Condiciones", href: "/terms&conditions" },
       ],
     },
     {

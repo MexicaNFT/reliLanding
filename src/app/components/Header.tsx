@@ -39,7 +39,7 @@ export default function Header() {
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex items-center gap-[32px]">
         <Link
-          href="#why-reli"
+          href="#use-cases"
           className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors"
         >
           ¿Por qué Reli?
@@ -85,7 +85,7 @@ export default function Header() {
         <div className="lg:hidden absolute top-[78px] left-0 right-0 bg-white shadow-lg">
           <nav className="flex flex-col p-4 gap-4">
             <Link
-              href="#why-reli"
+              href="#use-cases"
               onClick={() => setMenuOpen(false)}
               className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors py-2"
             >

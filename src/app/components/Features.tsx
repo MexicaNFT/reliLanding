@@ -16,38 +16,38 @@ export default function Features() {
 
   const features = [
     {
-      category: "SEARCH",
-      title: "Access to All Regulations",
+      category: "LEGAL SEARCH",
+      title: "Búsqueda semántica + filtros facetados",
       description:
-        "Access the complete Mexican legal framework, from federal laws to local regulations. Our AI-powered search finds exactly what you need in seconds, saving hours of manual research.",
+        "Encuentra lo relevante más rápido con búsqueda por significado y filtros avanzados. Cada resultado trae ficha técnica, resumen inteligente y señal de relevancia para validar el “por qué”. Menos ruido, más control. Con citas verificables y trazabilidad hacia la fuente.",
       image: "/assets/search.png",
     },
     {
-      category: "ASSISTANT",
-      title: "AI-Powered Legal Assistant",
+      category: "GACETA",
+      title: "Radar regulatorio 24/7",
       description:
-        "Get instant answers to your legal questions with our intelligent assistant. It understands context, provides relevant citations, and helps you draft documents faster than ever.",
+        "Un feed curado por tus materias y filtros, más resumen diario por correo. Te mantienes actualizado sin perseguir el DOF, GACETAS o Semanarios. Detectas cambios, priorizas lo relevante y conviertes hallazgos en trabajo accionable. Configurable por tema, jurisdicción y ventana de tiempo.",
       image: "/assets/Assistant.png",
     },
     {
-      category: "RESEARCH",
-      title: "Deep Legal Research",
+      category: "DOCUMENT INTELLIGENCE",
+      title: "Habla con un documento",
       description:
-        "Dive deep into case law, precedents, and legal interpretations. Our research tools help you build stronger arguments with comprehensive analysis and relevant jurisprudence.",
+        "Selecciona un documento y pregunta en lenguaje natural. Obtén respuestas enfocadas en el texto, con fundamentos sobre el documento y referencias dentro del propio contenido. Ideal para desmenuzar acuerdos, reformas, criterios y anexos sin perder contexto.",
       image: "/assets/Investigation.png",
     },
     {
-      category: "NOTES",
-      title: "Smart Note Taking",
+      category: "NOTEBOOKS",
+      title: "Contexto organizado para investigar mejor",
       description:
-        "Organize your legal notes intelligently. Tag, search, and cross-reference your annotations with relevant laws and cases automatically.",
+        "Crea notebooks para acotar el “mundo” de un asunto: guarda documentos, arma contexto y repite flujos. Útil para preparar argumentos, mapear riesgos y mantener consistencia. Con control y trazabilidad de fuentes.",
       image: "/assets/notes.png",
     },
     {
-      category: "LIBRARY",
-      title: "Personal Legal Library",
+      category: "RESEARCH PACKS",
+      title: "Entregables listos para actuar",
       description:
-        "Build your own curated collection of laws, cases, and documents. Access your library from anywhere and share resources with your team seamlessly.",
+        "Transforma investigación en entregables: respuestas estructuradas, borradores defendibles y paquetes de evidencia trazable. Los Paquetes de Investigación funcionan como insumos/acciones dentro del flujo que incluyen un set de documentos y acciones enfocadas en Materias específicas.",
       image: "/assets/circuit.png",
     },
   ];
@@ -91,7 +91,7 @@ export default function Features() {
         <div className="flex justify-center mb-[64px]">
           <div className="bg-neutral-100 border border-neutral-200 rounded-[100px] px-6 md:px-[32px] py-[6px]">
             <p className="font-inter font-semibold text-lg md:text-[22px] leading-[30px] text-gray-700 text-center">
-              Features
+              Módulos
             </p>
           </div>
         </div>

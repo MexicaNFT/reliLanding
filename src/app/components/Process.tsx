@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 /**
  * Process section component showing "How Reli AI Works" in 3 steps.
@@ -11,66 +12,71 @@ import Image from "next/image";
 export default function Process() {
   const steps = [
     {
-      number: "Step 1",
-      title: "Schedule a free call with our team",
+      number: "Paso 1",
+      title: "Filtra con control y Busca o Actualízate",
       description:
-        "Tell us about your business. We want to help you build models that fully adapt to your practice.",
-      buttonText: "Schedule your call",
-      image: "/assets/aa.png",
+        "Agrega tu materia de interés, jurisdicción, fuentes interesadas y genera una gaceta diaria o una búsqueda dentro de todo el corpus mexicano",
+      buttonText: "Probar Reli",
+      buttonHref: "/subscription",
+      image: "/assets/Step-1-Call.png",
       imagePosition: "right",
     },
     {
-      number: "Step 2",
-      title: "We build your model in less than a week.",
+      number: "Paso 2",
+      title: "Convierte fuentes en respuesta estructurada",
       description:
-        "As part of the process, we help you upload the data and documents you already have so you don't start from scratch.",
-      buttonText: "Schedule your call",
-      image: "/assets/bb.png",
+        "Consulta el documento rápido con una conversación; o agrégalo a un cuaderno de trabajo o investigación",
+      buttonText: "Probar Document Intelligence",
+      buttonHref: "/subscription",
+      image: "/assets/Step2-BuildModel.png",
       imagePosition: "left",
     },
     {
-      number: "Step 3",
-      title: "We support you every step of the way",
+      number: "Paso 3",
+      title: "Cuadernos y Paquetes de Investigación",
       description:
-        "We're always just a message away to help you. We understand that law evolves and technology should evolve with it.",
-      buttonText: "Schedule your call",
-      image: "/assets/cc.png",
+        "Organiza tu trabajo, documentos importantes, normativa y automatizaciones en modelos específicos; o usa nuestros Paquetes de Investigación",
+      buttonText: "Crear mi primer notebook",
+      buttonHref: "/subscription",
+      image: "/assets/Step3 - Support.png",
       imagePosition: "right",
     },
   ];
 
   // Peek height so only the header of previous cards stays visible when stacking
   const cardGap = 102;
+  // Keep the section title fixed at the top while this section is active.
+  const titleTopOffset = 0;
+  // Start the card stack below the sticky title so step headers stay readable.
+  const cardsTopOffset = 216;
 
   return (
     <section id="how-it-works" className="bg-neutral-100 relative">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
-        {/* Section Badge */}
-        <div className="flex justify-center pt-[120px] mb-[64px]">
+        {/* Sticky Section Badge */}
+        <div
+          className="sticky top-0 z-30 flex justify-center pt-[120px] pb-[42px] bg-neutral-100"
+          style={{ top: `${titleTopOffset}px` }}
+        >
           <div className="bg-[#d8dff1] border border-neutral-200 rounded-[100px] px-6 md:px-[32px] py-[6px]">
             <p className="font-inter font-semibold text-lg md:text-[22px] leading-[30px] text-gray-700 text-center">
-              The Process
+              El Proceso
             </p>
           </div>
         </div>
 
-        {/* Title */}
-        <h2 className="font-inter font-normal text-2xl md:text-[36px] leading-tight md:leading-[46px] text-[#36454f] text-center mb-[64px]">
-          How Reli AI Works
-        </h2>
-
         {/* Sticky Steps Container */}
-        <div className="relative pb-[150px]">
+        <div className="relative pb-[280px]">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="sticky pt-6"
+              className="sticky"
               style={{
-                top: `${index * cardGap}px`,
+                top: `${cardsTopOffset + index * cardGap}px`,
                 zIndex: index + 1,
               }}
             >
-              <div className="bg-neutral-100 border-[2.5px] border-[#1abc9c] rounded-[16px] max-w-[1200px] mx-auto overflow-hidden">
+              <div className="bg-neutral-100 border-[2.5px] border-primary-blue rounded-[16px] max-w-[1200px] mx-auto overflow-hidden">
                 {/* Step Header */}
                 <div className="px-6 md:px-[56px] pt-4 md:pt-[20px]">
                   <div className="flex justify-end">
@@ -81,7 +87,7 @@ export default function Process() {
                 </div>
 
                 {/* Divider */}
-                <div className="h-[2px] bg-[#1abc9c] mt-3 md:mt-[16px]" />
+                <div className="h-[2px] bg-primary-blue mt-3 md:mt-[16px]" />
 
                 {/* Content Container */}
                 <div className={`flex flex-col lg:flex-row gap-6 lg:gap-[48px] items-center p-6 md:p-[40px] ${step.imagePosition === "left" ? "lg:flex-row-reverse" : ""}`}>
@@ -93,8 +99,11 @@ export default function Process() {
                     <p className="font-inter font-normal text-sm md:text-[15px] leading-relaxed md:leading-[22px] text-[#787878] mt-2 md:mt-[12px]">
                       {step.description}
                     </p>
-                    <div className="mt-5 md:mt-[24px]">
-                      <button className="bg-[#13c296] border border-[#13c296] rounded-[6px] px-[24px] py-[10px] font-inter font-medium text-[14px] text-white hover:bg-[#10a67d] transition-colors flex items-center gap-2 h-[42px]">
+                    <div className="mt-5 md:mt-[24px] flex justify-center">
+                      <Link
+                        href={step.buttonHref}
+                        className="bg-primary-blue border border-primary-blue rounded-[6px] px-[24px] py-[10px] font-inter font-medium text-[14px] text-white hover:bg-blue-900 transition-colors flex items-center gap-2 h-[42px]"
+                      >
                         <svg
                           width="18"
                           height="18"
@@ -118,7 +127,7 @@ export default function Process() {
                           />
                         </svg>
                         {step.buttonText}
-                      </button>
+                      </Link>
                     </div>
                   </div>
 

@@ -10,7 +10,7 @@ export const components = {
     return (
       <div className="mt-4 text-center">
         By creating an account, you agree to our{' '}
-        <Link href="/data-policy">
+        <Link href="/terms&conditions">
           <span className="underline text-teal cursor-pointer">
             Data Policy
           </span>

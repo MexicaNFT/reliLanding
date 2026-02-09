@@ -16,7 +16,7 @@ export default function UserJourney() {
         <div className="flex justify-center mb-12 lg:mb-16">
           <div className="bg-[#d8dff1] border border-neutral-200 rounded-full px-8 py-2">
             <p className="font-inter font-semibold text-lg lg:text-[22px] leading-[30px] text-gray-700 text-center">
-              User Journey
+              Un Ejemplo
             </p>
           </div>
         </div>
@@ -49,19 +49,21 @@ export default function UserJourney() {
           {/* User Story Text */}
           <div className="flex flex-col gap-4 lg:gap-6 flex-1 text-center lg:text-left lg:pt-12">
             <h3 className="font-inter font-semibold italic text-2xl sm:text-3xl lg:text-[36px] leading-tight text-[#36454f]">
-              Miguel, 31 years old, Tax Lawyer
+              Miguel, 31 años, abogado fiscalista
             </h3>
             <div className="flex flex-col gap-4 lg:gap-6 font-inter font-normal text-base leading-relaxed text-[#585858]">
-              <p>Miguel is a lawyer.</p>
               <p>
-                He works at a large firm in Mexico City where much of his job is to stay updated on the current tax regulations applicable to his clients.
+                Miguel recibe la alerta: se actualizaron anexos de la Miscelánea Fiscal y el cliente pregunta
+                “¿qué cambió y qué aplica a nuestro caso?”.
               </p>
               <p>
-                Today, Miguel only focuses on closing more clients and cases because{" "}
-                <span className="font-semibold italic text-[#3b82f6]">
-                  Reli AI
-                </span>{" "}
-                already does the heavy lifting.
+                Antes, abría el DOF, buscaba PDFs, comparaba versiones, copiaba citas a mano y se le iba media mañana entre anexos, reglas y referencias cruzadas.
+              </p>
+              <p>
+                En Reli Research, Miguel ve el documento en la Gaceta el día que sale. Lo consulta en 1 minuto con Document Intelligence para entender cuáles fueron los cambios relevantes.
+              </p>
+              <p>
+                Agrega los nuevos documentos a un Paquete de Investigación Fiscal, tiene el corpus actualizado. Y lo puede consultar en el futuro desde su celular en menos de 1 minuto.
               </p>
             </div>
           </div>
