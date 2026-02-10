@@ -1,5 +1,6 @@
 "use client";
 import { FileText, MessageSquare, RefreshCw, MapPin, Globe, FileCheck } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /**
  * Numbers Reli section component.
@@ -136,7 +137,7 @@ export default function NumbersReli() {
 }
 
 // Stat Card Component - smaller cards for better fit
-function StatCard({ icon: Icon, text }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }>; text: string }) {
+function StatCard({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
   return (
     <div className="bg-neutral-100 border-2 border-[#d3d7ea] rounded-xl w-[150px] h-[130px] flex flex-col items-center justify-center gap-3 shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)]">
       <div className="w-8 h-8 text-[#3758f9]">
