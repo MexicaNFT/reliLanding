@@ -37,7 +37,7 @@ export default function WhyReli() {
             </p>
           </div>
           <div className="mt-8 flex flex-col items-center gap-4">
-            <Link href="/subscription">
+            <Link href="https://app.reli.ai">
               <button className="bg-primary-blue rounded-[6px] px-6 md:px-[28px] py-3 md:py-[13px] font-inter font-medium text-sm md:text-[16px] leading-[24px] text-neutral-100 hover:bg-opacity-90 transition-colors">
                 Crear cuenta grátis
               </button>

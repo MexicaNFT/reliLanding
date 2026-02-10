@@ -17,7 +17,7 @@ export default function Process() {
       description:
         "Agrega tu materia de interés, jurisdicción, fuentes interesadas y genera una gaceta diaria o una búsqueda dentro de todo el corpus mexicano",
       buttonText: "Probar Reli",
-      buttonHref: "/subscription",
+      buttonHref: "https://app.reli.ai",
       image: "/assets/Step-1-Call.png",
       imagePosition: "right",
     },
@@ -27,7 +27,7 @@ export default function Process() {
       description:
         "Consulta el documento rápido con una conversación; o agrégalo a un cuaderno de trabajo o investigación",
       buttonText: "Probar Document Intelligence",
-      buttonHref: "/subscription",
+      buttonHref: "https://app.reli.ai",
       image: "/assets/Step2-BuildModel.png",
       imagePosition: "left",
     },
@@ -37,7 +37,7 @@ export default function Process() {
       description:
         "Organiza tu trabajo, documentos importantes, normativa y automatizaciones en modelos específicos; o usa nuestros Paquetes de Investigación",
       buttonText: "Crear mi primer notebook",
-      buttonHref: "/subscription",
+      buttonHref: "https://app.reli.ai",
       image: "/assets/Step3 - Support.png",
       imagePosition: "right",
     },

@@ -47,7 +47,7 @@ export default function Hero() {
 
           {/* CTA Button */}
           <div className="flex justify-center">
-            <Link href="/subscription">
+            <Link href="https://app.reli.ai">
               <button className="bg-primary-blue rounded-[6px] px-6 md:px-[28px] py-3 md:py-[13px] font-inter font-medium text-sm md:text-[16px] leading-[24px] text-neutral-100 hover:bg-opacity-90 transition-colors">
                 Prueba Reli
               </button>

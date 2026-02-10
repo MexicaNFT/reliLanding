@@ -26,7 +26,7 @@ export default function Pricing() {
       ],
       buttonText: "Empezar gratis",
       microcopy: "Ideal para probar valor real en <5 minutos.",
-      buttonHref: "/subscription",
+      buttonHref: "https://app.reli.ai",
     },
     {
       name: "Basic",
@@ -41,7 +41,7 @@ export default function Pricing() {
       ],
       buttonText: "Pasar a Basic",
       microcopy: "Para cuando ya vives aquí: más volumen, menos fricción.",
-      buttonHref: "/subscription",
+      buttonHref: "https://app.reli.ai",
       recommended: true,
     },
   ];

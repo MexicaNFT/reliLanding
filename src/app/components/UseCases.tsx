@@ -33,7 +33,7 @@ export default function UseCases() {
       description:
         "Reli es un sistema que genera búsquedas inteligentes solamente con documentos legales. Centraliza las gacetas, informes, semanarios, periódicos y más para generar un sistema actualizado, estructurado y centrado en las necesidades del derecho en México",
       buttonText: "Crear cuenta grátis",
-      buttonHref: "/subscription",
+      buttonHref: "https://app.reli.ai",
       image: "/assets/nace-reli.png",
       showIcon: false,
       isPrimaryCta: true,

@@ -68,12 +68,12 @@ export default function Header() {
 
       {/* Desktop Auth Buttons */}
       <div className="hidden lg:flex items-center gap-[12px]">
-        <Link href="/subscription">
+        <Link href="https://app.reli.ai">
           <button className="bg-neutral-100 border border-none shadow-custom rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue hover:bg-gray-50 transition-colors">
             Sign Up
           </button>
         </Link>
-        <Link href="/subscription">
+        <Link href="https://app.reli.ai">
           <button className="bg-neutral-100 border border-primary-blue rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue hover:bg-gray-50 transition-colors">
             Sign In
           </button>
@@ -115,12 +115,12 @@ export default function Header() {
               Precios
             </Link>
             <div className="flex flex-col gap-2 mt-4">
-              <Link href="/subscription">
+              <Link href="https://app.reli.ai">
                 <button className="w-full bg-neutral-100 border border-none shadow-custom rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue">
                   Sign Up
                 </button>
               </Link>
-              <Link href="/subscription">
+              <Link href="https://app.reli.ai">
                 <button className="w-full bg-neutral-100 border border-primary-blue rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue">
                   Sign In
                 </button>
