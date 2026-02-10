@@ -13,24 +13,16 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      text: "Reli ha transformado completamente la manera en que realizamos investigación jurídica. Lo que antes tomaba horas, ahora lo hacemos en minutos con resultados más precisos.",
-      author: "María González, Socia en González & Asociados",
+      text: "Cuando descubrí esta app me fue de mucha utilidad, y más para mis ensayos y para apoyarme en buscar bibliografías y referencias para mi tesis",
+      author: "Carlos Alejandro Gracia, Estudiante",
     },
     {
-      text: "La base de datos de Reli es impresionante. Tener acceso a toda la normativa federal, local y tratados internacionales en un solo lugar ha sido invaluable para nuestro despacho.",
-      author: "Carlos Mendoza, Director Jurídico en TechMex",
+      text: "Es la mejor aplicación de investigación para derecho mexicano. Encuentras y organizas muy fácil todo",
+      author: "Andrea Rosales, Maestra",
     },
     {
-      text: "El asistente de IA de Reli entiende el contexto legal mexicano como ninguna otra herramienta. Las respuestas son precisas y siempre incluyen las referencias correctas.",
-      author: "Ana Rodríguez, Abogada Independiente",
-    },
-    {
-      text: "Desde que implementamos Reli en nuestro despacho, la productividad del equipo ha aumentado significativamente. Es una herramienta indispensable para cualquier profesional del derecho.",
-      author: "Roberto Sánchez, Fundador de Sánchez Legal",
-    },
-    {
-      text: "La actualización diaria de la normativa nos da la tranquilidad de siempre estar trabajando con la información más reciente. Reli se ha convertido en nuestro aliado estratégico.",
-      author: "Laura Martínez, Consultora Legal Senior",
+      text: "Está buenísimo que pueda tener los documentos con los que estoy trabajando en carpetas para poder consultar rápido sobre los temas que trabajo diario",
+      author: "Alonso, Asesor Parlamentario",
     },
   ];
 

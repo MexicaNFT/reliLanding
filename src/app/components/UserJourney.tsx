@@ -25,20 +25,10 @@ export default function UserJourney() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center lg:items-start">
           {/* User Image Container */}
           <div className="relative flex-shrink-0">
-            {/* Small decorative TAX image - positioned at top left */}
-            <div className="absolute -top-8 -left-4 lg:-top-12 lg:-left-8 z-10">
-              <Image
-                src="/assets/tax-illustration.png"
-                alt="Tax illustration"
-                width={190}
-                height={112}
-                className="w-[120px] h-auto lg:w-[190px]"
-              />
-            </div>
             {/* Main user image */}
             <div className="relative w-[300px] h-[220px] sm:w-[400px] sm:h-[280px] lg:w-[510px] lg:h-[326px] rounded-xl shadow-[2px_-2px_20px_0px_rgba(0,0,0,0.1)] overflow-hidden bg-white">
               <Image
-                src="/assets/miguel-lawyer.png"
+                src="/assets/miguel_ejemplo.png"
                 alt="Miguel - Tax Lawyer working on laptop"
                 fill
                 className="object-cover object-center"
