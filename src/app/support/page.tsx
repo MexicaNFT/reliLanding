@@ -2,6 +2,12 @@
 
 import { useEffect } from "react";
 
+/**
+ * A component that embeds a Tally.so form for customer support.
+ * The form is loaded dynamically by adding the Tally embed script to the page.
+ *
+ * @returns {JSX.Element} The rendered support page with the embedded form.
+ */
 export default function SupportPage() {
   useEffect(() => {
     const script = document.createElement("script");

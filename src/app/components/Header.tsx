@@ -1,153 +1,134 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Menu, X, ArrowUp } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { handleSigninClick } from "../helpers/handle-sign-in";
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
+/**
+ * Top navigation bar component matching the Figma design.
+ * Features the Reli logo, navigation links, and Sign Up/Sign In buttons.
+ *
+ * @returns {JSX.Element} The rendered header component.
+ */
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showGoToTop, setShowGoToTop] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const router = useRouter();
-
-  const handleNavigation = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const yOffset = -80;
-      const y =
-        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    setActiveSection(sectionId);
-    setMenuOpen(false);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    const handleScrollVisibility = () => {
-      if (window.scrollY > 300) {
-        setShowGoToTop(true);
-      } else {
-        setShowGoToTop(false);
-      }
-    };
-
-    const handleScroll = () => {
-      const sections = ["product", "nuestras-herramientas", "seguridad"];
-      let current = "";
-
-      for (let section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            current = section;
-            break;
-          }
-        }
-      }
-
-      setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScrollVisibility);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScrollVisibility);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
-    <div>
-      <header className="flex items-center justify-between px-4 py-5 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
-        <div
-          className="flex-shrink-0 px-2 cursor-pointer"
-          onClick={() => router.push("/")}
-        >
-          <Image
-            src="/assets/Reli_logo.png"
-            alt="Reli"
-            width={90}
-            height={36}
-            style={{ objectFit: "contain" }}
-          />
-        </div>
+    <header className="bg-neutral-100 h-[78px] fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 lg:px-[120px]">
+      {/* Logo */}
+      <Link href="/" className="flex items-center">
+        <Image
+          src="/assets/ReliLogo.svg"
+          alt="Reli logo"
+          width={48}
+          height={48}
+          priority
+          className="object-contain"
+        />
+      </Link>
 
-        <div className="md:hidden flex items-center">
-          <button
-            className="mr-2 bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 transition-colors"
-            onClick={handleSigninClick}
-          >
+      {/* Mobile menu button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="lg:hidden text-gray-700 focus:outline-none"
+      >
+        {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex items-center gap-[32px]">
+        <Link
+          href="#use-cases"
+          className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors"
+        >
+          ¿Por qué Reli?
+        </Link>
+        <Link
+          href="#how-it-works"
+          className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors"
+        >
+          ¿Cómo funciona?
+        </Link>
+        <Link
+          href="https://reliai.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors"
+        >
+          Substack/Blog
+        </Link>
+        <Link
+          href="#pricing"
+          className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors"
+        >
+          Precios
+        </Link>
+      </nav>
+
+      {/* Desktop Auth Buttons */}
+      <div className="hidden lg:flex items-center gap-[12px]">
+        <Link href="https://app.reli.ai">
+          <button className="bg-neutral-100 border border-none shadow-custom rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue hover:bg-gray-50 transition-colors">
+            Sign Up
+          </button>
+        </Link>
+        <Link href="https://app.reli.ai">
+          <button className="bg-neutral-100 border border-primary-blue rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue hover:bg-gray-50 transition-colors">
             Sign In
           </button>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-600 focus:outline-none"
-          >
-            {menuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-        </div>
+        </Link>
+      </div>
 
-        <nav
-          className={`${
-            menuOpen ? "flex" : "hidden"
-          } absolute top-14 left-0 w-full bg-white shadow-md md:static md:flex md:space-x-4 md:w-auto md:shadow-none md:bg-transparent z-10 flex-col items-center md:flex-row`}
-        >
-          {[
-            { id: "product", label: "Producto" },
-            { id: "nuestras-herramientas", label: "Nuestras Herramientas" },
-            { id: "seguridad", label: "Seguridad" },
-          ].map(({ id, label }) => (
-            <button
-              key={id}
-              onClick={() => handleNavigation(id)}
-              className={`block py-2 px-4 text-gray-600 hover:text-gray-900 md:inline-block relative ${
-                activeSection === id ? "font-semibold" : ""
-              }`}
+      {/* Mobile Navigation */}
+      {menuOpen && (
+        <div className="lg:hidden absolute top-[78px] left-0 right-0 bg-white shadow-lg">
+          <nav className="flex flex-col p-4 gap-4">
+            <Link
+              href="#use-cases"
+              onClick={() => setMenuOpen(false)}
+              className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors py-2"
             >
-              {label}
-              {activeSection === id && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#34C1A6]"></span>
-              )}
-            </button>
-          ))}
-        </nav>
-
-        <div className="hidden md:flex items-center space-x-2 px-2">
-          <Link href={"/subscription"}>
-            <button className="bg-white border border-[#E5E7EB] shadow-md text-gray-600 px-4 py-1.5 text-sm rounded-full hover:bg-gray-100 transition-colors">
-              Sign Up
-            </button>
-          </Link>
-          <button
-            className="bg-[#34C1A6] text-white px-4 py-1.5 text-sm rounded-full hover:bg-opacity-90 shadow-md transition-colors"
-            onClick={handleSigninClick}
-          >
-            Sign In
-          </button>
+              ¿Por qué Reli?
+            </Link>
+            <Link
+              href="#how-it-works"
+              onClick={() => setMenuOpen(false)}
+              className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors py-2"
+            >
+              ¿Cómo funciona?
+            </Link>
+            <Link
+              href="https://reliai.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors py-2"
+            >
+              Substack/Blog
+            </Link>
+            <Link
+              href="#pricing"
+              onClick={() => setMenuOpen(false)}
+              className="font-poppins text-[14px] text-gray-700 hover:text-primary-blue transition-colors py-2"
+            >
+              Precios
+            </Link>
+            <div className="flex flex-col gap-2 mt-4">
+              <Link href="https://app.reli.ai">
+                <button className="w-full bg-neutral-100 border border-none shadow-custom rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue">
+                  Sign Up
+                </button>
+              </Link>
+              <Link href="https://app.reli.ai">
+                <button className="w-full bg-neutral-100 border border-primary-blue rounded-[6px] px-[28px] py-[13px] font-inter font-medium text-[16px] text-primary-blue">
+                  Sign In
+                </button>
+              </Link>
+            </div>
+          </nav>
         </div>
-      </header>
-
-      {showGoToTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-[#34C1A6] text-white p-3 rounded-full shadow-lg hover:bg-opacity-90 transition-opacity"
-        >
-          <ArrowUp className="h-6 w-6" />
-        </button>
       )}
-    </div>
+    </header>
   );
 }

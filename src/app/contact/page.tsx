@@ -55,8 +55,19 @@ const formSchema = z.discriminatedUnion("usage", [
   educationalSchema,
 ]);
 
+/**
+ * @typedef {z.infer<typeof formSchema>} FormData
+ * @description Represents the shape of the contact form data.
+ */
 type FormData = z.infer<typeof formSchema>;
 
+/**
+ * A contact form component that allows users to submit their information.
+ * The form includes dynamic fields based on the selected usage type (Work, Personal, or Educational).
+ * On submission, it constructs a WhatsApp message with the form data and redirects the user.
+ *
+ * @returns {JSX.Element | null} The rendered contact form, or null if the component has not yet mounted.
+ */
 export default function ContactForm() {
   const [showToast, setShowToast] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);

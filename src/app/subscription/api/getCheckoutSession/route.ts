@@ -7,6 +7,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2024-09-30.acacia",
 });
 
+/**
+ * Handles a GET request to retrieve a Stripe Checkout session.
+ * It takes a `session_id` as a query parameter and returns the corresponding session object.
+ *
+ * @param {NextRequest} req - The incoming Next.js request object.
+ * @returns {Promise<NextResponse>} A response object with the session data or an error message.
+ */
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

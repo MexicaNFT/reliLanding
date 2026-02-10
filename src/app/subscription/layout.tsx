@@ -21,6 +21,14 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * The layout for the subscription page.
+ * It sets the metadata for the page and renders the children.
+ *
+ * @param {object} props - The props for the component.
+ * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
+ * @returns {JSX.Element} The rendered subscription layout.
+ */
 export default function SubscriptionLayout({
   children,
 }: {

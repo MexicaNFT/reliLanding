@@ -5,6 +5,14 @@ interface CustomSwitchProps {
   onToggle: () => void;
 }
 
+/**
+ * A custom switch component that can be toggled on and off.
+ *
+ * @param {object} props - The props for the component.
+ * @param {boolean} props.selected - Whether the switch is currently selected.
+ * @param {() => void} props.onToggle - The function to call when the switch is toggled.
+ * @returns {JSX.Element} The rendered switch component.
+ */
 const CustomSwitch: React.FC<CustomSwitchProps> = ({ selected, onToggle }) => {
   return (
     <button

@@ -1,79 +1,140 @@
-import React from "react";
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import { SocialIcon } from "react-social-icons";
+import Image from "next/image";
+import { Send } from "lucide-react";
 
+/**
+ * Footer component matching the Figma design.
+ * Features header with logo and newsletter, and footer links organized in columns.
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState("");
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter subscription
+    console.log("Newsletter signup:", email);
+    setEmail("");
+  };
+
+  // Footer link columns data
+  const footerColumns = [
+    {
+      title: "Company",
+      links: [
+        { label: "About us", href: "#" },
+        { label: "Contact us", href: "/contact" },
+      ],
+    },
+    {
+      title: "Our Products",
+      links: [
+        { label: "Instagram", href: "#" },
+        { label: "Twitter", href: "#" },
+        { label: "LinkedIn", href: "#" },
+      ],
+    },
+    {
+      title: "Apps",
+      links: [
+        { label: "Reli for Android", href: "#" },
+        { label: "Reli for iOS", href: "#" },
+      ],
+    },
+    {
+      title: "Help & Support",
+      links: [
+        { label: "Reli for Android", href: "#" },
+        { label: "Reli for iOS", href: "#" },
+      ],
+    },
+    {
+      title: "Políticas de Uso",
+      links: [
+        { label: "Política de Privacidad", href: "/privacy-policy" },
+        { label: "Términos y Condiciones", href: "/terms&conditions" },
+      ],
+    },
+    {
+      title: "Social Media",
+      links: [
+        { label: "Instagram", href: "https://www.instagram.com/reli_on_ai/" },
+        { label: "Twitter", href: "https://twitter.com/Reli_AI" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/reli-legaltech/" },
+      ],
+    },
+  ];
+
   return (
-    <footer className="bg-[#36454F] text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center lg:flex-row lg:justify-between">
-          <div className="mb-8 lg:mb-0 text-center lg:text-left w-full lg:w-auto">
-            <div className="flex justify-center lg:justify-start">
+    <footer className="relative w-full">
+      {/* Top Section - Light Gray Background */}
+      <div className="bg-[#f9fafb] w-full">
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] py-3">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Logo Section */}
+            <div className="flex items-center gap-2">
               <Image
-                src="/assets/Reli_logo.png"
-                alt="Reli"
-                width={100}
-                height={40}
-                className="mb-4"
-                style={{ objectFit: "cover" }}
+                src="/assets/ReliLogo.svg"
+                alt="Reli logo"
+                width={78}
+                height={78}
+                className="w-[78px] h-[78px]"
               />
+              <span className="font-poppins font-extralight text-[40px] text-[#111827] tracking-[-0.4px]">
+                Reli
+              </span>
             </div>
-            <div className="flex justify-center lg:justify-start space-x-4 mt-4 lg:mt-16">
-              <SocialIcon
-                url="https://www.linkedin.com/company/reli-legaltech/"
-                network="linkedin"
-                bgColor="transparent"
-                fgColor="white"
-                style={{ height: 40, width: 40 }}
-              />
-              <SocialIcon
-                url="https://twitter.com/Reli_AI"
-                network="twitter"
-                bgColor="transparent"
-                fgColor="white"
-                style={{ height: 40, width: 40 }}
-              />
-              <SocialIcon
-                url="https://www.instagram.com/reli_on_ai/"
-                network="instagram"
-                bgColor="transparent"
-                fgColor="white"
-                style={{ height: 40, width: 40 }}
-              />
-            </div>
-          </div>
-          <div className="text-center lg:text-left">
-            <h3 className="font-bold text-lg mb-4 text-[#1ABC9C]">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="hover:text-gray-300 transition-colors duration-200"
+
+            {/* Newsletter Input */}
+            <form onSubmit={handleNewsletterSubmit} className="w-full md:w-auto">
+              <div className="flex items-center bg-[#f3f4f6] border border-[#d2d5da] rounded-[6px] px-6 py-3 gap-12">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter e-mail to subscribe to our Newsletter"
+                  className="bg-transparent font-inter font-normal text-[16px] leading-[24px] text-[#374151] placeholder:text-[#374151] focus:outline-none w-full md:w-auto min-w-[280px]"
+                />
+                <button
+                  type="submit"
+                  className="text-[#3758F9] hover:text-[#3758F9]/80 transition-colors shrink-0"
                 >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/data-policy"
-                  className="hover:text-gray-300 transition-colors duration-200"
-                >
-                  Data Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-gray-300 transition-colors duration-200"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
+                  <Send className="w-6 h-6" />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-        <div className="border-t border-gray-600 my-8"></div>
+      </div>
+
+      {/* Bottom Section - Dark Background */}
+      <div className="bg-[#111827] w-full">
+        <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] py-16">
+          {/* Footer Links Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
+            {footerColumns.map((column) => (
+              <div key={column.title} className="flex flex-col gap-5">
+                <h3 className="font-inter font-bold text-[18px] leading-normal text-white">
+                  {column.title}
+                </h3>
+                <div className="flex flex-col gap-3">
+                  {column.links.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="font-inter font-normal text-[16px] leading-normal text-[#f1f4f4] hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </footer>
   );

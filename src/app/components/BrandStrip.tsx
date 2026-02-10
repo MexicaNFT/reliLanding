@@ -8,6 +8,11 @@ import {
   siSpotify,
 } from "simple-icons/icons";
 
+/**
+ * A component that displays a continuously scrolling strip of brand icons.
+ *
+ * @returns {JSX.Element} The rendered brand strip component.
+ */
 const BrandStrip: React.FC = () => {
   const stripRef = useRef<HTMLDivElement>(null);
 

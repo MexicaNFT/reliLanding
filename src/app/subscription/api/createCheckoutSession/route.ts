@@ -5,6 +5,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2024-09-30.acacia",
 });
 
+/**
+ * Handles a POST request to create a Stripe Checkout session for a subscription.
+ * It takes a userId, email, and planId in the request body. If a Stripe customer with the
+ * given email already exists, it uses that customer; otherwise, it creates a new one.
+ * It then creates and returns a new Checkout session ID.
+ *
+ * @param {NextRequest} req - The incoming Next.js request object.
+ * @returns {Promise<NextResponse>} A response object with the session ID or an error message.
+ */
 export async function POST(req: NextRequest) {
   try {
     const { userId, email, planId } = await req.json();
