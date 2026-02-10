@@ -18,6 +18,7 @@ export default function UseCases() {
       buttonText: "Read case study",
       image: "/assets/un-problema-comun.png",
       showIcon: true,
+      showLogo: false,
     },
     {
       title: "Las Alternativas",
@@ -27,6 +28,7 @@ export default function UseCases() {
       image: "/assets/las-alternativas.png",
       showIcon: true,
       reverseLayout: true,
+      showLogo: false,
     },
     {
       title: "Por eso nace Reli",
@@ -37,6 +39,7 @@ export default function UseCases() {
       image: "/assets/nace-reli.png",
       showIcon: false,
       isPrimaryCta: true,
+      showLogo: false,
     },
   ];
 
