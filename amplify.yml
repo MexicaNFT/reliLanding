@@ -3,13 +3,13 @@ backend:
   phases:
     build:
       commands:
-        - npm ci --cache .npm --prefer-offline
+        - npm ci --cache .npm --prefer-offline --omit=optional
         - npx ampx generate outputs --branch main --app-id d2debaq3ajng3p --out-dir src
 frontend:
   phases:
     preBuild:
       commands:
-        - npm ci --cache .npm --prefer-offline
+        - npm ci --cache .npm --prefer-offline --omit=optional
         - env | grep -e STRIPE_PRODUCT_ID -e STRIPE_SECRET_KEY >> .env.production
     build:
       commands:
