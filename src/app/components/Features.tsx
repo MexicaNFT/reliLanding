@@ -13,6 +13,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function Features() {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const features = [
     {
@@ -52,35 +53,54 @@ export default function Features() {
     },
   ];
 
+  const getNearestIndex = () => {
+    const carousel = carouselRef.current;
+    if (!carousel) return 0;
+
+    const scrollLeft = carousel.scrollLeft;
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    slideRefs.current.forEach((slide, index) => {
+      if (!slide) return;
+      const distance = Math.abs(slide.offsetLeft - scrollLeft);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    return nearestIndex;
+  };
+
   const scrollToIndex = (index: number) => {
-    if (carouselRef.current) {
-      const cardWidth = carouselRef.current.scrollWidth / features.length;
-      carouselRef.current.scrollTo({
-        left: cardWidth * index,
-        behavior: "smooth",
-      });
-      setActiveIndex(index);
-    }
+    const carousel = carouselRef.current;
+    const targetSlide = slideRefs.current[index];
+    if (!carousel || !targetSlide) return;
+
+    carousel.scrollTo({
+      left: targetSlide.offsetLeft,
+      behavior: "smooth",
+    });
+    setActiveIndex(index);
   };
 
   const handleScroll = () => {
-    if (carouselRef.current) {
-      const scrollLeft = carouselRef.current.scrollLeft;
-      const cardWidth = carouselRef.current.scrollWidth / features.length;
-      const newIndex = Math.round(scrollLeft / cardWidth);
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
-      }
+    const nearestIndex = getNearestIndex();
+    if (nearestIndex !== activeIndex) {
+      setActiveIndex(nearestIndex);
     }
   };
 
   const goToPrevious = () => {
-    const newIndex = activeIndex > 0 ? activeIndex - 1 : features.length - 1;
+    const currentIndex = getNearestIndex();
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : features.length - 1;
     scrollToIndex(newIndex);
   };
 
   const goToNext = () => {
-    const newIndex = activeIndex < features.length - 1 ? activeIndex + 1 : 0;
+    const currentIndex = getNearestIndex();
+    const newIndex = currentIndex < features.length - 1 ? currentIndex + 1 : 0;
     scrollToIndex(newIndex);
   };
 
@@ -117,6 +137,9 @@ export default function Features() {
             {features.map((feature, index) => (
               <div
                 key={index}
+                ref={(el) => {
+                  slideRefs.current[index] = el;
+                }}
                 className="flex-shrink-0 w-full max-w-[1200px] snap-center"
               >
                 <div className="bg-neutral-100 border border-[#aec3ff] rounded-[16px] overflow-hidden mx-auto">
