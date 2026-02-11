@@ -1,88 +1,86 @@
-# Reli.Ai - LegalTech Platform Landing Page
+# Reli Landing Page
 
-This is the official landing page for Reli.Ai, the most comprehensive LegalTech platform in Mexico. This project is built with Next.js and serves as the main entry point for users to learn about our products, tools, security measures, and subscription plans.
+Official marketing site for Reli, built with Next.js (App Router) and Tailwind CSS.
 
-## ✨ Features
+## What this project includes
 
-- **Dynamic Hero Section:** Engaging introduction to the platform.
-- **Product Showcase:** A video demonstration of the Reli.Ai product.
-- **AI Tool Carousel:** An interactive display of our AI-powered legal tools.
-- **Security Information:** Details on our commitment to data security, built on AWS infrastructure.
-- **Subscription & Pricing:** Seamless integration with Stripe for handling monthly and annual subscription plans.
-- **User Authentication:** Powered by AWS Amplify for secure sign-up and sign-in.
-- **Responsive Design:** Fully responsive layout for optimal viewing on all devices, built with Tailwind CSS.
+- Landing page with 10 sections: Hero, Why Reli, Use Cases, Process, Features, User Journey, Numbers, Testimonials, Security, Pricing.
+- Contact form route (`/contact`) that validates user input and redirects to WhatsApp with a pre-filled message.
+- Support route (`/support`) that embeds a Tally form.
+- Legal routes linked from footer:
+  - Privacy Policy: `/privacy-policy`
+  - Terms and Conditions: `/terms&conditions`
 
-## 🚀 Tech Stack
+## Active external services
 
-- **Framework:** [Next.js](https://nextjs.org/)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Authentication:** [AWS Amplify](https://aws.amazon.com/amplify/)
-- **Payments:** [Stripe](https://stripe.com/)
-- **Deployment:** [AWS Amplify](https://aws.amazon.com/amplify/)
+- `https://app.reli.ai` for Sign Up / Sign In and pricing CTAs.
+- WhatsApp deep link (`https://wa.me/...`) from `/contact`.
+- Tally embed (`https://tally.so/...`) on `/support`.
+- AWS Amplify build/deploy via `amplify.yml`.
 
-## 🏁 Getting Started
+## Tech stack
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+- Next.js 14
+- React 18
+- TypeScript 5
+- Tailwind CSS 3
+- `lucide-react` (icons)
+- `react-hook-form` + `zod` + `@hookform/resolvers` (contact form validation)
 
-### Prerequisites
+## Project structure
 
-- [Node.js](https://nodejs.org/) (version 18.x or later)
-- [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/), [pnpm](https://pnpm.io/), or [bun](https://bun.sh/)
+- `src/app/page.tsx`: Homepage section composition.
+- `src/app/layout.tsx`: Global layout with shared header and footer.
+- `src/app/components/*`: Landing page sections and shared UI blocks.
+- `src/app/contact/page.tsx`: Contact flow to WhatsApp.
+- `src/app/support/page.tsx`: Tally support form embed.
+- `src/app/privacy-policy/page.tsx`: Valid privacy policy page.
+- `src/app/terms&conditions/page.tsx`: Valid terms page.
+- `public/assets/*`: Images/video used by homepage components.
 
-### Installation
+## Local development
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
-    ```
+### Requirements
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    # or
-    yarn install
-    # or
-    pnpm install
-    # or
-    bun install
-    ```
+- Node.js 18+
+- npm
 
-### Environment Variables
+### Install
 
-This project requires certain environment variables to function correctly. Create a `.env.local` file in the root of your project and add the following variables:
-
-```plaintext
-# Stripe
-STRIPE_SECRET_KEY=sk_...
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
-STRIPE_PRODUCT_ID=prod_...,prod_...
-
-# Domain for Stripe Checkout redirects
-NEXT_PUBLIC_DOMAIN=http://localhost:3000
+```bash
+npm install
 ```
 
-You will also need to have an `amplify_outputs.json` file in the root directory, configured for your AWS Amplify backend.
-
-### Running the Development Server
-
-To start the development server, run one of the following commands:
+### Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-## 🚢 Deployment
+## Build and deploy
 
-This application is configured for easy deployment on the [AWS Amplify Platform](https://aws.amazon.com/amplify/). The `amplify.yml` file in the root directory contains the build and deployment settings.
+### Production build
 
-To deploy, connect your repository to AWS Amplify and follow the on-screen instructions. Amplify will automatically detect the settings and deploy the application.
+```bash
+npm run build
+npm run start
+```
+
+### AWS Amplify
+
+`amplify.yml` contains backend output generation and frontend build steps.
+
+## NPM scripts
+
+- `npm run dev`: Start local dev server.
+- `npm run build`: Build production bundle.
+- `npm run start`: Serve production build.
+- `npm run lint`: Next.js lint entrypoint (requires ESLint setup in repo).
+
+## Maintenance notes
+
+- Keep footer links in sync with legal/contact routes.
+- If pricing copy or plan structure changes, update `src/app/components/Pricing.tsx` and docs.
+- If contact/support provider links change (WhatsApp/Tally), update code and docs together.
