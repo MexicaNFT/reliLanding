@@ -21,35 +21,35 @@ export default function Features() {
       title: "Búsqueda semántica + filtros facetados",
       description:
         "Encuentra lo relevante más rápido con búsqueda por significado y filtros avanzados. Cada resultado trae ficha técnica, resumen inteligente y señal de relevancia para validar el “por qué”. Menos ruido, más control. Con citas verificables y trazabilidad hacia la fuente.",
-      image: "/assets/search.png",
+      image: "/assets/Search_screenshot.png",
     },
     {
       category: "GACETA",
       title: "Radar regulatorio 24/7",
       description:
         "Un feed curado por tus materias y filtros, más resumen diario por correo. Te mantienes actualizado sin perseguir el DOF, GACETAS o Semanarios. Detectas cambios, priorizas lo relevante y conviertes hallazgos en trabajo accionable. Configurable por tema, jurisdicción y ventana de tiempo.",
-      image: "/assets/Assistant.png",
+      image: "/assets/Gaceta_screenshot.png",
     },
     {
       category: "DOCUMENT INTELLIGENCE",
       title: "Habla con un documento",
       description:
         "Selecciona un documento y pregunta en lenguaje natural. Obtén respuestas enfocadas en el texto, con fundamentos sobre el documento y referencias dentro del propio contenido. Ideal para desmenuzar acuerdos, reformas, criterios y anexos sin perder contexto.",
-      image: "/assets/Investigation.png",
+      image: "/assets/Doc_Intelligence_screenshot.png",
     },
     {
       category: "NOTEBOOKS",
       title: "Contexto organizado para investigar mejor",
       description:
         "Crea notebooks para acotar el “mundo” de un asunto: guarda documentos, arma contexto y repite flujos. Útil para preparar argumentos, mapear riesgos y mantener consistencia. Con control y trazabilidad de fuentes.",
-      image: "/assets/notes.png",
+      image: "/assets/Notebook_Screenshot.png",
     },
     {
       category: "RESEARCH PACKS",
       title: "Entregables listos para actuar",
       description:
         "Transforma investigación en entregables: respuestas estructuradas, borradores defendibles y paquetes de evidencia trazable. Los Paquetes de Investigación funcionan como insumos/acciones dentro del flujo que incluyen un set de documentos y acciones enfocadas en Materias específicas.",
-      image: "/assets/circuit.png",
+      image: "/assets/Research_Packs_Screenshot.png",
     },
   ];
 
@@ -105,8 +105,8 @@ export default function Features() {
   };
 
   return (
-    <section className="bg-[#d8dff1] relative py-[120px]">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px]">
+    <section className="bg-[#d8dff1] relative py-[120px] overflow-visible">
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-[120px] overflow-visible">
         {/* Section Badge */}
         <div className="flex justify-center mb-[64px]">
           <div className="bg-neutral-100 border border-neutral-200 rounded-[100px] px-6 md:px-[32px] py-[6px]">
@@ -117,11 +117,11 @@ export default function Features() {
         </div>
 
         {/* Carousel with Arrows */}
-        <div className="relative">
+        <div className="relative overflow-visible">
           {/* Left Arrow */}
           <button
             onClick={goToPrevious}
-            className="absolute -left-4 md:-left-8 lg:-left-20 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors border border-gray-200"
+            className="absolute left-0 md:-left-4 lg:-left-16 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors border border-gray-200"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
@@ -131,7 +131,7 @@ export default function Features() {
           <div
             ref={carouselRef}
             onScroll={handleScroll}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 mx-12 md:mx-16 lg:mx-8"
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 px-12 md:px-16 lg:px-20"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {features.map((feature, index) => (
@@ -177,7 +177,7 @@ export default function Features() {
           {/* Right Arrow */}
           <button
             onClick={goToNext}
-            className="absolute -right-4 md:-right-8 lg:-right-20 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors border border-gray-200"
+            className="absolute right-0 md:-right-4 lg:-right-16 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors border border-gray-200"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
