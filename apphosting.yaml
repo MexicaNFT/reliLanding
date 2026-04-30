@@ -1,0 +1,12 @@
+runConfig:
+  runtime: nodejs20
+  concurrency: 100
+  cpu: 1
+  memoryMiB: 512
+
+outputFiles:
+  serverApp:
+    include:
+      - .next/standalone
+      - .next/static
+      - public
