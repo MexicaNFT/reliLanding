@@ -36,4 +36,4 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase Hosting
-        run: npx firebase-tools deploy --only hosting --project reli-app-core-prod
+        run: npx firebase-tools deploy --only hosting:reli-landing --project reli-app-core-prod

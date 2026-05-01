@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "reli-app-core-prod",
+    "site": "reli-landing",
     "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,

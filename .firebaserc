@@ -1,5 +1,12 @@
 {
   "projects": {
     "default": "reli-app-core-prod"
+  },
+  "targets": {
+    "reli-app-core-prod": {
+      "hosting": {
+        "landing": ["reli-landing"]
+      }
+    }
   }
 }
